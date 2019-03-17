@@ -8,20 +8,20 @@ define('NOMBRE_BBDD', 'tfg');
 
 //rutas de web
 
-define("SERVIDOR", "");
-define("RUTA_INDEX", "/index.php");
-define("RUTA_REGISTRO", "/registro.php");
-define("RUTA_REGISTRO_CORRECTO", "registro_correcto.php");
-define("RUTA_LOGIN", "/login.php");
-define("RUTA_LOGOUT", "/logout.php");
-define("RUTA_INFORMACION", "/informacion.php");
-define("RUTA_NUEVA_FLASHCARD", "nueva_flashcard.php");
-define("RUTA_ASIGNATURAS", "asignaturas.php");
-define("RUTA_ESTADISTICAS", "estadisticas.php");
-define("RUTA_NUEVO_RECURSO", "nuevo_recurso.php");
-define("RUTA_GESTION_USUARIOS", "gestion_usuarios.php");
-define("RUTA_TODAS_ASIGNATURAS", "asignaturas.php");
-define("RUTA_MIS_ASIGNATURAS", "mis_asignaturas.php");
-define("RUTA_TEMAS", "temas.php");
-define("RUTA_RECURSOS", "recursos.php");
-define("RUTA_FLASHCARDS", "flashcards.php");
+define("TFG-final", "");
+define("RUTA_INDEX", "/TFG-final//index.php");
+define("RUTA_REGISTRO", "/TFG-final/registro.php");
+define("RUTA_REGISTRO_CORRECTO", "/TFG-final/registro_correcto.php");
+define("RUTA_LOGIN", "/TFG-final/login.php");
+define("RUTA_LOGOUT", "/TFG-final/logout.php");
+define("RUTA_INFORMACION", "/TFG-final/informacion.php");
+define("RUTA_NUEVA_FLASHCARD", "/TFG-final/nueva_flashcard.php");
+define("RUTA_ASIGNATURAS", "/TFG-final/asignaturas.php");
+define("RUTA_ESTADISTICAS", "/TFG-final/estadisticas.php");
+define("RUTA_NUEVO_RECURSO", "/TFG-final/nuevo_recurso.php");
+define("RUTA_GESTION_USUARIOS", "/TFG-final/gestion_usuarios.php");
+define("RUTA_TODAS_ASIGNATURAS", "/TFG-final/asignaturas.php");
+define("RUTA_MIS_ASIGNATURAS", "/TFG-final/mis_asignaturas.php");
+define("RUTA_TEMAS", "/TFG-final/temas.php");
+define("RUTA_RECURSOS", "/TFG-final/recursos.php");
+define("RUTA_FLASHCARDS", "/TFG-final/flashcards.php");
