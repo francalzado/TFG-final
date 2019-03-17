@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplicacion Web de Fran</title>
+<!-- BOOSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   <!-- MI PROPIO CSS MAIN -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+</head>
+<div class="row"></div>
+  <div class="col-md-4 mx-auto">
+    <div class="card mt-4 text-center">
+      <div class="card-header">
+        <h1 class="h4">
+          Nuevo Recurso
+        </h1>
+      </div>
+    <div class="card-body">
+      <form action="/recursos-visuales/new-recurso" method="POST">
+        <div class="form-group">
+          <input type="text" name="enlace" class="form-control" placeholder="Enlace" autofocus/>
+        </div>
+</div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Guardar
+          </button>
+        </div>
+    </div>
+
+</html>
