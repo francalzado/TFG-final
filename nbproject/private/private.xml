@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/TFG-final/app/RepositorioRecurso.inc.php</file>
             <file>file:/C:/xampp/htdocs/TFG-final/app/log.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/RepositorioAsignaturas.inc.php</file>
             <file>file:/C:/xampp/htdocs/TFG-final/app/config.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/mis_asignaturas.php</file>
             <file>file:/C:/xampp/htdocs/TFG-final/plantillas/navbar-inicio.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/asignaturas.php</file>
             <file>file:/C:/xampp/htdocs/TFG-final/app/RepositorioFlashcard.inc.php</file>
         </group>
     </open-files>

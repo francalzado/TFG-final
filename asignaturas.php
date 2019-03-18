@@ -7,7 +7,7 @@ include_once 'app/RepositorioAsignaturas.inc.php';
 
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
-$todas = RepositorioAsignatura :: obtener_todos(Conexion :: obtener_conexion());
+$todas = RepositorioAsignatura :: obtener_todos(Conexion :: obtener_conexion(),$_SESSION['id_usuario']);
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
 $titulo = 'Asignaturas Totales';
@@ -29,6 +29,8 @@ if ($accion) {
         print 'Error' . $ex->getMessage();
     }
     if ($usuario_matriculado) {
+        Redireccion :: redirigir(RUTA_TODAS_ASIGNATURAS);
+
         print 'Se ha matriculado correctamente';
     }
     if (!$usuario_matriculado) {

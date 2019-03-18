@@ -9,8 +9,6 @@ $todos = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(),$_
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
 $titulo = 'Inicio';
-include_once 'plantillas/documento-declaracion.inc.php';
-include_once 'plantillas/navbar-inicio.inc.php';
 $txtId_fc = (isset($_POST['txtId_fc'])) ? $_POST['txtId_fc'] : "";
 $txtId_tema = (isset($_POST['txtId_tema'])) ? $_POST['txtId_tema'] : "";
 $txtPregunta = (isset($_POST['txtPregunta'])) ? $_POST['txtPregunta'] : "";
@@ -23,6 +21,10 @@ $txtCuerpo = (isset($_POST['txtCuerpo'])) ? $_POST['txtCuerpo'] : "";
 $txtVal = (isset($_POST['txtVal'])) ? $_POST['txtVal'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
+include_once 'plantillas/documento-declaracion.inc.php';
+
+        if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
+include_once 'plantillas/navbar-inicio.inc.php';
 
 switch ($accion1) {
     case "btnModificar":
@@ -231,10 +233,14 @@ switch ($accion1) {
     </div>
 </div>
 
-
+<?php 
+        }else{
+?>            
+        NO ERES PROFESOR!
 
 
 <?php
+        }
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
 

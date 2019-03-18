@@ -6,7 +6,7 @@ include_once 'Recurso.inc.php';
 
 class RepositorioAsignatura {
 
-    public static function obtener_todos($conexion) {
+    public static function obtener_todos($conexion,$id_usuario) {
         $asignaturas = array();
 
         if (isset($conexion)) {
@@ -14,9 +14,13 @@ class RepositorioAsignatura {
             try {
                 include_once 'Asignatura.inc.php';
 
-                $sql = "SELECT * FROM asignatura";
-
+                $sql = "SELECT * FROM asignatura "
+                        . "WHERE id_asignatura "
+                        . "NOT IN (SELECT id_asignatura FROM usuarioasignatura "
+                        . "WHERE id_usuario = :id_usuario)";
+                $id_UsuarioTEMP= $id_usuario;
                 $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_usuario', $id_UsuarioTEMP, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
             } catch (Exception $ex) {
