@@ -26,7 +26,7 @@ Conexion :: cerrar_conexion();
             <div class="navbar-nav">
 
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Todas las Asignaturas</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas sin matricular</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
 
             </div>
@@ -41,7 +41,7 @@ Conexion :: cerrar_conexion();
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Todas las Asignaturas</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas sin matricular</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
 
             </div>
@@ -55,7 +55,7 @@ Conexion :: cerrar_conexion();
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Todas las Asignaturas</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas sin matricular</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_GESTION_USUARIOS ?>">Gestion Usuarios</a>
 
