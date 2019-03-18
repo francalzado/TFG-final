@@ -9,7 +9,7 @@ define('NOMBRE_BBDD', 'tfg');
 //rutas de web
 
 define("TFG-final", "");
-define("RUTA_INDEX", "/TFG-final//index.php");
+define("RUTA_INDEX", "/TFG-final/index.php");
 define("RUTA_REGISTRO", "/TFG-final/registro.php");
 define("RUTA_REGISTRO_CORRECTO", "/TFG-final/registro_correcto.php");
 define("RUTA_LOGIN", "/TFG-final/login.php");
