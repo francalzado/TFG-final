@@ -10,8 +10,11 @@ $txtId_asignatura = (isset($_POST['txtId_asignatura'])) ? $_POST['txtId_asignatu
 $id_usuario = $_GET['id_usuario'];
 $txtId_usuario = (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : "";
 $usuario = new Usuario($txtId_usuario, '', '', '', '', '', '');
+
 $id_usuario = $_GET['id_usuario'];
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
+$baja = (isset($_POST['baja'])) ? $_POST['baja'] : "";
+
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
 //ver por qué al pasar $txtId_usuario PETA 
 //MUESTRA LAS ASIGNATURAS DEL USUARIO CON ID DE LA SESION
@@ -35,6 +38,23 @@ if ($accion) {
         print 'Error' . $ex->getMessage();
     }
 }
+
+if ($baja) {
+
+    try {
+//REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
+        $sql = "DELETE FROM  usuarioasignatura WHERE (id_usuario = :Id_usuario && id_asignatura = :Id_asignatura) ";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':Id_usuario', $_SESSION['id_usuario']);
+        $sentencia->bindParam(':Id_asignatura', $txtId_asignatura);
+        $usuario_matriculado = $sentencia->execute();
+        Redireccion :: redirigir(RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario']);
+        print $_SESSION['id_usuario'];
+        print $txtId_asignatura;
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
+}
 ?>
 
 <div class="row col-lg-12">
@@ -47,6 +67,7 @@ if ($accion) {
                 <th>Curso</th>
                 <th>Cuatrimestre</th>
                 <th>Accion</th>
+                <th>Darse da baja</th>
 
             </tr>
         </thead>
@@ -60,6 +81,13 @@ if ($accion) {
                     <form action="" method="post">
                         <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
                         <input type="submit" name="accion" value="Acceder">
+
+                    </form>
+                </td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
+                        <input type="submit" name="baja" value="Dar de baja">
 
                     </form>
                 </td>
