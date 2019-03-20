@@ -21,6 +21,7 @@ $txtCuerpo = (isset($_POST['txtCuerpo'])) ? $_POST['txtCuerpo'] : "";
 $txtVal = (isset($_POST['txtVal'])) ? $_POST['txtVal'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
+$siguiente = null;
 include_once 'plantillas/documento-declaracion.inc.php';
 
         if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
@@ -105,7 +106,7 @@ switch ($accion1) {
 
                 </tr>
             </thead>
-            <?php foreach ($todos as $flashcard) { ?>
+            <?php foreach ($todos as $flashcard) {?>
                 <tr>
                     <td><?php echo $flashcard['id_fc']; ?></td>            
                     <td><?php echo $flashcard['id_tema']; ?> </td>            
@@ -235,8 +236,8 @@ switch ($accion1) {
 
 <?php 
         }else{
-?>            
-        NO ERES PROFESOR!
+            include_once 'plantillas/flashcard_estudiante.php';
+            ?>            
 
 
 <?php
