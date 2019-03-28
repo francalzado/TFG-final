@@ -3,7 +3,6 @@ include_once 'app/Conexion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/ControlSesion.inc.php';
 include_once 'app/config.inc.php';
-
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
 Conexion :: cerrar_conexion();
@@ -58,7 +57,15 @@ Conexion :: cerrar_conexion();
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Todas las Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_GESTION_USUARIOS ?>">Gestion Usuarios</a>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Gestion de Usuarios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<?php echo RUTA_GESTION_USUARIOS ?>">Todos los usuarios</a>
+          <a class="dropdown-item" href="<?php echo RUTA_NUEVOS_USUARIOS ?>">Nuevos Usuarios</a>
+        </div>
+      </li>
 
 
             </div>

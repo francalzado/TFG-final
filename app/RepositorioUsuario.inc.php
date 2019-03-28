@@ -26,6 +26,28 @@ class RepositorioUsuario {
         return $resultado;
     }
 
+    public static function obtener_nuevos($conexion) {
+        $usuarios = array();
+
+        if (isset($conexion)) {
+
+            try {
+                include_once 'Usuario.inc.php';
+
+                $sql = "SELECT * FROM usuarios WHERE rol = 0";
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
     public static function obtener_numero_usuarios($conexion) {
 
         $total_usuarios = null;

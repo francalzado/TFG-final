@@ -25,3 +25,4 @@ define("RUTA_MIS_ASIGNATURAS", "/TFG-final/mis_asignaturas.php");
 define("RUTA_TEMAS", "/TFG-final/temas.php");
 define("RUTA_RECURSOS", "/TFG-final/recursos.php");
 define("RUTA_FLASHCARDS", "/TFG-final/flashcards.php");
+define("RUTA_NUEVOS_USUARIOS", "/TFG-final/nuevos_usuarios.php");

@@ -5,7 +5,7 @@ include_once 'app/Redireccion.inc.php';
 
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
-$todos = RepositorioUsuario :: obtener_todos(Conexion :: obtener_conexion());
+$nuevos = RepositorioUsuario :: obtener_nuevos(Conexion :: obtener_conexion());
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
 $titulo = 'Inicio';
@@ -41,12 +41,12 @@ switch ($accion1) {
             print 'Error' . $ex->getMessage();
         }
         if ($usuario_modificado) {
-            //print 'Se ha modificado correctamente';
+            print 'Se ha modificado correctamente';
             Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
         }
         if (!$usuario_modificado)
             print 'No se ha modificado correctaente';
-        //Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
+        Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
 
         break;
     case "btnEliminar":
@@ -90,7 +90,7 @@ switch ($accion1) {
 
                 </tr>
             </thead>
-            <?php foreach ($todos as $usuario) { ?>
+            <?php foreach ($nuevos as $usuario) { ?>
                 <tr>
                     <td><?php echo $usuario['id_usuario']; ?></td>            
                     <td><?php echo $usuario['nombre']; ?> <?php echo $usuario['apellidos']; ?></td>            

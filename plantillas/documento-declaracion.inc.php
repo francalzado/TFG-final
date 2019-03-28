@@ -4,20 +4,41 @@
     include_once 'app/ControlSesion.inc.php';
     include_once 'app/Conexion.inc.php';
     include_once 'app/Redireccion.inc.php';
-
     ?>
     <head>
-        
-    <body style='background-color:#02d1a4'>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<?php
-if (!isset($titulo) || empty($titulo)) {
-    $titulo = 'AppLearn';
+        <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
-echo "<title>$titulo</title>";
-?>
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #81d29b}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}</style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body style='background-color:#02d1a4'>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <?php
+        if (!isset($titulo) || empty($titulo)) {
+            $titulo = 'AppLearn';
+        }
+        echo "<title>$titulo</title>";
+        ?>
 
         <!-- BOOSTRAP -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -26,4 +47,3 @@ echo "<title>$titulo</title>";
         <link href="css/estilos.css" rel="stylesheet">
 
     </head>
-<body>
