@@ -57,17 +57,17 @@ class RepositorioFlashcard {
         return $resultado;
     }
 
-        public static function estadisticas($conexion,$id_tema) {
+        public static function estadisticas($conexion,$id_usuario) {
         $usuarios = array();
 
         if (isset($conexion)) {
 
             try {
 
-                $sql = "SELECT * FROM usuarioflashcard WHERE id_usuario = 4";
+                $sql = "SELECT * FROM usuarioflashcard WHERE id_usuario = :id_usuario";
 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id_tema', $id_tema, PDO::PARAM_STR);
+                $sentencia->bindParam(':id_usuario', $id_usuario, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
 

@@ -6,7 +6,7 @@ include_once 'app/Conexion.inc.php';
 Conexion :: abrir_conexion();
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
-$todas = RepositorioFlashcard::estadisticas($conexion,$_GET['id_tema']);
+$todas = RepositorioFlashcard::estadisticas($conexion,$_SESSION['id_usuario']);
 
 ?>
 <div class="row col-lg-12">
@@ -26,7 +26,6 @@ $todas = RepositorioFlashcard::estadisticas($conexion,$_GET['id_tema']);
                 <td><?php echo $asignatura['id_fc']; ?></td>            
                 <td><?php echo $asignatura['respuesta']; ?></td>
                 <td><?php echo $asignatura['fecha']; ?></td>
-                <td>
                     
                 </td>
             </tr>
