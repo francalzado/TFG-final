@@ -57,6 +57,27 @@ class RepositorioFlashcard {
         return $resultado;
     }
 
+        public static function estadisticas($conexion,$id_tema) {
+        $usuarios = array();
+
+        if (isset($conexion)) {
+
+            try {
+
+                $sql = "SELECT * FROM usuarioflashcard WHERE id_usuario = 4";
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_tema', $id_tema, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 }
 
 ?>
