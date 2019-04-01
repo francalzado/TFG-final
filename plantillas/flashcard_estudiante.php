@@ -4,7 +4,17 @@
 <link rel="stylesheet" type="text/css" href="/css/flashcard.css.css" media="screen" />
 <?php
 $contador = 0;
+$accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
+if ($accion) {
+
+    try {
+//REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
+        Redireccion :: redirigir(RUTA_ESTADISTICAS . '?id_usuario=' . $_SESSION['id_usuario']);
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
+}
 ?>
 <?php
 foreach ($todos as $flashcard) {
@@ -35,9 +45,6 @@ foreach ($todos as $flashcard) {
                             <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
 
                             </div>
-                            <!--   <div class="modal-footer text-muted">
-                                <span id="answer"></span>
-                            </div>-->
                             </div>
                             </div>
                             </div>
@@ -50,10 +57,11 @@ foreach ($todos as $flashcard) {
                                 </span>
                             </div>
 
-                        <?php } else {
-                            
-include_once 'plantillas/documento-declaracion.inc.php';
-include_once 'plantillas/navbar-inicio.inc.php';
+                            <?php
+                        } else {
+
+                            include_once 'plantillas/documento-declaracion.inc.php';
+                            include_once 'plantillas/navbar-inicio.inc.php';
                             ?>
 
                             <div class="container-fluid bg-info">
@@ -68,6 +76,7 @@ include_once 'plantillas/navbar-inicio.inc.php';
                                                 <h4><?php echo $flashcard['cuerpo']; ?></h4>          </div>
                                         </div>
                                         <div class="modal-body">
+
                                             <h4><?php echo $rc; ?></h4> 
                                             <h4><?php echo 'r' . $respuesta; ?></h4> 
                                             <?php
@@ -77,6 +86,23 @@ include_once 'plantillas/navbar-inicio.inc.php';
                                                 echo" No contestada";
                                             } else {
                                                 echo" Mal";
+                                            }
+
+                                            try {
+                                                $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha) VALUES(:id_usuario,:id_fc,:respuesta,:fecha) ";
+                                                $idusuarioTemp = $_SESSION['id_usuario'];
+                                                $idfcTemp = $flashcard['id_fc'];
+                                                $respuestaTemp = $respuesta;
+                                                $fechatemp = date('Y-m-d H:i:s');
+
+                                                $sentencia = $conexion->prepare($sql);
+                                                $sentencia->bindParam(':id_usuario', $idusuarioTemp);
+                                                $sentencia->bindParam(':id_fc', $idfcTemp);
+                                                $sentencia->bindParam(':respuesta', $respuestaTemp);
+                                                $sentencia->bindParam(':fecha', $fechatemp, PDO::PARAM_STR);
+                                                $insertado = $sentencia->execute();
+                                            } catch (PDOException $ex) {
+                                                print 'ERROR' . $ex->getMessage();
                                             }
                                             ?>
 
@@ -92,6 +118,11 @@ include_once 'plantillas/navbar-inicio.inc.php';
                         ?>                        
                         <input type="submit" name="finalizar" value="Finalizar">
                     </form>
-                    <?php
-                }
+                <?php } else {
+                    ?>
+                    <form action="" method="post">
+                        <input type="submit" name="accion" value="Acceder">
+
+                    </form>
+                <?php }
                 ?>
