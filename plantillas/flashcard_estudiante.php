@@ -34,8 +34,8 @@ foreach ($todos as $flashcard) {
                     </div>
                     <div class="modal-header">
                         <div class="text-center">
-
-                            <h4><?php echo $flashcard['cuerpo']; ?></h4>          </div>
+                            <h4><?php echo $flashcard['cuerpo']; ?></h4>          
+                        </div>
                     </div>
                     <div class="modal-body">
                         <form action="" method="post">
@@ -122,7 +122,6 @@ foreach ($todos as $flashcard) {
                     ?>
                     <form action="" method="post">
                         <input type="submit" name="accion" value="Acceder">
-
                     </form>
                 <?php }
                 ?>

@@ -8,7 +8,8 @@ class RepositorioFlashcard {
         $flascard_insertada = false;
         if (isset($conexion)) {
             try {
-                $sql = "INSERT INTO flashcard(id_tema,pregunta,r1,r2,r3,r4,cuerpo,val) VALUES(1, :pregunta, :r1, :r2,:r3,:r4,:cuerpo,:val) ";
+                $sql = "INSERT INTO flashcard(id_tema,pregunta,r1,r2,r3,r4,cuerpo,val) VALUES(:id_tema, :pregunta, :r1, :r2,:r3,:r4,:cuerpo,:val) ";
+                $idtemaTemp = $flashcard->obtenerIdTema();
                 $preguntatemp = $flashcard->obtenerPregunta();
                 $r1temp = $flashcard->obtenerR1();
                 $r2temp = $flashcard->obtenerR2();
@@ -18,6 +19,7 @@ class RepositorioFlashcard {
                 $valtemp = $flashcard->obtenerVal();
 
                 $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_tema', $idtemaTemp, PDO::PARAM_STR);                
                 $sentencia->bindParam(':pregunta', $preguntatemp, PDO::PARAM_STR);
                 $sentencia->bindParam(':r1', $r1temp, PDO::PARAM_STR);
                 $sentencia->bindParam(':r2', $r2temp, PDO::PARAM_STR);

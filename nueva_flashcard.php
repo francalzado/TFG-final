@@ -8,21 +8,25 @@ include_once 'app/Redireccion.inc.php';
 include_once 'app/Flashcard.inc.php';
 include_once 'app/RepositorioFlashcard.inc.php';
 
-if (!ControlSesion::sesion_iniciada() || (ControlSesion::getRol() !== '2')) {
+if (!ControlSesion::sesion_iniciada() || (ControlSesion::getRol() == '1')) {
     Redireccion :: redirigir(RUTA_INDEX);
 }
+
+    $txtId_tema = (isset($_GET['id_tema'])) ? $_GET['id_tema'] : "";
 if (isset($_POST['guardar'])) {
     Conexion :: abrir_conexion();
     //$validador = new ValidadorRegistro($_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], Conexion:: obtener_conexion());
 
     //if($validador -> registro_valido()){
-    $flashcard = new Flashcard('', '', $_POST['pregunta'],$_POST['r1'],$_POST['r2'],$_POST['r3'],$_POST['r4'],$_POST['cuerpo'],$_POST['val']);
+
+    $flashcard = new Flashcard('',$txtId_tema, $_POST['pregunta'],$_POST['r1'],$_POST['r2'],$_POST['r3'],$_POST['r4'],$_POST['cuerpo'],$_POST['val']);
+    
     $flashcard_insertada = RepositorioFlashcard :: insertar_flashcard(Conexion :: obtener_conexion(), $flashcard);
     if ($flashcard_insertada) {
-        Redireccion :: redirigir(RUTA_NUEVA_FLASHCARD);
+        Redireccion :: redirigir(RUTA_NUEVA_FLASHCARD .'?id_tema=' . $txtId_tema);
     } else {
         echo "No insertada";
-        Redireccion :: redirigir(RUTA_NUEVA_FLASHCARD);
+        Redireccion :: redirigir(RUTA_NUEVA_FLASHCARD . '?id_tema=' . $txtId_tema);
     }
 
     Conexion :: cerrar_conexion();
@@ -80,6 +84,8 @@ include_once 'plantillas/navbar-inicio.inc.php';
                 <input type="radio" name="val" value="2" >   Respuesta 2   <br> 
                 <input type="radio" name="val" value="3" >   Respuesta 3   <br> 
                 <input type="radio" name="val" value="4" >   Respuesta 4   <br> 
+                <input type="hidden" name="txtId_tema" value="<?php echo $_GET['id_tema']; ?>">
+
 
         </div>
         <div class="form-group">
