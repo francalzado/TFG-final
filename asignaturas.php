@@ -37,6 +37,18 @@ if ($accion) {
         print 'No se ha modificado correctaente';
     }
 }
+    if(COUNT($todas)===0){
+        ?>
+         <div class="container-fluid bg-info1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><span class="label label-warning"  id="qid">No hay mas asignaturas por matricular</span></h3>
+                    </div>
+                            </div>
+                            </div>
+  <?php      
+    }else{
 ?>
 
 <div class="row col-lg-12">
@@ -70,6 +82,7 @@ if ($accion) {
 </div>
 
 <?php
+    }
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
 

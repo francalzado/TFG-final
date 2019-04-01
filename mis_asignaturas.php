@@ -56,7 +56,24 @@ if ($baja) {
     }
 }
 ?>
+<?php
+if(COUNT($mis_asignaturas)===0){
+        ?>
+         <div class="container-fluid bg-info1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5><span class="label label-warning"  id="qid">No estas matriculado en ninguna asignatura</span></h5>
+                    </div>
+                    <div class="card-body">                   
+            <p><a href="<?php echo RUTA_TODAS_ASIGNATURAS ?>"> Matriculate en una asignatura</a></p>
 
+        </div>
+                            </div>
+                            </div>
+  <?php      
+    }else{
+?>
 <div class="row col-lg-12">
     <table class="table table-bordered">
         <thead>
@@ -101,5 +118,5 @@ if ($baja) {
 
 </div>
     <?php
-    include_once 'plantillas/documento-cierre.inc.php';
+    include_once 'plantillas/documento-cierre.inc.php';}
     ?>

@@ -263,12 +263,24 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
     <?php
 } else {
+        include_once 'plantillas/navbar-inicio.inc.php';
+
+    if(COUNT($todos)===0){?>
+        <div class="container-fluid bg-info1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5><span class="label label-warning"  id="qid">No hay ninguna Flashcard de este tema aún</span></h5>
+                    </div>
+                            </div>
+                            </div>
+    <?php }else{
     include_once 'plantillas/flashcard_estudiante.php';
     ?>            
 
 
     <?php
-}
+}}
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
 
