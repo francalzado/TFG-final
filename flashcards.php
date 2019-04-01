@@ -55,11 +55,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             }
             if ($usuario_modificado) {
                 print 'Se ha modificado correctamente';
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $txtId_tema);
+                Redireccion :: redirigir(RUTA_FLASHCARDS. '?id_tema=' .  $_GET['id_tema']);
             }
             if (!$usuario_modificado)
                 print 'No se ha modificado correctaente';
-            Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $txtId_tema);
+            Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
 
             break;
         case "btnEliminar":
@@ -74,11 +74,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                 print 'Error' . $ex->getMessage();
             }
             if ($usuario_borrado) {
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $txtId_tema);
+                Redireccion :: redirigir(RUTA_FLASHCARDS. '?id_tema=' .  $_GET['id_tema']);
                 print 'Se ha borrado correctamente';
             }
             if (!$usuario_borrado)
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $txtId_tema);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
             print 'No se ha borrado correctaente';
 
 
