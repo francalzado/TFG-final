@@ -50,7 +50,10 @@ foreach ($todos as $flashcard) {
                                 </span>
                             </div>
 
-                            <?php } else {
+                        <?php } else {
+                            
+include_once 'plantillas/documento-declaracion.inc.php';
+include_once 'plantillas/navbar-inicio.inc.php';
                             ?>
 
                             <div class="container-fluid bg-info">
@@ -66,15 +69,16 @@ foreach ($todos as $flashcard) {
                                         </div>
                                         <div class="modal-body">
                                             <h4><?php echo $rc; ?></h4> 
-                                            <h4><?php echo 'r'.$respuesta; ?></h4> 
-                                           <?php if( $rc === 'r'.$respuesta ){
-                                               echo "Bien";
-                                           }else if( $respuesta == ""){
-                                                   echo" No contestada";
-                                               }else{
-                                                   echo" Mal";
-                                               }
-                                           ?>
+                                            <h4><?php echo 'r' . $respuesta; ?></h4> 
+                                            <?php
+                                            if ($rc === 'r' . $respuesta) {
+                                                echo "Bien";
+                                            } else if ($respuesta == "") {
+                                                echo" No contestada";
+                                            } else {
+                                                echo" Mal";
+                                            }
+                                            ?>
 
                                         </div>
                                     </div>
@@ -84,7 +88,10 @@ foreach ($todos as $flashcard) {
                             <?php
                         }
                     }
-                    ?>
-
-                    <input type="submit" name="finalizar" value="Finalizar">
-                </form>
+                    if (!$finalizar) {
+                        ?>                        
+                        <input type="submit" name="finalizar" value="Finalizar">
+                    </form>
+                    <?php
+                }
+                ?>
