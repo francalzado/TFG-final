@@ -5,11 +5,12 @@
 <?php
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
+$id_flash = (isset($_POST['id_fc']))? $_POST['id_fc'] : "";
+
 if ($finalizar) {
 
     try {
-//REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
-        $_SESSION['contador']=0;
+        $_SESSION['contador']=-1;
         Redireccion :: redirigir(RUTA_ESTADISTICAS);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
@@ -17,7 +18,30 @@ if ($finalizar) {
 }
 ?>
 <?php
-if($_POST){
+
+$flashcard = $todos[$_SESSION['contador']];
+if($_POST){?>
+
+<?php
+$respuesta = $_POST['r'.$id_flash]; ?><br><?php
+try {
+                                                $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha) VALUES(:id_usuario,:id_fc,:respuesta,:fecha) ";
+                                                $idusuarioTemp = $_SESSION['id_usuario'];
+                                                $idfcTemp = $flashcard['id_fc'];
+                                                $respuestaTemp = $respuesta;
+                                                $fechatemp = date('Y-m-d H:i:s');
+
+                                                $sentencia = $conexion->prepare($sql);
+                                                $sentencia->bindParam(':id_usuario', $idusuarioTemp);
+                                                $sentencia->bindParam(':id_fc', $idfcTemp);
+                                                $sentencia->bindParam(':respuesta', $respuestaTemp);
+                                                $sentencia->bindParam(':fecha', $fechatemp, PDO::PARAM_STR);
+                                                $insertado = $sentencia->execute();
+                                            } catch (PDOException $ex) {
+                                                print 'ERROR' . $ex->getMessage();
+                                            }
+                                            
+
     
     //evento insertar respuesta
     //return array mensajes(),"")
@@ -45,8 +69,6 @@ if($_POST){
     echo "HAY POST";
 
 }
-$flashcard = $todos[$_SESSION['contador']];
-
     ControlSesion::setContador();
 //FUNCIONA CUANDO YA NO QUEDAN
 if(!$flashcard){
@@ -77,6 +99,7 @@ if(!$flashcard){
                             <input type="radio" name="r<?php echo $name ?>" value="2"><?php echo $flashcard['r2']; ?><br>
                             <input type="radio" name="r<?php echo $name ?>" value="3"><?php echo $flashcard['r3']; ?><br>
                             <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
+                             <input type="hidden" name="id_fc" value="<?php echo $flashcard['id_fc']; ?>">
 
                             </div>
                             </div>
