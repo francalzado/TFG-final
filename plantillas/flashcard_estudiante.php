@@ -5,11 +5,12 @@
 <?php
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
-if ($accion) {
+if ($finalizar) {
 
     try {
 //REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
-        Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
+        $_SESSION['contador']=0;
+        Redireccion :: redirigir(RUTA_ESTADISTICAS);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
@@ -41,17 +42,20 @@ if($_POST){
     //if  insertar respuesta
     //
     //
-    ControlSesion::setContador();
+    echo "HAY POST";
 
 }
 $flashcard = $todos[$_SESSION['contador']];
+
+    ControlSesion::setContador();
 //FUNCIONA CUANDO YA NO QUEDAN
-//if(!$flashcard){
-//    echo "YA ESTA";
-//}
+if(!$flashcard){
+    $_SESSION['contador']=0;
+    echo "YA ESTA";
+}
    
 
-    if ($_SESSION['contador']<(COUNT($todos))) {
+    if ($_SESSION['contador']<=(COUNT($todos))) {
         $name = $flashcard['id_fc'];
         ?>
         
@@ -85,69 +89,15 @@ $flashcard = $todos[$_SESSION['contador']];
                             </div>
 
                             <?php
-                            } else {
-
-                            include_once 'plantillas/documento-declaracion.inc.php';
-                            include_once 'plantillas/navbar-inicio.inc.php';
-                            ?>
-
-                            <div class="container-fluid bg-info">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="text-center">
-
-                                                <h4><?php echo $flashcard['cuerpo']; ?></h4>          </div>
-                                        </div>
-                                        <div class="modal-body">
-
-                                            <h4><?php echo $rc; ?></h4> 
-                                            <h4><?php echo 'r' . $respuesta; ?></h4> 
-                                            <?php
-                                            if ($rc === 'r' . $respuesta) {
-                                                echo "Bien";
-                                            } else if ($respuesta == "") {
-                                                echo" No contestada";
-                                            } else {
-                                                echo" Mal";
-                                            }
-
-                                            try {
-                                                $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha) VALUES(:id_usuario,:id_fc,:respuesta,:fecha) ";
-                                                $idusuarioTemp = $_SESSION['id_usuario'];
-                                                $idfcTemp = $flashcard['id_fc'];
-                                                $respuestaTemp = $respuesta;
-                                                $fechatemp = date('Y-m-d H:i:s');
-
-                                                $sentencia = $conexion->prepare($sql);
-                                                $sentencia->bindParam(':id_usuario', $idusuarioTemp);
-                                                $sentencia->bindParam(':id_fc', $idfcTemp);
-                                                $sentencia->bindParam(':respuesta', $respuestaTemp);
-                                                $sentencia->bindParam(':fecha', $fechatemp, PDO::PARAM_STR);
-                                                $insertado = $sentencia->execute();
-                                            } catch (PDOException $ex) {
-                                                print 'ERROR' . $ex->getMessage();
-                                            }
-                                            ?>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                                    <?php
-                                }
+                            }
                             
-                            if (!$finalizar) {
+                            if ($_SESSION['contador']===(COUNT($todos))) {
                             ?>                        
                             <input type="submit" name="finalizar" value="Finalizar">
                         </form>
                     <?php } else {
                         ?>
                         <form action="" method="post">
-                            <input type="submit" name="accion" value="Acceder">
+                            <input type="submit" name="accion" value="Siguiente">
                         </form>
                     <?php } ?>
