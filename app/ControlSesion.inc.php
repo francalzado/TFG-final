@@ -2,7 +2,7 @@
 
 class ControlSesion {
 
-    public static function iniciar_sesion($id_usuario, $email, $nombre, $rol) {
+    public static function iniciar_sesion($id_usuario, $email, $nombre, $rol,$contador) {
         if (session_id() == '') {
             session_start();
         }
@@ -10,6 +10,7 @@ class ControlSesion {
         $_SESSION['email'] = $email;
         $_SESSION['nombre'] = $nombre;
         $_SESSION['rol'] = $rol;
+        $_SESSION['contador'] = $contador;
     }
 
     public static function cerrar_sesion() {
@@ -35,6 +36,12 @@ class ControlSesion {
 
     public static function getRol() {
         return $_SESSION['rol'];
+    }
+    
+    public static function setContador(){
+       $_SESSION['contador'] = $_SESSION['contador']+1;
+
+        return $_SESSION['contador'];
     }
 
     public static function getNombre() {

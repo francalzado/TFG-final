@@ -3,28 +3,58 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/flashcard.css.css" media="screen" />
 <?php
-$contador = 0;
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
 if ($accion) {
 
     try {
 //REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
-        Redireccion :: redirigir(RUTA_ESTADISTICAS . '?id_usuario=' . $_SESSION['id_usuario']);
+        Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
 }
 ?>
 <?php
-foreach ($todos as $flashcard) {
-    $rc = 'r' . $flashcard['val'];
-    $respuesta = (isset($_POST['r' . $flashcard['id_fc']])) ? $_POST['r' . $flashcard['id_fc']] : "";
+if($_POST){
+    
+    //evento insertar respuesta
+    //return array mensajes(),"")
+    //return true
+    
+    
+    //evento respuesta correcta(respuesta)
+    //return false
+    //return respuesta correcta
+    
+    
+    //evento es ultima respuesta
+    //return true
+    //false
+    
+    
+    //Framework (laravel, simfony...)
+    //Sass o less
+    //Jquery
+    //ajax y json
+    
+    //if  insertar respuesta
+    //
+    //
+    ControlSesion::setContador();
 
-    if (!$finalizar) {
+}
+$flashcard = $todos[$_SESSION['contador']];
+//FUNCIONA CUANDO YA NO QUEDAN
+//if(!$flashcard){
+//    echo "YA ESTA";
+//}
+   
+
+    if ($_SESSION['contador']<(COUNT($todos))) {
         $name = $flashcard['id_fc'];
         ?>
-
+        
 
         <div class="container-fluid bg-info">
             <div class="modal-dialog">
@@ -51,14 +81,11 @@ foreach ($todos as $flashcard) {
 
 
                             <div class="container-fluid bg-info" align="center" style="background-color: #bd2130">
-
-                                <span id="answer">
-
-                                </span>
+                                <span id="answer"></span>
                             </div>
 
                             <?php
-                        } else {
+                            } else {
 
                             include_once 'plantillas/documento-declaracion.inc.php';
                             include_once 'plantillas/navbar-inicio.inc.php';
@@ -111,17 +138,16 @@ foreach ($todos as $flashcard) {
                                 </div>
                             </div>
 
-                            <?php
-                        }
-                    }
-                    if (!$finalizar) {
-                        ?>                        
-                        <input type="submit" name="finalizar" value="Finalizar">
-                    </form>
-                <?php } else {
-                    ?>
-                    <form action="" method="post">
-                        <input type="submit" name="accion" value="Acceder">
-                    </form>
-                <?php }
-                ?>
+                                    <?php
+                                }
+                            
+                            if (!$finalizar) {
+                            ?>                        
+                            <input type="submit" name="finalizar" value="Finalizar">
+                        </form>
+                    <?php } else {
+                        ?>
+                        <form action="" method="post">
+                            <input type="submit" name="accion" value="Acceder">
+                        </form>
+                    <?php } ?>

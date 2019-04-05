@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
 
     if ($validador->obtener_error() === '' && !is_null($validador->obtener_usuario())) {
         //Iniciar Sesion
-        ControlSesion::iniciar_sesion($validador->obtener_usuario()->obtenerId(), $validador->obtener_usuario()->obtenerEmail(),$validador->obtener_usuario()->obtenerNombre(),$validador->obtener_usuario()->obtenerRol());
+        ControlSesion::iniciar_sesion($validador->obtener_usuario()->obtenerId(), $validador->obtener_usuario()->obtenerEmail(),$validador->obtener_usuario()->obtenerNombre(),$validador->obtener_usuario()->obtenerRol(),0);
         //Redirigir Usuario a su index
         Redireccion::redirigir(RUTA_INDEX);
     } else {
