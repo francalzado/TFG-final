@@ -119,8 +119,6 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID Flashcard</th>
-                        <th>ID Tema</th>
                         <th>Pregunta</th>
                         <th>R1</th>
                         <th>R2</th>
@@ -133,9 +131,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                     </tr>
                 </thead>
                 <?php foreach ($todos as $flashcard) { ?>
-                    <tr>
-                        <td><?php echo $flashcard['id_fc']; ?></td>            
-                        <td><?php echo $flashcard['id_tema']; ?> </td>            
+                    <tr>           
                         <td><?php echo $flashcard['pregunta']; ?></td>
                         <td><?php echo $flashcard['r1']; ?></td>
                         <td><?php echo $flashcard['r2']; ?></td>

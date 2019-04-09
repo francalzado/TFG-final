@@ -55,7 +55,6 @@ if ($accion) {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Asignatura</th>
                 <th>Curso</th>
                 <th>Cuatrimestre</th>
@@ -65,7 +64,6 @@ if ($accion) {
         </thead>
         <?php foreach ($todas as $asignatura) { ?>
             <tr>
-                <td><?php echo $asignatura['id_asignatura']; ?></td>            
                 <td><?php echo $asignatura['nombre']; ?></td>            
                 <td><?php echo $asignatura['curso']; ?></td>
                 <td><?php echo $asignatura['cuatrimestre']; ?></td>

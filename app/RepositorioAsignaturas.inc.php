@@ -17,7 +17,8 @@ class RepositorioAsignatura {
                 $sql = "SELECT * FROM asignatura "
                         . "WHERE id_asignatura "
                         . "NOT IN (SELECT id_asignatura FROM usuarioasignatura "
-                        . "WHERE id_usuario = :id_usuario)";
+                        . "WHERE id_usuario = :id_usuario)"
+                        . "ORDER BY curso, cuatrimestre asc";
                 $id_UsuarioTEMP= $id_usuario;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id_usuario', $id_UsuarioTEMP, PDO::PARAM_STR);
@@ -87,7 +88,9 @@ class RepositorioAsignatura {
                 $sql = "SELECT *
                         FROM asignatura
                         WHERE id_asignatura IN (SELECT id_asignatura FROM usuarioasignatura
-                        WHERE id_usuario =:id_usuario)";
+                        WHERE id_usuario =:id_usuario)
+                        ORDER BY curso, cuatrimestre asc";
+
                 $id_usuarioTEMP = $id_usuario;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id_usuario', $id_usuarioTEMP, PDO::PARAM_STR);                
