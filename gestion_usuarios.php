@@ -131,7 +131,7 @@ switch ($accion1) {
                     <form action="" method="post">
 
 
-                        <input type="text" name="txtId_usuario" value="<?php echo $txtId_usuario; ?>" placeholder="Identificador" id="txtId_nombre" require="">
+                        <input type="hidden" name="txtId_usuario" value="<?php echo $txtId_usuario; ?>">
                         <br>
                         <br>
                         <input type="text" name="txtNombre" value="<?php echo $txtNombre; ?>" placeholder="Nombre" id="txtNombre" require="">

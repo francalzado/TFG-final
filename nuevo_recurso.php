@@ -12,7 +12,7 @@ $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $txtId_tema = (isset($_POST['txtId_tema'])) ? $_POST['txtId_tema'] : "";
 $txtEnlace = (isset($_POST['txtEnlace'])) ? $_POST['txtEnlace'] : "enlace";
 
-if (!ControlSesion::sesion_iniciada() || (ControlSesion::getRol() !== '2')) {
+if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '1')) {
     Redireccion :: redirigir(RUTA_INDEX);
 }
 

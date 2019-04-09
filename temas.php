@@ -22,6 +22,8 @@ $accion_flashcard = (isset($_POST['accion_flashcard'])) ? $_POST['accion_flashca
 $accion_add_recurso = (isset($_POST['add_recurso'])) ? $_POST['add_recurso'] : "";
 $accion_add_flashcard= (isset($_POST['add_flashcard'])) ? $_POST['add_flashcard'] : "";
 $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos'] : "";
+$accion_estadisticas = (isset($_POST['accion_estadisticas'])) ? $_POST['accion_estadisticas'] : "";
+$_SESSION['id_tema'] = $txtId_tema;
 
 if ($accion_recurso) {
     try {
@@ -51,6 +53,13 @@ if ($accion_recurso) {
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
+}else if ($accion_estadisticas) {
+    try {
+//REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
+        Redireccion :: redirigir(RUTA_ESTADISTICAS . '?id_tema=' . $txtId_tema);
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
 }
 ?>
 
@@ -58,23 +67,22 @@ if ($accion_recurso) {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Temario</th>
                 <th>Recursos Visuales</th>
                 <th>Flashcards</th>
+                <th>Estadísticas</th>
 
             </tr>
         </thead>
         <?php foreach ($todas as $tema) { ?>
             <tr>
-                <td><?php echo $tema['id_tema']; ?></td>            
                 <td><?php echo $tema['titulo']; ?></td>      
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
                         <input type="submit" name="accion_recursos" value="Acceder">
                         <?php
-                        if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '2')) {
+                        if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
                             ?>
                         <br>
                         <br>
@@ -89,17 +97,18 @@ if ($accion_recurso) {
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
                         <input type="submit" name="accion_flashcard" value="Acceder">
-                        <?php
-                        if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '2')) {
-                            ?>
-                        <br>
-                        <br>
-                        <input type="submit" name="add_flashcard" value="Añadir Nueva Flashcard">
 
-                            <?php
-                        }
-                        ?>
                     </form>
+                </td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
+                        <input type="submit" name="accion_estadisticas" value="Acceder">
+
+                        
+                    </form>
+                    
+                    
                 </td>
 
             </tr>

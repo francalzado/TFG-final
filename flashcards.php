@@ -181,14 +181,9 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
                         <form action="" method="post">
 
-                            <label class="col-md-4 control-label" for="textinput">ID FC</label>  
-                            <input type="text" name="txtId_fc" value="<?php echo $txtId_fc; ?>" placeholder="Identificador FC" id="txtId_fc" require="">
-                            <br>
-                            <br>
-                            <label class="col-md-4 control-label" for="textinput">ID TEMA</label>  
-                            <input type="text" name="txtId_tema" value="<?php echo $txtId_tema; ?>" placeholder="Identificador Tema" id="txtId_tema" require="">
-                            <br>
-                            <br>
+                            <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
+                                <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
+                                
                             <label class="col-md-4 control-label" for="textinput">Pregunta</label>  
                             <input type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
                             <br>

@@ -79,7 +79,6 @@ if(COUNT($mis_asignaturas)===0){
         <thead>
 
             <tr>
-                <th>ID</th>
                 <th>Asignatura</th>
                 <th>Curso</th>
                 <th>Cuatrimestre</th>
@@ -90,7 +89,6 @@ if(COUNT($mis_asignaturas)===0){
         </thead>
 <?php foreach ($mis_asignaturas as $asignatura) { ?>
             <tr>
-                <td><?php echo $asignatura['id_asignatura']; ?></td>            
                 <td><?php echo $asignatura['nombre']; ?></td>            
                 <td><?php echo $asignatura['curso']; ?></td>
                 <td><?php echo $asignatura['cuatrimestre']; ?></td>

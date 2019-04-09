@@ -6,7 +6,7 @@ include_once 'app/Conexion.inc.php';
 Conexion :: abrir_conexion();
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
-$todas = RepositorioFlashcard::estadisticas($conexion,$_SESSION['id_usuario']);
+$todas = RepositorioFlashcard::estadisticas($conexion,$_SESSION['id_usuario'],$_SESSION['id_tema']);
 
 ?>
 <div class="row col-lg-12">

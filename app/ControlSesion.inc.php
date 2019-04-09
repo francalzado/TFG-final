@@ -11,6 +11,7 @@ class ControlSesion {
         $_SESSION['nombre'] = $nombre;
         $_SESSION['rol'] = $rol;
         $_SESSION['contador'] = $contador;
+        $_SESSION['id_tema']="";
     }
 
     public static function cerrar_sesion() {

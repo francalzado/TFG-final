@@ -27,7 +27,6 @@ Conexion :: cerrar_conexion();
 
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
 
             </div>
         </div>      
@@ -42,7 +41,6 @@ Conexion :: cerrar_conexion();
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
 
             </div>
         </div>      
@@ -56,7 +54,6 @@ Conexion :: cerrar_conexion();
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Mis Estadisticas</a>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Gestion de Usuarios
