@@ -169,7 +169,6 @@ Conexion :: cerrar_conexion();
 
     <?php
 }
-echo $_SESSION['contador'];
 ?>
 
     </ul>

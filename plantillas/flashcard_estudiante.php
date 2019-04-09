@@ -29,10 +29,11 @@
     <?php
 $PHPvariable;
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
+$totalTiempo = (isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
 $id_flash = (isset($_POST['id_fc'])) ? $_POST['id_fc'] : "";
-
+echo $totalTiempo;
 if ($finalizar) {
 
     try {
@@ -151,6 +152,8 @@ if ($_SESSION['contador'] === ((COUNT($todos))-1) && $accion) {
                     ControlSesion::setContador();
                     } else {
                             $PHPvariable = "<script> document.write(totalTiempo) </script>";
+                             
+
 
                     ?>
                     <form action="" method="post">
