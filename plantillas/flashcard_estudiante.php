@@ -45,33 +45,46 @@ $totalTiempo = (isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
 $id_flash = (isset($_POST['id_fc'])) ? $_POST['id_fc'] : "";
-$_SESSION['puntuacion']=(isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "0";
+//$_SESSION['puntuacion']=(isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "0";
 echo "Puntuacion = ".$_SESSION['puntuacion'];
+$punto = 100/(COUNT($todos));
+$flashcard = $todos[$_SESSION['contador']];
 
+$respuesta = (isset($_POST['r' . $id_flash])) ? $_POST['r'.$id_flash] : ""; ?><br><?php
+    
+    if($accion && $respuesta === $flashcard['val']){
+    $_SESSION['puntuacion']+= $punto;
+}
 if ($finalizar) {
 
     try {
+        $_SESSION['puntuacion'] = 0;
         $_SESSION['contador'] = 0;
         Redireccion :: redirigir(RUTA_ESTADISTICAS);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
 }
-$flashcard = $todos[$_SESSION['contador']];
+
 
     if ($accion1) {
 } else
 //FUNCIONA CUANDO YA NO QUEDAN
 if (!$flashcard) {
     $_SESSION['contador'] = 0;
+    $_SESSION['puntuacion'] = 0;
     echo "YA ESTA";
-}
-if ($accion) {
+}?>
+<div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $_SESSION['puntuacion']?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<?php if ($accion) {
     $PHPvariable = "<script> document.write(totalTiempo) </script>";
 
     ?>
 
     <?php $respuesta = (isset($_POST['r' . $id_flash])) ? $_POST['r'.$id_flash] : ""; ?><br><?php
+
     try {
         $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha) VALUES(:id_usuario,:id_fc,:respuesta,:fecha) ";
         $idusuarioTemp = $_SESSION['id_usuario'];
@@ -107,7 +120,7 @@ if ($accion) {
                             ?><h3 style="color:mediumseagreen;">Correcto. </h3>
                             <?php
                         }else{
-                            ?> <h3 style="color:Tomato;">Error.</h3><h3 style="color:black">La respuesta correcta era
+                            ?> <h3 style="color:Tomato;">Incorrecto.</h3><h3 style="color:black">La respuesta correcta era
                             <?php
                             echo $flashcard['r'.$flashcard['val']];?> </h3> 
                             <?php
