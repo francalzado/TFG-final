@@ -32,6 +32,26 @@ class RepositorioAsignatura {
     }
 
 
+    public static function obtener_asignaturas_general($conexion) {
+        $asignaturas = array();
+
+        if (isset($conexion)) {
+
+            try {
+                include_once 'Asignatura.inc.php';
+
+                $sql = "SELECT * FROM asignatura "
+                        . "ORDER BY curso, cuatrimestre asc";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+    
     public static function obtener_temas_asignaturas($conexion,$id_asignatura) {
         $asignaturas = array();
 

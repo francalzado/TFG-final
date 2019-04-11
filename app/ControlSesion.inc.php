@@ -12,6 +12,7 @@ class ControlSesion {
         $_SESSION['rol'] = $rol;
         $_SESSION['contador'] = $contador;
         $_SESSION['id_tema']="";
+        $_SESSION['puntuacion']= 0;
     }
 
     public static function cerrar_sesion() {
@@ -44,6 +45,12 @@ class ControlSesion {
 
         return $_SESSION['contador'];
     }
+    
+    public static function setPuntuacion($totalPuntuacion){
+       $_SESSION['puntuacion'] = $_SESSION['puntuacion'] + $totalPuntuacion;
+
+        return $_SESSION['contador'];
+    }    
 
     public static function getNombre() {
         return $_SESSION['nombre'];

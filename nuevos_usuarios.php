@@ -20,7 +20,25 @@ $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
 
 switch ($accion1) {
-    case "btnModificar":
+    case "btnAceptar":
+        $usuario_modificado = false;
+        try {
+            $sql = "UPDATE usuarios SET
+                rol = 1 
+                WHERE rol = 0";
+            $sentencia = $conexion->prepare($sql);
+            $usuario_modificado = $sentencia->execute();
+        } catch (PDOException $ex) {
+            print 'Error' . $ex->getMessage();
+        }
+        if ($usuario_modificado) {
+            print 'Se ha modificado correctamente';
+            Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
+        }
+        if (!$usuario_modificado)
+            print 'No se ha modificado correctaente';
+        break;
+        case "btnModificar":
         $usuario_modificado = false;
         try {
             $sql = "UPDATE usuarios SET
@@ -42,7 +60,7 @@ switch ($accion1) {
         }
         if ($usuario_modificado) {
             print 'Se ha modificado correctamente';
-            Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
+            Redireccion :: redirigir(RUTA_NUEVOS_USUARIOS);
         }
         if (!$usuario_modificado)
             print 'No se ha modificado correctaente';
@@ -75,7 +93,20 @@ switch ($accion1) {
         break;
 }
 ?>
-
+<?php
+if(COUNT($nuevos)===0){
+        ?>
+         <div class="container-fluid bg-info1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5><span class="label label-warning"  id="qid">No hay nuevos registros.</span></h5>
+                    </div>
+                            </div>
+                            </div>
+  <?php      
+    }else{
+?>
 <div class="row col-lg-12">
     <div class='col-lg-6'>
         <br>
@@ -111,6 +142,16 @@ switch ($accion1) {
                 </tr>
 
             <?php } ?>
+                
+<tfoot>
+                <tr>
+                    <th colspan="5">
+                        <form action method="POST">
+                        <button value="btnAceptar" type="submit" name="accion1">Aceptar a todos</button>
+                        </form>
+                    </th>
+                </tr>
+            </tfoot>
 
 
         </table>
@@ -190,6 +231,7 @@ switch ($accion1) {
 
 
 <?php
+    }
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
 

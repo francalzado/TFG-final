@@ -55,11 +55,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             }
             if ($usuario_modificado) {
                 print 'Se ha modificado correctamente';
-                Redireccion :: redirigir(RUTA_FLASHCARDS. '?id_tema=' .  $_GET['id_tema']);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
             }
             if (!$usuario_modificado)
                 print 'No se ha modificado correctaente';
-            Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
+            Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
 
             break;
         case "btnEliminar":
@@ -74,11 +74,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                 print 'Error' . $ex->getMessage();
             }
             if ($usuario_borrado) {
-                Redireccion :: redirigir(RUTA_FLASHCARDS. '?id_tema=' .  $_GET['id_tema']);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
                 print 'Se ha borrado correctamente';
             }
             if (!$usuario_borrado)
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
             print 'No se ha borrado correctaente';
 
 
@@ -101,11 +101,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                 print 'ERROR' . $ex->getMessage();
             }
             if ($usuario_Add) {
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
                 print 'Se ha añadido correctamente';
             }
             if (!$usuario_Add)
-                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' .  $_GET['id_tema']);
+                Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
             print 'No se ha añadido correctaente';
 
 
@@ -178,8 +178,8 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                         <form action="" method="post">
 
                             <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
-                                <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
-                                
+                            <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
+
                             <label class="col-md-4 control-label" for="textinput">Pregunta</label>  
                             <input type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
                             <br>
@@ -254,25 +254,29 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
     <?php
 } else {
-        include_once 'plantillas/navbar-inicio.inc.php';
 
-    if(COUNT($todos)===0){?>
+    if (COUNT($todos) === 0) {
+        include_once 'plantillas/navbar-inicio.inc.php';
+        ?>
+
         <div class="container-fluid bg-info1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5><span class="label label-warning"  id="qid">No hay ninguna Flashcard de este tema aún</span></h5>
                     </div>
-                            </div>
-                            </div>
-    <?php }else{
-    include_once 'plantillas/flashcard_estudiante.php';
-    ?>            
+                </div>
+            </div>
+        <?php
+        } else {
+            include_once 'plantillas/flashcard_estudiante.php';
+            ?>            
 
 
-    <?php
-}}
-include_once 'plantillas/documento-cierre.inc.php';
-?>
+            <?php
+        }
+    }
+    include_once 'plantillas/documento-cierre.inc.php';
+    ?>
 
 
