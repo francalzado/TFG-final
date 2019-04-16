@@ -63,10 +63,10 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
             break;
         case "btnEliminar":
+            //SI NO BORRA ES PORQUE ES CLAVE PRINCIPAL EN ALGUN SITIO
             $usuario_borrado = false;
             try {
-                $sql = "DELETE from flashcard
-                WHERE id_fc = :Id_fc";
+                $sql = "DELETE from flashcard WHERE id_fc = :Id_fc";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':Id_fc', $txtId_fc);
                 $usuario_borrado = $sentencia->execute();
@@ -177,8 +177,8 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
                         <form action="" method="post">
 
-                            <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
-                            <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
+                            <input type="hidden" name="txtId_fc" value="<?php echo $txtId_fc; ?>">
+                            <input type="hidden" name="txtId_tema" value="<?php echo $txtId_tema; ?>">
 
                             <label class="col-md-4 control-label" for="textinput">Pregunta</label>  
                             <input type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
