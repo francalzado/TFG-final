@@ -19,7 +19,14 @@ class Asignatura {
     }
 
     public function obtenerNombre() {
-        return $this->$nombre;
+        return $this->nombre;
     }
 
+        public function obtenerCurso() {
+        return $this->curso;
+    }
+    
+        public function obtenerCuatrimestre() {
+        return $this->cuatrimestre;
+    }
 }

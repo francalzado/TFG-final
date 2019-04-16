@@ -20,6 +20,7 @@ define("RUTA_ASIGNATURAS", "/TFG-final/asignaturas.php");
 define("RUTA_ESTADISTICAS", "/TFG-final/estadisticas.php");
 define("RUTA_NUEVO_RECURSO", "/TFG-final/nuevo_recurso.php");
 define("RUTA_NUEVO_TEMA", "/TFG-final/nuevo_tema.php");
+define("RUTA_NUEVA_ASIGNATURA", "/TFG-final/nueva_asignatura.php");
 define("RUTA_GESTION_USUARIOS", "/TFG-final/gestion_usuarios.php");
 define("RUTA_TODAS_ASIGNATURAS", "/TFG-final/asignaturas.php");
 define("RUTA_MIS_ASIGNATURAS", "/TFG-final/mis_asignaturas.php");

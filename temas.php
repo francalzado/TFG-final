@@ -92,8 +92,6 @@ if ($accion_recurso) {
                         <?php
                         if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
                             ?>
-                            <br>
-                            <br>
                             <input type="submit" name="add_recurso" value="Añadir Nuevo Recurso">
 
                             <?php

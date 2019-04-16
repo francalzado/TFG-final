@@ -4,6 +4,7 @@ include_once 'app/Usuario.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/ValidadorRegistro.inc.php';
 include_once 'app/Redireccion.inc.php';
+include_once 'app/Asignatura.inc.php';
 
 
 if (isset($_POST['enviar'])) {

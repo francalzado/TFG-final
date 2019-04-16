@@ -188,6 +188,29 @@ class RepositorioAsignatura {
         return $tema_insertado;
     }
 
+    
+    public static function insertar_asignatura($conexion, $asignatura) {
+        $asignatura_insertada = false;
+
+        if (isset($conexion)) {
+            try {
+                $sql = "INSERT INTO asignatura(nombre,curso,cuatrimestre) VALUES(:Nombre, :Curso, :Cuatrimestre) ";
+                $nombreTEMP = $asignatura->obtenerNombre();
+                $cursoTEMP = $asignatura->obtenerCurso();
+                $cuatrimestreTEMP = $asignatura->obtenerCuatrimestre();
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':Nombre', $nombreTEMP, PDO::PARAM_STR);
+                $sentencia->bindParam(':Curso', $cursoTEMP, PDO::PARAM_STR);
+                $sentencia->bindParam(':Cuatrimestre', $cuatrimestreTEMP, PDO::PARAM_STR);
+                $asignatura_insertada = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print 'ERROR' . $ex->getMessage();
+            }
+        }
+        return $asignatura_insertada;
+    }
+
+    
     public static function email_existe($conexion, $email) {
         $email_existe = true;
 

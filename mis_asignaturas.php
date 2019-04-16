@@ -12,6 +12,7 @@ $txtId_usuario = (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : ""
 $usuario = new Usuario($txtId_usuario, '', '', '', '', '', '');
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $baja = (isset($_POST['baja'])) ? $_POST['baja'] : "";
+$accion_asignatura = (isset($_POST['accion_asignatura'])) ? $_POST['accion_asignatura'] : "";
 
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
 //ver por qué al pasar $txtId_usuario PETA 
@@ -36,6 +37,20 @@ if ($accion) {
         print 'Error' . $ex->getMessage();
     }
 }
+
+
+
+if ($accion_asignatura) {
+
+    try {
+//REDIRECCIONAMIENTO A LOS TEMAS DE LA ASIGNATURA SELECCIONADA
+     Redireccion :: redirigir(RUTA_NUEVA_ASIGNATURA);
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
+}
+
+
 
 if ($baja) {
 
@@ -82,11 +97,6 @@ if(COUNT($mis_asignaturas)===0){
                 <th>Cuatrimestre</th>
                 <th>Accion</th>
                 <th>Darse da baja</th>             
-<?php 
-        if(ControlSesion::getRol() == '3'){
-        ?>
-                <th>ELIMINAR ASIGNATURA</th>
-        <?PHP } ?>
             </tr>
         </thead>
 <?php foreach ($mis_asignaturas as $asignatura) { ?>
@@ -108,20 +118,7 @@ if(COUNT($mis_asignaturas)===0){
 
                     </form>
                 </td>
-        
-                <?php if(ControlSesion::getRol() == '3'){ ?>
-                
-                    <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
-                        <input type="submit" name="baja" value="Eliminar Asignatura">
 
-                    </form>
-                    
-                    </td>
-
-                
-                <?php } ?>
             </tr>
 
 
