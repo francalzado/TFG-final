@@ -10,7 +10,6 @@ $txtId_asignatura = (isset($_POST['txtId_asignatura'])) ? $_POST['txtId_asignatu
 $id_usuario = $_GET['id_usuario'];
 $txtId_usuario = (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : "";
 $usuario = new Usuario($txtId_usuario, '', '', '', '', '', '');
-
 $id_usuario = $_GET['id_usuario'];
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $baja = (isset($_POST['baja'])) ? $_POST['baja'] : "";
@@ -83,8 +82,12 @@ if(COUNT($mis_asignaturas)===0){
                 <th>Curso</th>
                 <th>Cuatrimestre</th>
                 <th>Accion</th>
-                <th>Darse da baja</th>
-
+                <th>Darse da baja</th>             
+<?php 
+        if(ControlSesion::getRol() == '3'){
+        ?>
+                <th>ELIMINAR ASIGNATURA</th>
+        <?PHP } ?>
             </tr>
         </thead>
 <?php foreach ($mis_asignaturas as $asignatura) { ?>
@@ -106,11 +109,39 @@ if(COUNT($mis_asignaturas)===0){
 
                     </form>
                 </td>
+        
+                <?php if(ControlSesion::getRol() == '3'){ ?>
+                
+                    <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
+                        <input type="submit" name="baja" value="Eliminar Asignatura">
+
+                    </form>
+                    
+                    </td>
+
+                
+                <?php } ?>
             </tr>
 
 
 <?php } ?>
 
+<?php }
+        if(ControlSesion::getRol() == '3'){
+        ?>
+            
+               
+<tfoot>
+                <tr>
+                    <th colspan="6">
+                        <form action method="POST">
+                        <input type="submit" name="accion_asignatura" value="Nueva Asignatura">
+                        </form>
+                    </th>
+                </tr>
+            </tfoot>
 
     </table>
 

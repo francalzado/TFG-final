@@ -23,6 +23,7 @@ $accion_add_recurso = (isset($_POST['add_recurso'])) ? $_POST['add_recurso'] : "
 $accion_add_flashcard= (isset($_POST['add_flashcard'])) ? $_POST['add_flashcard'] : "";
 $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos'] : "";
 $accion_estadisticas = (isset($_POST['accion_estadisticas'])) ? $_POST['accion_estadisticas'] : "";
+$accion_tema = (isset($_POST['accion_tema'])) ? $_POST['accion_tema'] : "";
 $_SESSION['id_tema'] = $txtId_tema;
 
 if ($accion_recurso) {
@@ -57,6 +58,13 @@ if ($accion_recurso) {
     try {
 //REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
         Redireccion :: redirigir(RUTA_ESTADISTICAS . '?id_tema=' . $txtId_tema);
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
+}else if ($accion_tema) {
+    try {
+//REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
+        Redireccion :: redirigir(RUTA_NUEVO_TEMA . '?id_asignatura=' . $id_asignatura);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
@@ -112,10 +120,28 @@ if ($accion_recurso) {
                 </td>
 
             </tr>
-        <?php } ?>
+        <?php }
+        if(ControlSesion::getRol() == '3'){
+        ?>
+            
+               
+<tfoot>
+                <tr>
+                    <th colspan="5">
+                        <form action method="POST">
+                        <input type="submit" name="accion_tema" value="Nuevo Tema">
+                        </form>
+                    </th>
+                </tr>
+            </tfoot>
+
+
+<?php
+        }
+        ?>
+            
     </table>
 </div>
-
 <?php
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
