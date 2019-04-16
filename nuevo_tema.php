@@ -14,14 +14,14 @@ $txtId_asignatura = (isset($_POST['txtId_asignatura'])) ? $_POST['txtId_asignatu
 $txtEnlace = (isset($_POST['txtEnlace'])) ? $_POST['txtEnlace'] : "enlace";
 
 if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '1')) {
-    Redireccion :: redirigir(RUTA_INDEX );
+    Redireccion :: redirigir(RUTA_INDEX);
 }
 
 if (isset($_POST['guardar'])) {
     Conexion :: abrir_conexion();
     $recurso_insertado = RepositorioAsignatura :: insertar_tema(Conexion :: obtener_conexion(), $_POST['enlace'], $txtId_asignatura);
     if ($recurso_insertado) {
-        Redireccion :: redirigir(RUTA_TEMAS. '?id_asignatura=' . $txtId_asignatura);
+        Redireccion :: redirigir(RUTA_TEMAS . '?id_asignatura=' . $txtId_asignatura);
     } else {
         echo "No insertada";
         //Redireccion :: redirigir(RUTA_REGISTRO);

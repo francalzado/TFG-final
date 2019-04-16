@@ -22,5 +22,4 @@ class Asignatura {
         return $this->$nombre;
     }
 
-
 }

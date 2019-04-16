@@ -38,7 +38,7 @@ switch ($accion1) {
         if (!$usuario_modificado)
             print 'No se ha modificado correctaente';
         break;
-        case "btnModificar":
+    case "btnModificar":
         $usuario_modificado = false;
         try {
             $sql = "UPDATE usuarios SET
@@ -82,156 +82,155 @@ switch ($accion1) {
         }
         if ($usuario_borrado) {
             Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
-                        print 'Se ha borrado correctamente';
-
+            print 'Se ha borrado correctamente';
         }
         if (!$usuario_borrado)
-        Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
-                    print 'No se ha borrado correctaente';
+            Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
+        print 'No se ha borrado correctaente';
 
 
         break;
 }
 ?>
 <?php
-if(COUNT($nuevos)===0){
-        ?>
-         <div class="container-fluid bg-info1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5><span class="label label-warning"  id="qid">No hay nuevos registros.</span></h5>
-                    </div>
-                            </div>
-                            </div>
-  <?php      
-    }else{
-?>
-<div class="row col-lg-12">
-    <div class='col-lg-6'>
-        <br>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre Completo</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-
-                </tr>
-            </thead>
-            <?php foreach ($nuevos as $usuario) { ?>
-                <tr>
-                    <td><?php echo $usuario['id_usuario']; ?></td>            
-                    <td><?php echo $usuario['nombre']; ?> <?php echo $usuario['apellidos']; ?></td>            
-                    <td><?php echo $usuario['email']; ?></td>
-                    <td><?php echo $usuario['rol']; ?></td>
-                    <td>
-                        <form action="" method="post">
-
-                            <input type="hidden" name="txtId_usuario" value="<?php echo $usuario['id_usuario']; ?>">
-                            <input type="hidden" name="txtNombre" value="<?php echo $usuario['nombre']; ?>">
-                            <input type="hidden" name="txtApellidos" value="<?php echo $usuario['apellidos']; ?> ">
-                            <input type="hidden" name="txtEmail" value="<?php echo $usuario['email']; ?>">
-                            <input type="hidden" name="txtRol" value="<?php echo $usuario['rol']; ?>">
-                            <input type="submit" name="accion" value="Seleccionar">
-
-                        </form>
-                    </td>
-                </tr>
-
-            <?php } ?>
-                
-<tfoot>
-                <tr>
-                    <th colspan="5">
-                        <form action method="POST">
-                        <button value="btnAceptar" type="submit" name="accion1">Aceptar a todos</button>
-                        </form>
-                    </th>
-                </tr>
-            </tfoot>
-
-
-        </table>
-
-
-
-    </div>
-    <div class="col-lg-4">
-        <div class="col-md-9 mx-auto">
-            <div class="card mt-4 text-center">
-                <div class="card-header">
-                    <h1 class="h5">
-                        <p>Datos del usuario </p>
-                    </h1>
-                </div>
-                <div class="card-body">                    
-
-                    <form action="" method="post">
-
-
-                        <input type="hidden" name="txtId_usuario" value="<?php echo $txtId_usuario; ?>">
-                        <br>
-                        <br>
-                        <input type="text" name="txtNombre" value="<?php echo $txtNombre; ?>" placeholder="Nombre" id="txtNombre" require="">
-                        <br>
-                        <br>
-                        <input type="text" name="txtApellidos"  value="<?php echo $txtApellidos; ?>" placeholder="Apellidos" id="txtApellidos" require="">
-                        <br>
-                        <br>
-                        <input type="text" name="txtEmail"  value="<?php echo $txtEmail; ?>" placeholder="Email" id="txtEmail" require="">
-                        <br>
-                        <br>
-                        <!-- Select Basic -->
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <select id="rolselector" name="txtRol" class="form-control">
-                                    <option value="0" <?php if($txtRol == '0'){
-                                        ?>
-                                        
-                                        selected="selected"
-                                    <?php }  ?>
-                                        >No admitido </option>
-                                    <option value="1" <?php if($txtRol == '1'){
-                                        ?>
-                                        selected="selected
-                                        
-                                    <?php }  ?>
-                                        ">Estudiante </option>
-                                    <option value="2" <?php if($txtRol == '2'){
-                                        ?>
-                                        selected="selected"
-                                        
-                                    <?php }  ?>
-                                        >Profesor </option>
-                                    <option value="3" <?php if($txtRol == '3'){
-                                        ?>
-                                        selected="selected"
-                                        
-                                    <?php }  ?>
-                                        >Admin </option>   
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <button value="btnModificar" type="submit" name="accion1">Modificar</button>
-                        <button value="btnEliminar" type="submit" name="accion1">Eliminar</button>            
-                    </form>
-
+if (COUNT($nuevos) === 0) {
+    ?>
+    <div class="container-fluid bg-info1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5><span class="label label-warning"  id="qid">No hay nuevos registros.</span></h5>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        <?php
+    } else {
+        ?>
+        <div class="row col-lg-12">
+            <div class='col-lg-6'>
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Completo</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <?php foreach ($nuevos as $usuario) { ?>
+                        <tr>
+                            <td><?php echo $usuario['id_usuario']; ?></td>            
+                            <td><?php echo $usuario['nombre']; ?> <?php echo $usuario['apellidos']; ?></td>            
+                            <td><?php echo $usuario['email']; ?></td>
+                            <td><?php echo $usuario['rol']; ?></td>
+                            <td>
+                                <form action="" method="post">
+
+                                    <input type="hidden" name="txtId_usuario" value="<?php echo $usuario['id_usuario']; ?>">
+                                    <input type="hidden" name="txtNombre" value="<?php echo $usuario['nombre']; ?>">
+                                    <input type="hidden" name="txtApellidos" value="<?php echo $usuario['apellidos']; ?> ">
+                                    <input type="hidden" name="txtEmail" value="<?php echo $usuario['email']; ?>">
+                                    <input type="hidden" name="txtRol" value="<?php echo $usuario['rol']; ?>">
+                                    <input type="submit" name="accion" value="Seleccionar">
+
+                                </form>
+                            </td>
+                        </tr>
+
+                    <?php } ?>
+
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                <form action method="POST">
+                                    <button value="btnAceptar" type="submit" name="accion1">Aceptar a todos</button>
+                                </form>
+                            </th>
+                        </tr>
+                    </tfoot>
+
+
+                </table>
+
+
+
+            </div>
+            <div class="col-lg-4">
+                <div class="col-md-9 mx-auto">
+                    <div class="card mt-4 text-center">
+                        <div class="card-header">
+                            <h1 class="h5">
+                                <p>Datos del usuario </p>
+                            </h1>
+                        </div>
+                        <div class="card-body">                    
+
+                            <form action="" method="post">
+
+
+                                <input type="hidden" name="txtId_usuario" value="<?php echo $txtId_usuario; ?>">
+                                <br>
+                                <br>
+                                <input type="text" name="txtNombre" value="<?php echo $txtNombre; ?>" placeholder="Nombre" id="txtNombre" require="">
+                                <br>
+                                <br>
+                                <input type="text" name="txtApellidos"  value="<?php echo $txtApellidos; ?>" placeholder="Apellidos" id="txtApellidos" require="">
+                                <br>
+                                <br>
+                                <input type="text" name="txtEmail"  value="<?php echo $txtEmail; ?>" placeholder="Email" id="txtEmail" require="">
+                                <br>
+                                <br>
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <select id="rolselector" name="txtRol" class="form-control">
+                                            <option value="0" <?php if ($txtRol == '0') {
+                        ?>
+
+                                                        selected="selected"
+                                                    <?php } ?>
+                                                    >No admitido </option>
+                                            <option value="1" <?php if ($txtRol == '1') {
+                                                        ?>
+                                                        selected="selected
+
+                                                    <?php } ?>
+                                                    ">Estudiante </option>
+                                            <option value="2" <?php if ($txtRol == '2') {
+                                                        ?>
+                                                        selected="selected"
+
+                                                    <?php } ?>
+                                                    >Profesor </option>
+                                            <option value="3" <?php if ($txtRol == '3') {
+                                                        ?>
+                                                        selected="selected"
+
+                                                    <?php } ?>
+                                                    >Admin </option>   
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <button value="btnModificar" type="submit" name="accion1">Modificar</button>
+                                <button value="btnEliminar" type="submit" name="accion1">Eliminar</button>            
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
 
-<?php
+        <?php
     }
-include_once 'plantillas/documento-cierre.inc.php';
-?>
+    include_once 'plantillas/documento-cierre.inc.php';
+    ?>
 

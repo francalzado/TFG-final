@@ -20,7 +20,7 @@ $txtId_tema = (isset($_POST['txtId_tema'])) ? $_POST['txtId_tema'] : "";
 $txtId_usuario = (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : "";
 $accion_flashcard = (isset($_POST['accion_flashcard'])) ? $_POST['accion_flashcard'] : "";
 $accion_add_recurso = (isset($_POST['add_recurso'])) ? $_POST['add_recurso'] : "";
-$accion_add_flashcard= (isset($_POST['add_flashcard'])) ? $_POST['add_flashcard'] : "";
+$accion_add_flashcard = (isset($_POST['add_flashcard'])) ? $_POST['add_flashcard'] : "";
 $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos'] : "";
 $accion_estadisticas = (isset($_POST['accion_estadisticas'])) ? $_POST['accion_estadisticas'] : "";
 $accion_tema = (isset($_POST['accion_tema'])) ? $_POST['accion_tema'] : "";
@@ -54,14 +54,14 @@ if ($accion_recurso) {
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
-}else if ($accion_estadisticas) {
+} else if ($accion_estadisticas) {
     try {
 //REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
         Redireccion :: redirigir(RUTA_ESTADISTICAS . '?id_tema=' . $txtId_tema);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
-}else if ($accion_tema) {
+} else if ($accion_tema) {
     try {
 //REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
         Redireccion :: redirigir(RUTA_NUEVO_TEMA . '?id_asignatura=' . $id_asignatura);
@@ -92,9 +92,9 @@ if ($accion_recurso) {
                         <?php
                         if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
                             ?>
-                        <br>
-                        <br>
-                        <input type="submit" name="add_recurso" value="Añadir Nuevo Recurso">
+                            <br>
+                            <br>
+                            <input type="submit" name="add_recurso" value="Añadir Nuevo Recurso">
 
                             <?php
                         }
@@ -113,33 +113,34 @@ if ($accion_recurso) {
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
                         <input type="submit" name="accion_estadisticas" value="Acceder">
 
-                        
+
                     </form>
-                    
-                    
+
+
                 </td>
 
             </tr>
-        <?php }
-        if(ControlSesion::getRol() == '3'){
-        ?>
-            
-               
-<tfoot>
+            <?php
+        }
+        if (ControlSesion::getRol() == '3') {
+            ?>
+
+
+            <tfoot>
                 <tr>
                     <th colspan="5">
                         <form action method="POST">
-                        <input type="submit" name="accion_tema" value="Nuevo Tema">
+                            <input type="submit" name="accion_tema" value="Nuevo Tema">
                         </form>
                     </th>
                 </tr>
             </tfoot>
 
 
-<?php
+            <?php
         }
         ?>
-            
+
     </table>
 </div>
 <?php

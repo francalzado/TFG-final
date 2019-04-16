@@ -267,7 +267,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                     </div>
                 </div>
             </div>
-        <?php
+            <?php
         } else {
             include_once 'plantillas/flashcard_estudiante.php';
             ?>            

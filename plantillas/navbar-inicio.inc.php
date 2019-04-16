@@ -6,7 +6,6 @@ include_once 'app/config.inc.php';
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
 Conexion :: cerrar_conexion();
-
 ?>
 
 
@@ -44,7 +43,7 @@ Conexion :: cerrar_conexion();
 
             </div>
         </div>      
-    
+
         <?php
     } else if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() === '3')) {
         ?>
@@ -55,14 +54,14 @@ Conexion :: cerrar_conexion();
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Gestion de Usuarios
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo RUTA_GESTION_USUARIOS ?>">Todos los usuarios</a>
-          <a class="dropdown-item" href="<?php echo RUTA_NUEVOS_USUARIOS ?>">Nuevos Usuarios</a>
-        </div>
-      </li>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion de Usuarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="<?php echo RUTA_GESTION_USUARIOS ?>">Todos los usuarios</a>
+                        <a class="dropdown-item" href="<?php echo RUTA_NUEVOS_USUARIOS ?>">Nuevos Usuarios</a>
+                    </div>
+                </li>
 
 
             </div>
@@ -109,7 +108,7 @@ Conexion :: cerrar_conexion();
             <?php
         } else if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() === '1')) {
             ?>
-        
+
             <li>
                 <a class="nav-item nav-link" href="#">Estudiante</a>
             </li>
@@ -152,9 +151,9 @@ Conexion :: cerrar_conexion();
             ?>
             <li class="nav-item">
                 <a class="nav-link" href="#">Usuarios Registrados:
-    <?php
-    echo $total_usuarios;
-    ?></a>
+                    <?php
+                    echo $total_usuarios;
+                    ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo RUTA_LOGIN ?>"> Iniciar Sesion</a>
@@ -164,9 +163,9 @@ Conexion :: cerrar_conexion();
                 <a class="nav-link" href="registro.php">Registro</a>
             </li>        
 
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
 
     </ul>
 </nav>

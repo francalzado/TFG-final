@@ -1,5 +1,4 @@
 <?php
-
 include_once 'plantillas/documento-declaracion.inc.php';
 include_once 'plantillas/navbar-inicio.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
@@ -7,7 +6,7 @@ include_once 'app/RepositorioAsignaturas.inc.php';
 
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
-$todas = RepositorioAsignatura :: obtener_todos(Conexion :: obtener_conexion(),$_SESSION['id_usuario']);
+$todas = RepositorioAsignatura :: obtener_todos(Conexion :: obtener_conexion(), $_SESSION['id_usuario']);
 $conexion = Conexion :: obtener_conexion();
 Conexion :: cerrar_conexion();
 $titulo = 'Asignaturas Totales';
@@ -37,51 +36,51 @@ if ($accion) {
         print 'No se ha modificado correctaente';
     }
 }
-    if(COUNT($todas)===0){
+if (COUNT($todas) === 0) {
+    ?>
+    <div class="container-fluid bg-info1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><span class="label label-warning"  id="qid">No hay mas asignaturas por matricular</span></h3>
+                </div>
+            </div>
+        </div>
+        <?php
+    } else {
         ?>
-         <div class="container-fluid bg-info1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3><span class="label label-warning"  id="qid">No hay mas asignaturas por matricular</span></h3>
-                    </div>
-                            </div>
-                            </div>
-  <?php      
-    }else{
-?>
 
-<div class="row col-lg-12">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Asignatura</th>
-                <th>Curso</th>
-                <th>Cuatrimestre</th>
-                <th>Acciones</th>
+        <div class="row col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Asignatura</th>
+                        <th>Curso</th>
+                        <th>Cuatrimestre</th>
+                        <th>Acciones</th>
 
-            </tr>
-        </thead>
-        <?php foreach ($todas as $asignatura) { ?>
-            <tr>
-                <td><?php echo $asignatura['nombre']; ?></td>            
-                <td><?php echo $asignatura['curso']; ?></td>
-                <td><?php echo $asignatura['cuatrimestre']; ?></td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
-                        <input type="submit" name="accion" value="Matricular">
-                    </form>
-                </td>
-            </tr>
-        <?php } ?>
-    </table>
+                    </tr>
+                </thead>
+                <?php foreach ($todas as $asignatura) { ?>
+                    <tr>
+                        <td><?php echo $asignatura['nombre']; ?></td>            
+                        <td><?php echo $asignatura['curso']; ?></td>
+                        <td><?php echo $asignatura['cuatrimestre']; ?></td>
+                        <td>
+                            <form action="" method="post">
+                                <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
+                                <input type="submit" name="accion" value="Matricular">
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </table>
 
-</div>
+        </div>
 
-<?php
+        <?php
     }
-include_once 'plantillas/documento-cierre.inc.php';
-?>
+    include_once 'plantillas/documento-cierre.inc.php';
+    ?>
 
 

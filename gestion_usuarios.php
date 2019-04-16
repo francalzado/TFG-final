@@ -64,12 +64,11 @@ switch ($accion1) {
         }
         if ($usuario_borrado) {
             Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
-                        print 'Se ha borrado correctamente';
-
+            print 'Se ha borrado correctamente';
         }
         if (!$usuario_borrado)
-        Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
-                    print 'No se ha borrado correctaente';
+            Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
+        print 'No se ha borrado correctaente';
 
 
         break;
@@ -147,30 +146,30 @@ switch ($accion1) {
                         <div class="form-group">
                             <div class="col-md-10">
                                 <select id="rolselector" name="txtRol" class="form-control">
-                                    <option value="0" <?php if($txtRol == '0'){
-                                        ?>
-                                        
-                                        selected="selected"
-                                    <?php }  ?>
-                                        >No admitido </option>
-                                    <option value="1" <?php if($txtRol == '1'){
-                                        ?>
-                                        selected="selected
-                                        
-                                    <?php }  ?>
-                                        ">Estudiante </option>
-                                    <option value="2" <?php if($txtRol == '2'){
-                                        ?>
-                                        selected="selected"
-                                        
-                                    <?php }  ?>
-                                        >Profesor </option>
-                                    <option value="3" <?php if($txtRol == '3'){
-                                        ?>
-                                        selected="selected"
-                                        
-                                    <?php }  ?>
-                                        >Admin </option>   
+                                    <option value="0" <?php if ($txtRol == '0') {
+                ?>
+
+                                                selected="selected"
+                                            <?php } ?>
+                                            >No admitido </option>
+                                    <option value="1" <?php if ($txtRol == '1') {
+                                                ?>
+                                                selected="selected
+
+                                            <?php } ?>
+                                            ">Estudiante </option>
+                                    <option value="2" <?php if ($txtRol == '2') {
+                                                ?>
+                                                selected="selected"
+
+                                            <?php } ?>
+                                            >Profesor </option>
+                                    <option value="3" <?php if ($txtRol == '3') {
+                                                ?>
+                                                selected="selected"
+
+                                            <?php } ?>
+                                            >Admin </option>   
                                 </select>
                             </div>
                         </div>
@@ -185,10 +184,6 @@ switch ($accion1) {
         </div>
     </div>
 </div>
-
-
-
-
 <?php
 include_once 'plantillas/documento-cierre.inc.php';
 ?>

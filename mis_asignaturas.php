@@ -10,7 +10,6 @@ $txtId_asignatura = (isset($_POST['txtId_asignatura'])) ? $_POST['txtId_asignatu
 $id_usuario = $_GET['id_usuario'];
 $txtId_usuario = (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : "";
 $usuario = new Usuario($txtId_usuario, '', '', '', '', '', '');
-$id_usuario = $_GET['id_usuario'];
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $baja = (isset($_POST['baja'])) ? $_POST['baja'] : "";
 
