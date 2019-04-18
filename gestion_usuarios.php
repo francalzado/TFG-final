@@ -78,7 +78,7 @@ switch ($accion1) {
 <div class="row col-lg-12">
     <div class='col-lg-6'>
         <br>
-        <table class="table table-bordered">
+<table class="blueTable">
             <thead>
                 <tr>
                     <th>ID</th>

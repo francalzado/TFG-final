@@ -1,5 +1,4 @@
 <?php
-
 class Redireccion {
 
     public static function redirigir($url) {

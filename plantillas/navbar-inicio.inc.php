@@ -7,8 +7,6 @@ Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
 Conexion :: cerrar_conexion();
 ?>
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!--PARTE DEL PRINCIPIO DE LA NAV BAR-->
     <a class="navbar-brand" href="/TFG-final">AppLearn</a>
