@@ -3,6 +3,7 @@ include_once 'app/Conexion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/Redireccion.inc.php';
 include_once 'app/RepositorioAsignaturas.inc.php';
+include_once 'plantillas/estilos.html';
 
 Conexion :: abrir_conexion();
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
@@ -72,7 +73,7 @@ if ($accion_recurso) {
 ?>
 
 <div class="row col-lg-12">
-    <table class="table table-bordered">
+<table class="blueTable">
         <thead>
             <tr>
                 <th>Temario</th>

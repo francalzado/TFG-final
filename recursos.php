@@ -23,7 +23,7 @@ $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos']
 ?>
 
 <div class="row col-lg-12">
-    <table class="table table-bordered">
+<table class="blueTable">
         <thead>
             <tr>
                 <th>ID</th>

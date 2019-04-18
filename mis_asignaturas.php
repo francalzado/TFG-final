@@ -69,6 +69,7 @@ if ($baja) {
     }
 }
 ?>
+
 <?php
 if(COUNT($mis_asignaturas)===0){
         ?>
@@ -88,7 +89,7 @@ if(COUNT($mis_asignaturas)===0){
     }else{
 ?>
 <div class="row col-lg-12">
-    <table class="table table-bordered">
+<table class="blueTable">
         <thead>
 
             <tr>
@@ -96,7 +97,7 @@ if(COUNT($mis_asignaturas)===0){
                 <th>Curso</th>
                 <th>Cuatrimestre</th>
                 <th>Accion</th>
-                <th>Darse da baja</th>             
+                <th>Darse de baja</th>             
             </tr>
         </thead>
 <?php foreach ($mis_asignaturas as $asignatura) { ?>
