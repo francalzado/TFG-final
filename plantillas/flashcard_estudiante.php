@@ -23,43 +23,51 @@
         data.totalTiempo = totalTiempo;
         /* Ejecutamos nuevamente la función al pasar 1000 milisegundos (1 segundo) */
         setTimeout("updateReloj()", 1000);
-
+       
     }
 
     window.onload = updateReloj;
-    var url = 'flashcard_estudiante.php';
-    $.ajax({
-        method: 'POST',
-        url: url,
-        data: data, //acá están todos los parámetros (valores a enviar) del POST
-        success: function (response) {
-            // Se ejecuta al finalizar
-            //   mostrar si está OK en consola
-            console.log(response);
-        }});
+    function Reloj() {
+       
+        document.getElementById("demo2").value = totalTiempo;
+       // window.location.href = window.location.href + "?w1=" + totalTiempo;
+    }
 </script>
 <?php
 $PHPvariable;
+$prueba;
+$varHtml;
+$valor = (isset($_POST['demo2'])) ? $_POST['demo2'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
+$tiempo = (isset($_POST['tiempo'])) ? $_POST['tiempo'] : "0";
 $totalTiempo = (isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
 $finalizar = (isset($_POST['finalizar'])) ? $_POST['finalizar'] : "";
 $id_flash = (isset($_POST['id_fc'])) ? $_POST['id_fc'] : "";
 //$_SESSION['puntuacion']=(isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "0";
-echo "Puntuacion = " . $_SESSION['puntuacion'];
 $punto = 100 / (COUNT($todos));
 $flashcard = $todos[$_SESSION['contador']];
-
 $respuesta = (isset($_POST['r' . $id_flash])) ? $_POST['r' . $id_flash] : "";
 ?><br><?php
 if ($accion && $respuesta === $flashcard['val']) {
     $_SESSION['puntuacion'] += $punto;
 }
+  /*if (isset($_GET["w1"])) {
+     // asignar w1 y w2 a dos variables
+     $phpVar1 = $_GET["w1"];
+
+  // mostrar $phpVar1 y $phpVar2
+     echo "<p>Parameters: " . $phpVar1. "</p>";
+  } else {
+     echo "<p>No parameters</p>";
+  }
+*/
 if ($finalizar) {
 
     try {
         $_SESSION['puntuacion'] = 0;
         $_SESSION['contador'] = 0;
+        $_SESSION['score'] = 0;
         Redireccion :: redirigir(RUTA_ESTADISTICAS);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
@@ -74,13 +82,17 @@ if ($accion1) {
 if (!$flashcard) {
     $_SESSION['contador'] = 0;
     $_SESSION['puntuacion'] = 0;
-    echo "YA ESTA";
+    $_SESSION['score']= 0;
+}
+if ($respuesta === $flashcard['val']) {
+                        $_SESSION['score'] += $valor;
 }
 ?>
 <div class="progress">
     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $_SESSION['puntuacion'] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <?php
+                echo "SCORE = " . $_SESSION['score'];
 if ($accion) {
     $PHPvariable = "<script> document.write(totalTiempo) </script>";
     ?>
@@ -102,6 +114,7 @@ if ($accion) {
     } catch (PDOException $ex) {
         print 'ERROR' . $ex->getMessage();
     }
+
     ?>
     <div class="container-fluid bg-info">
         <div class="modal-dialog">
@@ -117,20 +130,25 @@ if ($accion) {
                 <div class="modal-body">
 
                     <?php if ($respuesta === $flashcard['val']) {
+                        $_SESSION['score'] += $valor;
                         ?><h3 style="color:mediumseagreen;">Correcto. </h3>
+                        
                         <?php
                     } else {
                         ?> <h3 style="color:Tomato;">Incorrecto.</h3><h3 style="color:black">La respuesta correcta era
-                        <?php echo $flashcard['r' . $flashcard['val']]; ?> </h3> 
-                            <?php }
-                        ?>
+                            <?php echo $flashcard['r' . $flashcard['val']]; ?> </h3> 
+                    <?php }
+                    ?>
 
 
                 </div>
                 <?php
             } else if ($_SESSION['contador'] <= (COUNT($todos))) {
                 $name = $flashcard['id_fc'];
+
+
                 ?>
+
                 <h2 id='CuentaAtras'></h2>
 
 
@@ -159,13 +177,13 @@ if ($accion) {
                                         <span id="answer"></span>
                                     </div>
 
-    <?php
-}
+                                    <?php
+                                }
 
 
 
-if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
-    ?>                        
+                                if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
+                                    ?>                        
                                     <form action="" method="post">
 
                                         <input type="submit" name="finalizar" value="Finalizar" style="float:right">
@@ -174,7 +192,7 @@ if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
                             </div>
                         </div>
                     </div>
-<?php } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) { ?>
+                <?php } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) { ?>
                     <form action="" method="post">
                         <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
                     </form>
@@ -182,17 +200,18 @@ if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
                 </div>
             </div>
         </div>
-    <?php
-    ControlSesion::setContador();
-} else {
-    $PHPvariable = "<script> document.write(totalTiempo) </script>";
-    ?>
-        <form action="" method="post">
-            <input type="submit" name="accion" value="Comprobar" style="float:right" onclick="updateReloj();">
+        <?php
+        ControlSesion::setContador();
+    } else {
+        ?>
+        <form action="" method=" ">
+            <input type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">
+            <input type="hidden" name="demo2" id="demo2" value="">
         </form>
+        <button onclick="Reloj()">Try it</button>
+    </div>
+    </div>
+    </div>
 
-    </div>
-    </div>
-    </div>
 <?php } ?>
 

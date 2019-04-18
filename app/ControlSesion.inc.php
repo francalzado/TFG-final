@@ -13,6 +13,7 @@ class ControlSesion {
         $_SESSION['contador'] = $contador;
         $_SESSION['id_tema']="";
         $_SESSION['puntuacion']= 0;
+        $_SESSION['score']= 0;
     }
 
     public static function cerrar_sesion() {
