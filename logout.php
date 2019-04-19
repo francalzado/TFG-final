@@ -11,3 +11,4 @@ include_once 'app/Redireccion.inc.php';
 
     ControlSesion::cerrar_sesion();
     Redireccion::redirigir(RUTA_INDEX);
+    ?>
