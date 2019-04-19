@@ -103,7 +103,6 @@ if ($accion) {
         print 'ERROR' . $ex->getMessage();
     }
     ?>
-    <div class="container-fluid bg-info">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,64 +137,63 @@ if ($accion) {
 
 
 
-                <div class="container-fluid bg-info">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
-                            </div>
-                            <div class="modal-header">
-                                <div class="text-center">
-                                    <h4><?php echo $flashcard['cuerpo']; ?></h4>          
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="post">
-                                    <input type="radio" name="r<?php echo $name ?>" value="1"><?php echo $flashcard['r1']; ?><br>
-                                    <input type="radio" name="r<?php echo $name ?>" value="2"><?php echo $flashcard['r2']; ?><br>
-                                    <input type="radio" name="r<?php echo $name ?>" value="3"><?php echo $flashcard['r3']; ?><br>
-                                    <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
-                                    <input type="hidden" name="id_fc" value="<?php echo $flashcard['id_fc']; ?>">
-                                    <div class="container-fluid bg-info" align="center">
-                                        <span id="answer"></span>
-                                    </div>
-
-                                    <?php
-                                }
-
-
-
-                                if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
-                                    ?>                        
-                                    <form action="" method="post">
-
-                                        <input type="submit" name="finalizar" value="Finalizar" style="float:right">
-                                    </form>
-
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
+                        </div>
+                        <div class="modal-header">
+                            <div class="text-center">
+                                <h4><?php echo $flashcard['cuerpo']; ?></h4>          
                             </div>
                         </div>
+                        <div class="modal-body">
+                            <form action="" method="post">
+                                <input type="radio" name="r<?php echo $name ?>" value="1"><?php echo $flashcard['r1']; ?><br>
+                                <input type="radio" name="r<?php echo $name ?>" value="2"><?php echo $flashcard['r2']; ?><br>
+                                <input type="radio" name="r<?php echo $name ?>" value="3"><?php echo $flashcard['r3']; ?><br>
+                                <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
+                                <input type="hidden" name="id_fc" value="<?php echo $flashcard['id_fc']; ?>">
+                                <div class="container-fluid bg-info" align="center">
+                                    <span id="answer"></span>
+                                </div>
+
+                                <?php
+                            }
+
+
+
+                            if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
+                                ?>                        
+                                <form action="" method="post">
+
+                                    <input type="submit" name="finalizar" value="Finalizar" style="float:right">
+                                </form>
+
+                        </div>
                     </div>
-                <?php
-                } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) {
-                    if ($respuesta === $flashcard['val'])
-                        $_SESSION['score'] -= $valor;
-                    ?>
-
-                    <form action="" method="post">
-                        <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
-                    </form>
-
                 </div>
+                <?php
+            } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) {
+                if ($respuesta === $flashcard['val'])
+                    $_SESSION['score'] -= $valor;
+                ?>
+
+                <form action="" method="post">
+                    <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
+                </form>
+
             </div>
         </div>
-        <?php
-        ControlSesion::setContador();
-    } else {
-        ?>
-        <form action="" method=" ">
-            <input type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">
-            <input type="hidden" name="demo2" id="demo2" value="">
-        </form>
+    </div>
+    <?php
+    ControlSesion::setContador();
+} else {
+    ?>
+    <form action="" method=" ">
+        <input type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">
+        <input type="hidden" name="demo2" id="demo2" value="">
+    </form>
     </div>
     </div>
     </div>

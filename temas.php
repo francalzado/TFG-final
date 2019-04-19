@@ -88,11 +88,12 @@ if ($accion_recurso) {
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
-                        <input type="submit" name="accion_recursos" value="Acceder">
+                        <button class="btn btn-light"  type="submit" name="accion_recursos" value="Acceder">Acceder</button>
+
                         <?php
                         if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
                             ?>
-                            <input type="submit" name="add_recurso" style="margin-left: 70px" value="Añadir Nuevo Recurso">
+                        <button class="btn btn-light"  type="submit" name="add_recurso" style="margin-left: 70px" value="Añadir Nuevo Recurso">Añadir Nuevo Recurso</button>
 
                             <?php
                         }
@@ -102,14 +103,14 @@ if ($accion_recurso) {
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
-                        <input type="submit" name="accion_flashcard" value="Acceder">
-
+                        <button class="btn btn-light"  type="submit" name="accion_flashcard" value="Acceder">Acceder</button>
                     </form>
                 </td>
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
-                        <input type="submit" name="accion_estadisticas" value="Acceder">
+                        <button class="btn btn-light"  type="submit" name="accion_estadisticas" value="Acceder">Acceder</button>
+
 
 
                     </form>
@@ -128,7 +129,7 @@ if ($accion_recurso) {
                 <tr>
                     <th colspan="5">
                         <form action method="POST">
-                            <input type="submit" name="accion_tema" value="Nuevo Tema">
+                        <button class="btn btn-light"  type="submit" name="accion_tema" value="Nuevo Tema">Nuevo Tema</button>                            
                         </form>
                     </th>
                 </tr>

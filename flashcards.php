@@ -151,7 +151,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                                 <input type="hidden" name="txtR4" value="<?php echo $flashcard['r4']; ?>">
                                 <input type="hidden" name="txtCuerpo" value="<?php echo $flashcard['cuerpo']; ?>">
                                 <input type="hidden" name="txtVal" value="<?php echo $flashcard['val']; ?>">
-                                <input type="submit" name="accion" value="Seleccionar">
+                                <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
 
                             </form>
                         </td>
@@ -241,9 +241,9 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                             </div>
                             <br>
                             <br>
-                            <button value="btnAdd" type="submit" name="accion1">Añadir</button>
-                            <button value="btnModificar" type="submit" name="accion1">Modificar</button>
-                            <button value="btnEliminar" type="submit" name="accion1">Eliminar</button>            
+                            <button  class="btn btn-success" value="btnAdd" type="submit" name="accion1">Añadir</button>
+                            <button class="btn btn-warning" value="btnModificar" type="submit" name="accion1">Modificar</button>
+                            <button class="btn btn-danger" value="btnEliminar" type="submit" name="accion1">Eliminar</button>            
                         </form>
 
                     </div>

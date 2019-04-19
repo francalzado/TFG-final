@@ -1,4 +1,5 @@
 <?php
+
 include_once 'app/config.inc.php';
 include_once 'app/ValidadorFlashCard.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
@@ -19,8 +20,8 @@ if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '1')) {
 
 if (isset($_POST['enviar'])) {
     Conexion :: abrir_conexion();       // nombre, curso, cuatrimestre
-    $asignatura = new Asignatura('', $_POST['nombre'], $_POST['curso'],$_POST['cuatrimestre']);
-    $recurso_insertado = RepositorioAsignatura :: insertar_asignatura(Conexion :: obtener_conexion(),$asignatura);
+    $asignatura = new Asignatura('', $_POST['nombre'], $_POST['curso'], $_POST['cuatrimestre']);
+    $recurso_insertado = RepositorioAsignatura :: insertar_asignatura(Conexion :: obtener_conexion(), $asignatura);
     if ($recurso_insertado) {
         Redireccion :: redirigir(RUTA_ASIGNATURAS);
     } else {

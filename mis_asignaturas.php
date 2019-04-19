@@ -38,14 +38,16 @@ if (COUNT($mis_asignaturas) === 0) {
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
-                                <input type="submit" name="accion" value="Acceder">
+                                <button class="btn btn-light"  type="submit" name="accion" value="Acceder">Acceder</button>
+
 
                             </form>
                         </td>
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
-                                <input type="submit" name="baja" value="Dar de baja">
+                                <button class="btn btn-danger" type="submit" name="baja" value="Dar de baja">Dar de baja</button>
+
 
                             </form>
                         </td>
@@ -65,7 +67,7 @@ if (COUNT($mis_asignaturas) === 0) {
                     <tr>
                         <th colspan="6">
                             <form action method="POST">
-                                <input type="submit" name="accion_asignatura" value="Nueva Asignatura">
+                                <button class="btn btn-light"  type="submit" name="accion_asignatura" value="Nueva Asignatura">Nueva Asignatura</button>                                
                             </form>
                         </th>
                     </tr>

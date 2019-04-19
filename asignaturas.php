@@ -2,7 +2,6 @@
 include_once './Control/control_asignaturas.inc.php';
 if (COUNT($todas) === 0) {
     ?>
-    <div class="container-fluid bg-info1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,7 +32,8 @@ if (COUNT($todas) === 0) {
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
-                                <input type="submit" name="accion" value="Matricular">
+                                <button class="btn btn-light"  type="submit" name="accion" value="Matricular">Matricular</button>
+
                             </form>
                         </td>
                     </tr>

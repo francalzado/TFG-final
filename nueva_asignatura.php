@@ -21,31 +21,31 @@ include_once './Control/control_nueva_asignatura.inc.php';
                     <div class="form-group">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Asignatura" autofocus>
                     </div>
-                    
+
                     <div class="form-group">
-                    <div class="col-md-10">
-                        <select id="cuatrimestreselector" name="cuatrimestre" class="form-control">
-                            <option value="1" selected="selected">Primer Cuatrimestre</option>
-                            <option value="2">Segundo Cuatrimestre </option>
+                        <div class="col-md-10">
+                            <select id="cuatrimestreselector" name="cuatrimestre" class="form-control">
+                                <option value="1" selected="selected">Primer Cuatrimestre</option>
+                                <option value="2">Segundo Cuatrimestre </option>
                             </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <select id="cursoselector" name="curso" class="form-control">
-                            <option value="1" >Primer Curso</option>
-                            <option value="2" >Segundo Curso</option>
-                            <option value="3" >Tercer Curso</option>
-                            <option value="4" >Cuarto Curso</option>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <select id="cursoselector" name="curso" class="form-control">
+                                <option value="1" >Primer Curso</option>
+                                <option value="2" >Segundo Curso</option>
+                                <option value="3" >Tercer Curso</option>
+                                <option value="4" >Cuarto Curso</option>
                             </select>
+                        </div>
                     </div>
-                </div>
                     <button type="submit"class="btn btn-primary btn-block" name="enviar">
                         Registrar 
                     </button>
                 </form>
                 <!-- Select Basic -->
-                
+
             </div>
         </div>
 

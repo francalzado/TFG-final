@@ -18,7 +18,7 @@ th, td {
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #b5f6a7}
 tr:nth-child(odd){background-color: #81d29b}
 
 th {
