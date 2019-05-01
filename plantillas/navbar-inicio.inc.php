@@ -40,6 +40,8 @@ Conexion :: cerrar_conexion();
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Estadisticas</a>
+
 
             </div>
         </div>      
@@ -53,15 +55,19 @@ Conexion :: cerrar_conexion();
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario'] ?>">Mis Asignaturas</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_ASIGNATURAS ?>">Asignaturas no matriculadas</a>
+
+                    <a class="nav-item nav-link" href="<?php echo RUTA_ESTADISTICAS ?>">Estadisticas</a>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestion de Usuarios
                     </a>
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="<?php echo RUTA_GESTION_USUARIOS ?>">Todos los usuarios</a>
                         <a class="dropdown-item" href="<?php echo RUTA_NUEVOS_USUARIOS ?>">Nuevos Usuarios</a>
                     </div>
                 </li>
+
 
 
             </div>

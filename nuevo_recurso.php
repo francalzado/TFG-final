@@ -25,21 +25,21 @@ include_once './Control/control_nuevo_recurso.inc.php';
 
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" >
                     <div class="form-group">
+                        <input type="text" name="titulo" class="form-control" placeholder="Titulo" autofocus/>
+                        <br>
                         <input type="text" name="enlace" class="form-control" placeholder="Enlace" autofocus/>
                         <input type="hidden" name="txtId_tema" value="<?php echo $id_tema; ?>">
-
                     </div>
-
                     <div class="form-group">
                         <button type="submit"class="btn btn-primary btn-block" name="guardar">
                             Guardar
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
+
 </html>
 
 

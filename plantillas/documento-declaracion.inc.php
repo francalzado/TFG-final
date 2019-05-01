@@ -8,23 +8,23 @@
 
     <head>
         <style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-th, td {
-  text-align: left;
-  padding: 8px;
-}
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
 
-tr:nth-child(even){background-color: #b5f6a7}
-tr:nth-child(odd){background-color: #81d29b}
+            tr:nth-child(even){background-color: #b5f6a7}
+            tr:nth-child(odd){background-color: #81d29b}
 
-th {
-  background-color: #4CAF50;
-  color: white;
-}</style>
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }</style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
