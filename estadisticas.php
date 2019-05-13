@@ -27,7 +27,7 @@ include_once './Control/control_estadisticas.inc.php';
                 <div class="card-header">
 
 
-                    <form name="formulario1" action="POST">
+                    <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                         <select class="seleccion" name="cosa" onchange="cambia()">
                             <option value="0">Seleccione
                             <option value="1">Redes
@@ -42,13 +42,10 @@ include_once './Control/control_estadisticas.inc.php';
                         </select>
 
                         <select class="seleccion" name="tipo">
-                            <option value="0">Todo
-                            <option value="1">Ultimos Resultados por alumno 
-                            <option value="2">Flashcards mas acertadas
-                            <option value="3">Flashcards mas falladas
-                            <option value="4">Peores resultados
-                            <option value="5">Mejores resultados
-                            <option value="6">Mejores Scores
+                            <option value="1">Todo
+                            <option value="2">Ultimos Resultados por alumno 
+                            <option value="3">Respuestas por Flashcards
+                            <option value="4">AVG de Score de Flashcards 
                         </select>
 
                         <button type="submit">Consultar </button>
@@ -81,7 +78,7 @@ include_once './Control/control_estadisticas.inc.php';
                             document.formulario1.opt.length = num_opts;
                             //para cada opt del array, la pongo en el select
                             for (i = 0; i < num_opts; i++) {
-                                document.formulario1.opt.options[i].value = mis_opts[i];
+                                document.formulario1.opt.options[i].value = [i];
                                 document.formulario1.opt.options[i].text = mis_opts[i];
                             }
                         } else {
