@@ -7,7 +7,7 @@ include_once './Control/control_estadisticas_0.inc.php';
 <?php
 if ($_GET['stats'] == 1) { //TODO
     ?>
-    <table class="table table-bordered">
+    <table id="tabla_stats" class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -45,7 +45,7 @@ if ($_GET['stats'] == 1) { //TODO
     ?>
 
 
-    <table class="table table-bordered">
+    <table id="tabla_stats"  class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -81,7 +81,7 @@ if ($_GET['stats'] == 1) { //TODO
 } else if ($_GET['stats'] == 3) { //Respuestas por Flashcards
     ?>
 
-    <table class="table table-bordered">
+    <table id="tabla_stats"  class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -118,7 +118,7 @@ if ($_GET['stats'] == 1) { //TODO
 } else if ($_GET['stats'] == 4) { //AVG de Score
     ?>
 
-    <table class="table table-bordered">
+    <table id="tabla_stats"  class="table table-bordered">
         <thead>
             <tr>
                 <th>Id Flashcard</th>
@@ -140,7 +140,13 @@ if ($_GET['stats'] == 1) { //TODO
 
 
     </table>
-
+<script src="js/FileSaver.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min_1.js" type="text/javascript"></script>
+<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="js/tableexport.min.js" type="text/javascript"></script>
+<script>
+    $('#tabla_stats').tableExport();
+</script>
     <?php
 }
 ?>

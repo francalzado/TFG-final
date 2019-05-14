@@ -7,6 +7,8 @@
     ?>
 
     <head>
+        <link href="../css/tableexport.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap.min_1.css" rel="stylesheet" type="text/css"/>
         <style>
             table {
                 border-collapse: collapse;
