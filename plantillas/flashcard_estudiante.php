@@ -73,8 +73,8 @@ if (!$flashcard) {
 }
 if ($respuesta === $flashcard['val']) {
     $_SESSION['score'] += $valor;
-}else{
-   $valor=0;
+} else {
+    $valor = 0;
 }
 ?>
 <div class="progress">
@@ -106,88 +106,88 @@ if ($accion) {
         print 'ERROR' . $ex->getMessage();
     }
     ?>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
+            </div>
+            <div class="modal-header">
+                <div class="text-center">
+                    <h4><?php echo $flashcard['cuerpo']; ?></h4>          
                 </div>
-                <div class="modal-header">
-                    <div class="text-center">
-                        <h4><?php echo $flashcard['cuerpo']; ?></h4>          
-                    </div>
-                </div>
-                <div class="modal-body">
+            </div>
+            <div class="modal-body">
 
+                <?php
+                if ($respuesta === $flashcard['val']) {
+                    $_SESSION['score'] += $valor;
+                    ?><h3 style="color:mediumseagreen;">Correcto. </h3>
                     <?php
-                    if ($respuesta === $flashcard['val']) {
-                        $_SESSION['score'] += $valor;
-                        ?><h3 style="color:mediumseagreen;">Correcto. </h3>
-                        <?php
-                    } else {
-                        ?> <h3 style="color:Tomato;">Incorrecto.</h3><h3 style="color:black">La respuesta correcta era
-                            <?php echo $flashcard['r' . $flashcard['val']]; ?> </h3> 
-                    <?php }
-                    ?>
-
-
-                </div>
-                <?php
-            } else if ($_SESSION['contador'] <= (COUNT($todos))) {
-
-                $name = $flashcard['id_fc'];
-                ?>
-                <h2 id='CuentaAtras' style="margin-right: 70px"></h2>
-
-
-
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
-                        </div>
-                        <div class="modal-header">
-                            <div class="text-center">
-                                <h4><?php echo $flashcard['cuerpo']; ?></h4>          
-                            </div>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" method="post">
-                                <input type="radio" name="r<?php echo $name ?>" value="1"><?php echo $flashcard['r1']; ?><br>
-                                <input type="radio" name="r<?php echo $name ?>" value="2"><?php echo $flashcard['r2']; ?><br>
-                                <input type="radio" name="r<?php echo $name ?>" value="3"><?php echo $flashcard['r3']; ?><br>
-                                <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
-                                <input type="hidden" name="id_fc" value="<?php echo $flashcard['id_fc']; ?>">
-                                <div class="container-fluid bg-info" align="center">
-                                    <span id="answer"></span>
-                                </div>
-
-                                <?php
-                            }
-
-
-
-                            if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
-                                ?>                        
-                                <form action="" method="post">
-
-                                    <input type="submit" name="finalizar" value="Finalizar" style="float:right">
-                                </form>
-
-                        </div>
-                    </div>
-                </div>
-                <?php
-            } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) {
-                if ($respuesta === $flashcard['val'])
-                    $_SESSION['score'] -= $valor;
+                } else {
+                    ?> <h3 style="color:Tomato;">Incorrecto.</h3><h3 style="color:black">La respuesta correcta era
+                        <?php echo $flashcard['r' . $flashcard['val']]; ?> </h3> 
+                <?php }
                 ?>
 
-                <form action="" method="post">
-                    <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
-                </form>
 
             </div>
+            <?php
+        } else if ($_SESSION['contador'] <= (COUNT($todos))) {
+
+            $name = $flashcard['id_fc'];
+            ?>
+            <h2 id='CuentaAtras' style="margin-right: 70px"></h2>
+
+
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><span class="label label-warning"  id="qid"><?php echo 'Tema ' . $_GET['id_tema'] ?></span> <?php echo $flashcard['pregunta']; ?></h3>
+                    </div>
+                    <div class="modal-header">
+                        <div class="text-center">
+                            <h4><?php echo $flashcard['cuerpo']; ?></h4>          
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <input type="radio" name="r<?php echo $name ?>" value="1"><?php echo $flashcard['r1']; ?><br>
+                            <input type="radio" name="r<?php echo $name ?>" value="2"><?php echo $flashcard['r2']; ?><br>
+                            <input type="radio" name="r<?php echo $name ?>" value="3"><?php echo $flashcard['r3']; ?><br>
+                            <input type="radio" name="r<?php echo $name ?>" value="4"><?php echo $flashcard['r4']; ?><br>
+                            <input type="hidden" name="id_fc" value="<?php echo $flashcard['id_fc']; ?>">
+                            <div class="container-fluid bg-info" align="center">
+                                <span id="answer"></span>
+                            </div>
+
+                            <?php
+                        }
+
+
+
+                        if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
+                            ?>                        
+                            <form action="" method="post">
+
+                                <input type="submit" name="finalizar" value="Finalizar" style="float:right">
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+            <?php
+        } else if ($_SESSION['contador'] != (COUNT($todos)) && $accion) {
+            if ($respuesta === $flashcard['val'])
+                $_SESSION['score'] -= $valor;
+            ?>
+
+            <form action="" method="post">
+                <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
+            </form>
+
         </div>
+    </div>
     </div>
     <?php
     ControlSesion::setContador();
