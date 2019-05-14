@@ -3,7 +3,13 @@
 include_once './Control/control_estadisticas_0.inc.php';
 ?>
 
+<form method="post" action="export.php" align="center">  
+    <input type="submit" name="export" value="Exportar a CSV" class="btn btn-success" />  
+    <input type="hidden" name="todos" value="<?php echo $todos;?>" />
+    <input type="hidden" name="stats" value="<?php echo $_GET['stats'];?>" />
+    <input type="hidden" name="id_tema" value="<?php echo $_GET['id_tema'];?>" />
 
+</form>  
 <?php
 if ($_GET['stats'] == 1) { //TODO
     ?>
@@ -140,13 +146,13 @@ if ($_GET['stats'] == 1) { //TODO
 
 
     </table>
-<script src="js/FileSaver.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min_1.js" type="text/javascript"></script>
-<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
-<script src="js/tableexport.min.js" type="text/javascript"></script>
-<script>
-    $('#tabla_stats').tableExport();
-</script>
+    <script src="js/FileSaver.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min_1.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/tableexport.min.js" type="text/javascript"></script>
+    <script>
+        $('#tabla_stats').tableExport();
+    </script>
     <?php
 }
 ?>

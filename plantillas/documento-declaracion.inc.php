@@ -9,6 +9,10 @@
     <head>
         <link href="../css/tableexport.min.css" rel="stylesheet" type="text/css"/>
         <link href="../css/bootstrap.min_1.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+
+
         <style>
             table {
                 border-collapse: collapse;
