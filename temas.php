@@ -78,7 +78,6 @@ if ($accion_recurso) {
                 <th>Temario</th>
                 <th>Recursos Visuales</th>
                 <th>Flashcards</th>
-                <th>Estadísticas</th>
 
             </tr>
         </thead>
@@ -105,17 +104,6 @@ if ($accion_recurso) {
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
                         <button class="btn btn-light"  type="submit" name="accion_flashcard" value="Acceder">Acceder</button>
                     </form>
-                </td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
-                        <button class="btn btn-light"  type="submit" name="accion_estadisticas" value="Acceder">Acceder</button>
-
-
-
-                    </form>
-
-
                 </td>
 
             </tr>
