@@ -141,7 +141,6 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                         <td><?php echo $flashcard['val']; ?></td>
                         <td>
                             <form action="" method="post">
-
                                 <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
                                 <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
                                 <input type="hidden" name="txtPregunta" value="<?php echo $flashcard['pregunta']; ?> ">
@@ -152,18 +151,11 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                                 <input type="hidden" name="txtCuerpo" value="<?php echo $flashcard['cuerpo']; ?>">
                                 <input type="hidden" name="txtVal" value="<?php echo $flashcard['val']; ?>">
                                 <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
-
                             </form>
                         </td>
                     </tr>
-
                 <?php } ?>
-
-
             </table>
-
-
-
         </div>
         <div class="col-lg-4">
             <div class="col-md-9 mx-auto">

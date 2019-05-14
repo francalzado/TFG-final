@@ -73,6 +73,8 @@ if (!$flashcard) {
 }
 if ($respuesta === $flashcard['val']) {
     $_SESSION['score'] += $valor;
+}else{
+   $valor=0;
 }
 ?>
 <div class="progress">
@@ -87,16 +89,17 @@ if ($accion) {
 
     <?php $respuesta = (isset($_POST['r' . $id_flash])) ? $_POST['r' . $id_flash] : ""; ?><br><?php
     try {
-        $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha) VALUES(:id_usuario,:id_fc,:respuesta,:fecha) ";
+        $sql = "INSERT INTO usuarioflashcard(id_usuario,id_fc,respuesta,fecha,score) VALUES(:id_usuario,:id_fc,:respuesta,:fecha,:score) ";
         $idusuarioTemp = $_SESSION['id_usuario'];
         $idfcTemp = $id_flash;
         $respuestaTemp = $respuesta;
         $fechatemp = date('Y-m-d H:i:s');
-
+        $scoreTemp = $valor;
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(':id_usuario', $idusuarioTemp);
         $sentencia->bindParam(':id_fc', $idfcTemp);
         $sentencia->bindParam(':respuesta', $respuestaTemp);
+        $sentencia->bindParam(':score', $scoreTemp);
         $sentencia->bindParam(':fecha', $fechatemp, PDO::PARAM_STR);
         $insertado = $sentencia->execute();
     } catch (PDOException $ex) {
