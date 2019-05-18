@@ -103,7 +103,7 @@ ORDER BY id_fc";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT uf.id_fc,f.pregunta, AVG(score) FROM usuarioflashcard uf,flashcard f
-WHERE uf.id_fc = f.id_fc AND uf.id_fc IN (SELECT DISTINCT id_fc FROM flashcard WHERE id_tema=:id_tema)
+WHERE uf.id_fc = f.id_fc AND uf.id_fc IN (SELECT id_fc FROM flashcard WHERE id_tema=:id_tema)
 GROUP BY id_fc
 ORDER BY AVG(score) DESC";
                 $id_temaTEMP = $id_tema;

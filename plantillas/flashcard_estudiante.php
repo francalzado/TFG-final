@@ -36,6 +36,7 @@ $PHPvariable;
 $prueba;
 $varHtml;
 $valor = (isset($_POST['demo2'])) ? $_POST['demo2'] : "";
+$puntosFinales = (isset($_SESSION['puntuacion'])) ? $_SESSION['puntuacion'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $tiempo = (isset($_POST['tiempo'])) ? $_POST['tiempo'] : "0";
 $totalTiempo = (isset($_POST['totalTiempo'])) ? $_POST['totalTiempo'] : "";
@@ -52,10 +53,7 @@ if ($accion && ($respuesta === $flashcard['val'])) {
 if ($finalizar) {
 
     try {
-        $_SESSION['puntuacion'] = 0;
-        $_SESSION['contador'] = 0;
-        $_SESSION['score'] = 0;
-        Redireccion :: redirigir(RUTA_ESTADISTICAS);
+        Redireccion :: redirigir(RUTA_ESTADISTICAS_ESTUDIANTE. '?puntosFinales=' . $puntosFinales);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
@@ -72,7 +70,8 @@ if (!$flashcard) {
     $_SESSION['score'] = 0;
 }
 if ($respuesta === $flashcard['val']) {
-    $_SESSION['score'] += $valor;
+    $valor+=1;
+    $_SESSION['score'] += ($valor);
 } else {
     $valor = 0;
 }

@@ -71,7 +71,10 @@ if ($accion_recurso) {
 }
 ?>
 
-<div class="row col-lg-12">
+
+<br>
+<br>
+<div class='col-md-8 mx-auto'>   
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -92,7 +95,7 @@ if ($accion_recurso) {
                         <?php
                         if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (ControlSesion::getRol() == '3'))) {
                             ?>
-                        <button class="btn btn-light"  type="submit" name="add_recurso" style="margin-left: 70px" value="Añadir Nuevo Recurso">Añadir Nuevo Recurso</button>
+                            <button class="btn btn-light"  type="submit" name="add_recurso" style="margin-left: 70px" value="Añadir Nuevo Recurso">Añadir Nuevo Recurso</button>
 
                             <?php
                         }
@@ -117,7 +120,7 @@ if ($accion_recurso) {
                 <tr>
                     <th colspan="5">
                         <form action method="POST">
-                        <button class="btn btn-light"  type="submit" name="accion_tema" value="Nuevo Tema">Nuevo Tema</button>                            
+                            <button class="btn btn-light"  type="submit" name="accion_tema" value="Nuevo Tema">Nuevo Tema</button>                            
                         </form>
                     </th>
                 </tr>

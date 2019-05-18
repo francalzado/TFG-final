@@ -19,7 +19,7 @@ class RepositorioFlashcard {
                 $valtemp = $flashcard->obtenerVal();
 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id_tema', $idtemaTemp, PDO::PARAM_STR);                
+                $sentencia->bindParam(':id_tema', $idtemaTemp, PDO::PARAM_STR);
                 $sentencia->bindParam(':pregunta', $preguntatemp, PDO::PARAM_STR);
                 $sentencia->bindParam(':r1', $r1temp, PDO::PARAM_STR);
                 $sentencia->bindParam(':r2', $r2temp, PDO::PARAM_STR);
@@ -35,7 +35,7 @@ class RepositorioFlashcard {
         return $flascard_insertada;
     }
 
-    public static function obtener_todos($conexion,$id_tema) {
+    public static function obtener_todos($conexion, $id_tema) {
         $usuarios = array();
 
         if (isset($conexion)) {
@@ -48,8 +48,6 @@ class RepositorioFlashcard {
                 $sentencia->bindParam(':id_tema', $id_tema, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
-
-
             } catch (Exception $ex) {
                 print "ERROR" . $ex->getMessage();
             }
@@ -57,27 +55,25 @@ class RepositorioFlashcard {
         return $resultado;
     }
 
-        public static function estadisticas($conexion,$id_usuario,$id_tema) {
+    public static function estadisticas($conexion, $id_usuario, $id_tema) {
         $usuarios = array();
 
         if (isset($conexion)) {
 
             try {
-
                 $sql = "SELECT * FROM usuarioflashcard WHERE id_usuario = :id_usuario && id_fc IN ( SELECT id_fc FROM flashcard WHERE id_tema = :id_tema)";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id_usuario', $id_usuario, PDO::PARAM_STR);
                 $sentencia->bindParam(':id_tema', $id_tema, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
-
-
             } catch (Exception $ex) {
                 print "ERROR" . $ex->getMessage();
             }
         }
         return $resultado;
     }
+
 }
 
 ?>

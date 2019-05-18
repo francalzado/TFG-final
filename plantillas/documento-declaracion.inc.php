@@ -8,12 +8,15 @@
 
     <head>
         <link href="../css/tableexport.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="../css/bootstrap.min_1.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="../css/estilos.css">
 
 
         <style>
+            
             table {
                 border-collapse: collapse;
                 width: 100%;
@@ -24,7 +27,7 @@
                 padding: 8px;
             }
 
-            tr:nth-child(even){background-color: #b5f6a7}
+            tr:nth-child(even){background-color: #A5f6a7}
             tr:nth-child(odd){background-color: #81d29b}
 
             th {

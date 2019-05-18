@@ -30,7 +30,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
                             <input type="hidden" name="txtApellidos" value="<?php echo $usuario['apellidos']; ?> ">
                             <input type="hidden" name="txtEmail" value="<?php echo $usuario['email']; ?>">
                             <input type="hidden" name="txtRol" value="<?php echo $usuario['rol']; ?>">
-                    <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
+                            <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
 
 
                         </form>
@@ -103,8 +103,8 @@ include_once './Control/control_gestion_usuarios.inc.php';
                         </div>
                         <br>
                         <br>
-                            <button class="btn btn-warning" value="btnModificar" type="submit" name="accion1">Modificar</button>
-                            <button class="btn btn-danger" value="btnEliminar" type="submit" name="accion1">Eliminar</button>       
+                        <button class="btn btn-warning" value="btnModificar" type="submit" name="accion1">Modificar</button>
+                        <button class="btn btn-danger" value="btnEliminar" type="submit" name="accion1">Eliminar</button>       
                     </form>
 
                 </div>

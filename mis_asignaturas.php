@@ -15,10 +15,14 @@ if (COUNT($mis_asignaturas) === 0) {
                 </div>
             </div>
         </div>
+    </div>
         <?php
     } else {
-        ?>
-        <div class="row col-lg-12">
+        ?>  
+        <br>
+        <br>
+        <div class='col-md-8 mx-auto'>
+
             <table class="table table-bordered">
                 <thead>
 

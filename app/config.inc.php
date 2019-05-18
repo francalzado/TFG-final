@@ -19,7 +19,7 @@ define("RUTA_NUEVA_FLASHCARD", "/TFG-final/nueva_flashcard.php");
 define("RUTA_ASIGNATURAS", "/TFG-final/asignaturas.php");
 define("RUTA_ESTADISTICAS", "/TFG-final/estadisticas.php");
 define("RUTA_ESTADISTICAS_0", "/TFG-final/estadisticas_0.php");
-define("RUTA_ESTADISTICAS_1", "/TFG-final/estadisticas_1.php");
+define("RUTA_ESTADISTICAS_ESTUDIANTE", "/TFG-final/estadisticas_estudiante.php");
 define("RUTA_NUEVO_RECURSO", "/TFG-final/nuevo_recurso.php");
 define("RUTA_NUEVO_TEMA", "/TFG-final/nuevo_tema.php");
 define("RUTA_NUEVA_ASIGNATURA", "/TFG-final/nueva_asignatura.php");

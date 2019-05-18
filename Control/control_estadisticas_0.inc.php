@@ -14,11 +14,14 @@ if ($_GET['stats'] == 1) { //TODO
     } else {
         $todos = RepositorioEstadisticas :: obtener_estadisticas_tema(Conexion :: obtener_conexion(), $_GET['id_tema']);
     }
-} else if ($_GET['stats'] == 2) { //Ultimos Resultados por Alumno
+}
+if ($_GET['stats'] == 2) { //Ultimos Resultados por Alumno
     $todos = RepositorioEstadisticas :: obtener_estadisticas_ultimas_respuestas_tema(Conexion :: obtener_conexion(), $_GET['id_tema']);
-} else if ($_GET['stats'] == 3) { //Respuestas por Flashcards
+}
+if ($_GET['stats'] == 3) { //Respuestas por Flashcards
     $todos = RepositorioEstadisticas :: obtener_estadisticas_cantidad_respuestas_tema(Conexion :: obtener_conexion(), $_GET['id_tema']);
-} else if ($_GET['stats'] == 4) { //AVG de Score
+}
+if ($_GET['stats'] == 4) { //AVG de Score
     $todos = RepositorioEstadisticas :: obtener_estadisticas_avg_score_tema_DESC(Conexion :: obtener_conexion(), $_GET['id_tema']);
 }
 ?>
