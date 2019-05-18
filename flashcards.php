@@ -114,50 +114,64 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
     ?>
 
     <div class="row col-lg-12">
-        <div class='col-lg-8'>
+        <div class='col-lg-7'>
             <br>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Pregunta</th>
-                        <th>R1</th>
-                        <th>R2</th>
-                        <th>R3</th>
-                        <th>R4</th>
-                        <th>Cuerpo</th>
-                        <th>Correcta</th>
-                        <th>Acciones</th>
+            <?php
+            if (COUNT($todos) === 0) {
+                ?>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><span class="label label-warning"  id="qid">No hay ninguna Flashcard registrada</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            } else {
+                ?>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Pregunta</th>
+                            <th>R1</th>
+                            <th>R2</th>
+                            <th>R3</th>
+                            <th>R4</th>
+                            <th>Cuerpo</th>
+                            <th>Correcta</th>
+                            <th>Acciones</th>
 
-                    </tr>
-                </thead>
-                <?php foreach ($todos as $flashcard) { ?>
-                    <tr>           
-                        <td><?php echo $flashcard['pregunta']; ?></td>
-                        <td><?php echo $flashcard['r1']; ?></td>
-                        <td><?php echo $flashcard['r2']; ?></td>
-                        <td><?php echo $flashcard['r3']; ?></td>
-                        <td><?php echo $flashcard['r4']; ?></td>
-                        <td><?php echo $flashcard['cuerpo']; ?></td>
-                        <td><?php echo $flashcard['val']; ?></td>
-                        <td>
-                            <form action="" method="post">
-                                <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
-                                <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
-                                <input type="hidden" name="txtPregunta" value="<?php echo $flashcard['pregunta']; ?> ">
-                                <input type="hidden" name="txtR1" value="<?php echo $flashcard['r1']; ?>">
-                                <input type="hidden" name="txtR2" value="<?php echo $flashcard['r2']; ?>">
-                                <input type="hidden" name="txtR3" value="<?php echo $flashcard['r3']; ?>">
-                                <input type="hidden" name="txtR4" value="<?php echo $flashcard['r4']; ?>">
-                                <input type="hidden" name="txtCuerpo" value="<?php echo $flashcard['cuerpo']; ?>">
-                                <input type="hidden" name="txtVal" value="<?php echo $flashcard['val']; ?>">
-                                <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </table>
+                        </tr>
+                    </thead>
+                    <?php foreach ($todos as $flashcard) { ?>
+                        <tr>           
+                            <td><?php echo $flashcard['pregunta']; ?></td>
+                            <td><?php echo $flashcard['r1']; ?></td>
+                            <td><?php echo $flashcard['r2']; ?></td>
+                            <td><?php echo $flashcard['r3']; ?></td>
+                            <td><?php echo $flashcard['r4']; ?></td>
+                            <td><?php echo $flashcard['cuerpo']; ?></td>
+                            <td><?php echo $flashcard['val']; ?></td>
+                            <td>
+                                <form action="" method="post">
+                                    <input type="hidden" name="txtId_fc" value="<?php echo $flashcard['id_fc']; ?>">
+                                    <input type="hidden" name="txtId_tema" value="<?php echo $flashcard['id_tema']; ?>">
+                                    <input type="hidden" name="txtPregunta" value="<?php echo $flashcard['pregunta']; ?> ">
+                                    <input type="hidden" name="txtR1" value="<?php echo $flashcard['r1']; ?>">
+                                    <input type="hidden" name="txtR2" value="<?php echo $flashcard['r2']; ?>">
+                                    <input type="hidden" name="txtR3" value="<?php echo $flashcard['r3']; ?>">
+                                    <input type="hidden" name="txtR4" value="<?php echo $flashcard['r4']; ?>">
+                                    <input type="hidden" name="txtCuerpo" value="<?php echo $flashcard['cuerpo']; ?>">
+                                    <input type="hidden" name="txtVal" value="<?php echo $flashcard['val']; ?>">
+                                    <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            <?php } ?>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="col-md-9 mx-auto">
                 <div class="card mt-4 text-center">
                     <div class="card-header">
@@ -205,7 +219,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                                     <select id="Valselector" name="txtVal" class="form-control"> 
 
                                         <option value="1" <?php if ($txtVal == '1') {
-                    ?>
+                ?>
                                                     selected="selected
 
                                                 <?php } ?>

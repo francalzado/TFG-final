@@ -9,6 +9,7 @@ include_once 'plantillas/navbar-inicio.inc.php';
     <div class="modal-content">
         <div class="modal-header">
             <?php if ($_GET['puntosFinales'] <= 50) { ?>
+                <i class="far fa-frown fa-3x fa-award"></i>
                 <h3 style="color:Tomato;">Tema no superado.</h3>
             <?php } else { ?>
                 <i class="fas fa-award fa-3x"></i>

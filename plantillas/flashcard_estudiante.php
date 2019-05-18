@@ -72,16 +72,18 @@ if (!$flashcard) {
 if ($respuesta === $flashcard['val']) {
     $valor+=1;
     $_SESSION['score'] += ($valor);
+
 } else {
     $valor = 0;
 }
 ?>
-<div class="progress">
-    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $_SESSION['puntuacion'] ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
 
 <h3 style="color:brown ;" style="margin-left: 70px"><?php echo "SCORE = " . $_SESSION['score']; ?></h3>
+<?php if ($_SESSION['contador'] == ((COUNT($todos)) - 1)) {
 
+    $_SESSION['score'] -= ($valor);
+}
+?>
 <?php
 if ($accion) {
     ?>

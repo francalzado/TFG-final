@@ -55,7 +55,7 @@ ORDER BY id_fc, fecha DESC";
         if (isset($conexion)) {
             try {
                 $sql = "SELECT  usuarioflashcard.id_fc,flashcard.pregunta, respuesta, 
-       Count(respuesta) AS TotalRespuestas,
+       Count(respuesta+1) AS TotalRespuestas,
        val AS RespuestaCorrecta
 FROM usuarioflashcard, flashcard
 WHERE usuarioflashcard.id_fc = flashcard.id_fc
@@ -118,6 +118,23 @@ ORDER BY AVG(score) DESC";
         return $resultado;
     }
 
+    
+    //Numero de veces que se ha contestado cada opcion en cada flashcard
+    public static function obtener_numero_fc($conexion, $id_tema) {
+        if (isset($conexion)) {
+            try {
+                $sql = " SELECT COUNT(id_fc) AS contador FROM flashcard WHERE id_tema = :id_tema";
+                $id_temaTEMP = $id_tema;
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_tema', $id_temaTEMP, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
     
     
 }

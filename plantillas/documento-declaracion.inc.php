@@ -1,11 +1,12 @@
-<html>
-    <?php
-    include_once 'app/log.inc.php';
-    include_once 'app/ControlSesion.inc.php';
-    include_once 'app/Conexion.inc.php';
-    include_once 'app/Redireccion.inc.php';
-    ?>
+<?php
+ob_start();
 
+include_once 'app/log.inc.php';
+include_once 'app/ControlSesion.inc.php';
+include_once 'app/Conexion.inc.php';
+include_once 'app/Redireccion.inc.php';
+?>
+<html>
     <head>
         <link href="../css/tableexport.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -13,10 +14,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
         <link rel="stylesheet" href="../css/estilos.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 
         <style>
-            
+
             table {
                 border-collapse: collapse;
                 width: 100%;

@@ -22,61 +22,77 @@ $accion_flashcard = (isset($_POST['accion_flashcard'])) ? $_POST['accion_flashca
 $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 
-if($accion){
-    echo $txtId_recurso."hola";
+if ($accion) {
     $usuario_modificado = false;
-        try {
-            $sql = "DELETE from recurso WHERE id_recurso= :Id_recurso";
-            $sentencia = $conexion->prepare($sql);
-            $sentencia->bindParam(':Id_recurso', $txtId_recurso);
-            $usuario_modificado = $sentencia->execute();
-        } catch (PDOException $ex) {
-            print 'Error' . $ex->getMessage();
-        }
-        if ($usuario_modificado) {
-            //print 'Se ha modificado correctamente';
-            Redireccion :: redirigir(RUTA_RECURSOS. '?id_tema=' . $txtId_tema);
-        }
-        if (!$usuario_modificado)
-            echo 'No se ha modificado correctaente';
+    try {
+        $sql = "DELETE from recurso WHERE id_recurso= :Id_recurso";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':Id_recurso', $txtId_recurso);
+        $usuario_modificado = $sentencia->execute();
+    } catch (PDOException $ex) {
+        print 'Error' . $ex->getMessage();
+    }
+    if ($usuario_modificado) {
+        //print 'Se ha modificado correctamente';
+        Redireccion :: redirigir(RUTA_RECURSOS . '?id_tema=' . $txtId_tema);
+    }
+    if (!$usuario_modificado) {
+        echo 'No se ha modificado correctaente';
         //Redireccion :: redirigir(RUTA_GESTION_USUARIOS);
-
+    }
 }
-
-?>
-
-
-<br>
-<br>
-<div class="col-md-4 mx-auto">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Videos</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <?php foreach ($recursos as $recurso) { ?>
-            <tr>
-                <td>
-                    <h4><?php echo $recurso['titulo']; ?></h4>
-                    <iframe width="560" height="315" src="<?php echo $recurso['enlace']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></video> </td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="txtId_recurso" value="<?php echo $recurso['id_recurso']; ?>">
-                        <input type="hidden" name="txtId_tema" value="<?php echo $recurso['id_tema']; ?>">
-                        <button  class="btn btn-danger align-content-md-center" value="Eliminar" type="submit" name="accion">Eliminar</button>
+if (COUNT($recursos) === 0) {
+    ?>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><span class="label label-warning"  id="qid">No hay ningun recurso visual disponible</span></h3>
+            </div>
+        </div>
+    </div>
+    <?php
+} else {
+    ?>
+    ?>
 
 
-                    </form>
-                </td>
-            </tr>
-        <?php } ?>
+    <br>
+    <br>
+    <div class="col-md-4 mx-auto">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Videos</th>
+                    <?php if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() === '3') || (ControlSesion::getRol() === '2'))) {
+                        ?>
+                        <th>Eliminar</th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <?php foreach ($recursos as $recurso) { ?>
+                <tr>
+                    <td>
+                        <h4><?php echo $recurso['titulo']; ?></h4>
 
-    </table>
-</div>
+                        <iframe width="560" height="315" src="<?php echo $recurso['enlace']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></video> </td>
+                    <?php if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() === '3') || (ControlSesion::getRol() === '2'))) {
+                        ?>
+                        <td>
+                            <form action="" method="post">
+                                <input type="hidden" name="txtId_recurso" value="<?php echo $recurso['id_recurso']; ?>">
+                                <input type="hidden" name="txtId_tema" value="<?php echo $recurso['id_tema']; ?>">
+                                <button  class="btn btn-danger align-content-md-center" value="Eliminar" type="submit" name="accion">Eliminar</button>
+                            </form>
+                        </td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
 
-<?php
+        </table>
+    </div>
+
+    <?php
+}
 include_once 'plantillas/documento-cierre.inc.php';
 ?>
 
