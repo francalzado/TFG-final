@@ -21,7 +21,6 @@ include_once './Control/control_registro.inc.php';
                 </form>
 
                 <a href="login.php">¿Ya tienes cuenta?</a>
-                <a href="#">¿Has olvidado tu contraseña?</a>
             </div>
         </div>
 

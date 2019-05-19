@@ -21,7 +21,6 @@ include_once './Control/control_login.inc.php';
                     Entrar 
                 </button>
                 <br>
-                <a href="#">¿Has olvidado tu contraseña?</a>
 
             </form>
         </div>

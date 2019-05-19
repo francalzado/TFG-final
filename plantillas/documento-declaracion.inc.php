@@ -8,12 +8,9 @@ include_once 'app/Redireccion.inc.php';
 ?>
 <html>
     <head>
-        <link href="../css/tableexport.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-        <link href="../css/bootstrap.min_1.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-        <link rel="stylesheet" href="../css/estilos.css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
@@ -66,7 +63,6 @@ include_once 'app/Redireccion.inc.php';
         <!-- BOOSTRAP -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <!-- MI PROPIO CSS MAIN -->
-        <link href="css/boostrap.min.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
 
     </head>

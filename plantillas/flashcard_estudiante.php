@@ -1,7 +1,6 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/flashcard.css.css" media="screen" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script language="JavaScript">
 
@@ -53,7 +52,7 @@ if ($accion && ($respuesta === $flashcard['val'])) {
 if ($finalizar) {
 
     try {
-        Redireccion :: redirigir(RUTA_ESTADISTICAS_ESTUDIANTE. '?puntosFinales=' . $puntosFinales);
+        Redireccion :: redirigir(RUTA_ESTADISTICAS_ESTUDIANTE . '?puntosFinales=' . $puntosFinales);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
     }
@@ -70,16 +69,18 @@ if (!$flashcard) {
     $_SESSION['score'] = 0;
 }
 if ($respuesta === $flashcard['val']) {
-    $valor+=1;
+    $valor += 1;
     $_SESSION['score'] += ($valor);
-
 } else {
     $valor = 0;
 }
 ?>
-
-<h3 style="color:brown ;" style="margin-left: 70px"><?php echo "SCORE = " . $_SESSION['score']; ?></h3>
-<?php if ($_SESSION['contador'] == ((COUNT($todos)) - 1)) {
+<div>
+    <h2><span style="margin-left:20px" class="label label-warning"><?php echo "SCORE = " . $_SESSION['score']; ?>
+        </span></h2>
+</div>
+<?php
+if ($_SESSION['contador'] == ((COUNT($todos)) - 1)) {
 
     $_SESSION['score'] -= ($valor);
 }
@@ -137,8 +138,9 @@ if ($accion) {
 
             $name = $flashcard['id_fc'];
             ?>
-            <h2 id='CuentaAtras' style="margin-right: 70px"></h2>
-
+            <br>
+            <h2><span style="margin-left:20px" class="label label-warning" id='CuentaAtras'>
+                </span></h2>
 
 
             <div class="modal-dialog">
@@ -170,8 +172,7 @@ if ($accion) {
                         if ($_SESSION['contador'] === ((COUNT($todos)) - 1) && $accion) {
                             ?>                        
                             <form action="" method="post">
-
-                                <input type="submit" name="finalizar" value="Finalizar" style="float:right">
+                        <button class="btn btn-light"  type="submit" name="finalizar" value="Finalizar" style="float:right"  >Finalizar</button>
                             </form>
 
                     </div>
@@ -184,7 +185,7 @@ if ($accion) {
             ?>
 
             <form action="" method="post">
-                <input type="submit" name="accion1" value="Siguiente Flashcard" style="float:right" onclick="updateReloj();">
+                <button class="btn btn-light"  type="submit" name="accion1" value="Comprobar" style="float:right"  onclick="updateReloj();">Siguiente Flashcard</button>
             </form>
 
         </div>
@@ -195,8 +196,9 @@ if ($accion) {
 } else {
     ?>
     <form action="" method=" ">
-        <input type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">
         <input type="hidden" name="demo2" id="demo2" value="">
+        <button class="btn btn-light"  type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">Acceder</button>
+
     </form>
     </div>
     </div>
