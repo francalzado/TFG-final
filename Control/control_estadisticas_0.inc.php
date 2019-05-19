@@ -20,8 +20,11 @@ if ($_GET['stats'] == 2) { //Ultimos Resultados por Alumno
 if ($_GET['stats'] == 3) { //Respuestas por Flashcards
     $todos = RepositorioEstadisticas :: obtener_estadisticas_cantidad_respuestas_tema(Conexion :: obtener_conexion(), $_GET['id_tema']);
     $contador = RepositorioEstadisticas :: obtener_numero_fc(Conexion :: obtener_conexion(), $_GET['id_tema']);
+    $identificadores = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(), $_GET['id_tema']);
 }
 if ($_GET['stats'] == 4) { //AVG de Score
     $todos = RepositorioEstadisticas :: obtener_estadisticas_avg_score_tema_DESC(Conexion :: obtener_conexion(), $_GET['id_tema']);
+    $identificadores = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(), $_GET['id_tema']);
+    $contador = RepositorioEstadisticas :: obtener_numero_fc(Conexion :: obtener_conexion(), $_GET['id_tema']);
 }
 ?>

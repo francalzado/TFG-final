@@ -188,22 +188,23 @@ if ($todos == null) {
                         ?>
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['respuesta']; ?></td>
-                            <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
+                        <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
                         <td><?php echo $stats['TotalRespuestas'];
-                            ?></td>
+                        ?></td>
                         <td><?php echo $stats['RespuestaCorrecta']; ?></td>
 
                     </tr>
 
-        <?php }
-        //consigo los array de respuestas correctamente
-        print_r($respuestas0);
-        print_r($respuestas1);
-        print_r($respuestas2);
-        print_r($respuestas3);
-        print_r($respuestas4);
-        echo $i;
-        ?>
+                    <?php
+                }
+                //consigo los array de respuestas correctamente
+//                print_r($respuestas0);
+//                print_r($respuestas1);
+//                print_r($respuestas2);
+//                print_r($respuestas3);
+//                print_r($respuestas4);
+//                echo $i;
+                ?>
 
 
             </table>
@@ -215,15 +216,20 @@ if ($todos == null) {
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Estudiante', 'No Contestada', 'Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19]
+                    ['Flashcard', 'No Contestada', 'Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
+        <?php
+        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+            ?>
+                        ['<?php echo $identificadores[$x][0]; ?>',
+            <?php echo $respuestas0[$x]; ?>,
+            <?php echo $respuestas1[$x]; ?>,
+            <?php echo $respuestas2[$x]; ?>,
+            <?php echo $respuestas3[$x]; ?>,
+            <?php echo $respuestas4[$x]; ?>
+                        ],
+
+        <?php } ?>
+                    //['52', 6, 2, 0, 0, 9], //coger array [0] de cada $respuesta, FLASHCARD = $identificadores[$i][0]
                 ]);
 
                 var options = {
@@ -256,49 +262,39 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-        <?php foreach ($todos as $stats) { ?>
+                <?php foreach ($todos as $stats) { ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td>            
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['AVG(score)']; ?></td>
                     </tr>
 
-        <?php } ?>
+                <?php } ?>
 
 
             </table>
         </div>
-
+        
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['bar']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Estudiante', 'No Contestada', 'Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2015', 10, 40, 20, 15, 19],
-                    ['2016', 103, 40, 20, 15, 19],
-                    ['2017', 101, 40, 20, 15, 19],
-                ]);
+                ['Flashcard', 'Score Medio'],
+        <?php
+        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+            ?>
 
+                    ['<?php echo $todos[$x][0]; ?>',
+            <?php echo $todos[$x][2]; ?>
+                    ],
+        <?php } ?>
+                ]);
+                
+                
+                
+               
                 var options = {
                     chart: {
                         title: 'Estadísticas',
@@ -318,7 +314,8 @@ if ($todos == null) {
 }
 ?>
 
-
+        <br>
+        <br>
 
 
 <?php
