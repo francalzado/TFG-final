@@ -5,7 +5,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
 <div class="row col-lg-12">
     <div class='col-lg-6'>
         <br>
-        <table class="table table-bordered">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -30,7 +30,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
                             <input type="hidden" name="txtApellidos" value="<?php echo $usuario['apellidos']; ?> ">
                             <input type="hidden" name="txtEmail" value="<?php echo $usuario['email']; ?>">
                             <input type="hidden" name="txtRol" value="<?php echo $usuario['rol']; ?>">
-                            <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
+                            <button  class="btn btn-light" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
 
 
                         </form>
@@ -71,8 +71,8 @@ include_once './Control/control_gestion_usuarios.inc.php';
                         <br>
                         <br>
                         <!-- Select Basic -->
-                        <div class="form-group">
-                            <div class="col-md-10">
+                        <div class="col-lg-12" class="form-group">
+                            <div class="col-lg-10 ">
                                 <select id="rolselector" name="txtRol" class="form-control">
                                     <option value="0" <?php if ($txtRol == '0') {
                 ?>

@@ -75,7 +75,7 @@ if ($accion_recurso) {
 <br>
 <br>
 <div class='col-md-8 mx-auto'>   
-    <table class="table table-bordered">
+    <table class="table table-borderless">
         <thead>
             <tr>
                 <th>Temario</th>

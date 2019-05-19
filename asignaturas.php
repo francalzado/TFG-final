@@ -17,7 +17,7 @@ if (COUNT($todas) === 0) {
     <br>
     <br>
     <div class='col-md-8 mx-auto'> 
-        <table class="table table-bordered">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>Asignatura</th>

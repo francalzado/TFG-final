@@ -109,7 +109,7 @@ if (COUNT($nuevos) === 0) {
         <div class="row col-lg-12">
             <div class='col-lg-6'>
                 <br>
-                <table class="table table-bordered">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th>ID</th>

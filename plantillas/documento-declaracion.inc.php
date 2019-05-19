@@ -20,10 +20,7 @@ include_once 'app/Redireccion.inc.php';
 
         <style>
 
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
+         
 
             th, td {
                 text-align: left;
@@ -43,6 +40,11 @@ include_once 'app/Redireccion.inc.php';
                 background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
             }
+            .form label{
+		display: inline-block;
+		text-align: right;
+		float: left;
+	}
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

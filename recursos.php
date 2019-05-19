@@ -59,7 +59,7 @@ if (COUNT($recursos) === 0) {
     <br>
     <br>
     <div class="col-md-4 mx-auto">
-        <table class="table table-bordered">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>Videos</th>

@@ -23,7 +23,7 @@ if ($todos == null) {
     ?>
     <br>
     <form method="post" action="export.php" align="center">  
-        <input type="submit" name="export" value="Exportar a CSV" class="btn btn-success" />  
+        <input type="submit" name="export" value="Exportar a CSV" class="btn btn-light" />  
         <input type="hidden" name="todos" value="<?php echo $todos; ?>" />
         <input type="hidden" name="stats" value="<?php echo $_GET['stats']; ?>" />
         <input type="hidden" name="id_tema" value="<?php echo $_GET['id_tema']; ?>" />
@@ -34,7 +34,7 @@ if ($todos == null) {
         ?>
         <div class="col-md-11 mx-auto">
 
-            <table id="tabla_stats" class="table table-bordered">
+            <table id="tabla_stats" class="table table-borderless">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -73,7 +73,7 @@ if ($todos == null) {
 
         <div class="col-md-11 mx-auto">
 
-            <table id="tabla_stats"  class="table table-bordered">
+            <table id="tabla_stats"  class="table table-borderless">
                 <thead>
                     <tr>
                         <th>Id Usuario </th>
@@ -162,7 +162,7 @@ if ($todos == null) {
         ?>
         <div class="col-md-11 mx-auto">
 
-            <table id="tabla_stats"  class="table table-bordered">
+            <table id="tabla_stats"  class="table table-borderless">
                 <thead>
                     <tr>
                         <th>Id Flashcard</th>
@@ -251,7 +251,7 @@ if ($todos == null) {
         ?>
         <div class="col-md-11 mx-auto">
 
-            <table id="tabla_stats"  class="table table-bordered">
+            <table id="tabla_stats"  class="table table-borderless">
                 <thead>
                     <tr>
                         <th>Id Flashcard</th>

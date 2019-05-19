@@ -129,7 +129,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                 <?php
             } else {
                 ?>
-                <table class="table table-bordered">
+                <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th>Pregunta</th>
@@ -163,7 +163,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                                     <input type="hidden" name="txtR4" value="<?php echo $flashcard['r4']; ?>">
                                     <input type="hidden" name="txtCuerpo" value="<?php echo $flashcard['cuerpo']; ?>">
                                     <input type="hidden" name="txtVal" value="<?php echo $flashcard['val']; ?>">
-                                    <button  class="btn btn-primary" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
+                                    <button  class="btn btn-light" value="Seleccionar" type="submit" name="accion">Seleccionar</button>
                                 </form>
                             </td>
                         </tr>
@@ -215,7 +215,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
 
                                 <div class="col-md-10">
 
-                                    <label class="col-md-8 control-label" for="textinput">Respuesta Correcta</label> 
+                                    <label class="col-md-12 control-label" for="textinput">Respuesta Correcta</label> 
                                     <select id="Valselector" name="txtVal" class="form-control"> 
 
                                         <option value="1" <?php if ($txtVal == '1') {
