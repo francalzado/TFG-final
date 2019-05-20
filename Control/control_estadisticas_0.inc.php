@@ -15,6 +15,8 @@ if ($_GET['stats'] == 1) { //TODO
     }
 }
 if ($_GET['stats'] == 2) { //Ultimos Resultados por Alumno
+    $contador = RepositorioEstadisticas :: obtener_numero_fc(Conexion :: obtener_conexion(), $_GET['id_tema']);
+    $identificadores = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(), $_GET['id_tema']);
     $todos = RepositorioEstadisticas :: obtener_estadisticas_ultimas_respuestas_tema(Conexion :: obtener_conexion(), $_GET['id_tema']);
 }
 if ($_GET['stats'] == 3) { //Respuestas por Flashcards

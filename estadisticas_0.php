@@ -68,9 +68,9 @@ if ($todos == null) {
         </div>
 
         <?php
-    } else if ($_GET['stats'] == 2) { //Ultimos Resultados por Alumno
+    } else if ($_GET['stats'] == 2) {
+        //Ultimos Resultados por Alumno
         ?>
-
         <div class="col-md-11 mx-auto">
 
             <table id="tabla_stats"  class="table table-borderless">
@@ -112,28 +112,27 @@ if ($todos == null) {
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Estudiante', 'No Contestada', 'Respuesta 1', 'Respuesta 2', 'Respuesta 3', 'Respuesta 4'],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2014', 10, 40, 20, 15, 19],
-                    ['2015', 10, 40, 20, 15, 19],
-                    ['2016', 103, 40, 20, 15, 19],
-                    ['2017', 101, 40, 20, 15, 19],
+
+                ['Estudiante',
+        <?php for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) { ?> ' <?php
+            echo $identificadores[$x][0];
+            ?>', <?php } ?> ],
+
+        <?php
+        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+            ?>
+                    ['<?php echo $todos[$x][0]; ?>',
+            <?php echo $todos[$x][6]; ?>,
+            <?php echo $todos[$x][6]; ?>,
+            <?php echo $todos[$x][6]; ?>,
+            <?php echo $todos[$x][6]; ?>,
+                    ],
+        <?php } ?>
+                //['52', 6, 2, 0, 0, 9], //coger array [0] de cada $respuesta, FLASHCARD = $identificadores[$i][0]
+                ]);
+                ['2014', 10, 40, 20, 15],
+                ['2014', 10, 40, 20, 15],
+                ['2014', 10, 40, 20, 15],
                 ]);
 
                 var options = {
@@ -173,38 +172,38 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php
-                $i = -1;
-                $flashcard_actual = 0;
-                foreach ($todos as $stats) {
-                    ?>
+        <?php
+        $i = -1;
+        $flashcard_actual = 0;
+        foreach ($todos as $stats) {
+            ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td> 
-                        <?php
-                        if ($stats['id_fc'] != $flashcard_actual) {
-                            $i++;
-                            $flashcard_actual = $stats['id_fc'];
-                        }
-                        ?>
+                    <?php
+                    if ($stats['id_fc'] != $flashcard_actual) {
+                        $i++;
+                        $flashcard_actual = $stats['id_fc'];
+                    }
+                    ?>
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['respuesta']; ?></td>
                         <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
                         <td><?php echo $stats['TotalRespuestas'];
-                        ?></td>
+            ?></td>
                         <td><?php echo $stats['RespuestaCorrecta']; ?></td>
 
                     </tr>
 
-                    <?php
-                }
-                //consigo los array de respuestas correctamente
+            <?php
+        }
+        //consigo los array de respuestas correctamente
 //                print_r($respuestas0);
 //                print_r($respuestas1);
 //                print_r($respuestas2);
 //                print_r($respuestas3);
 //                print_r($respuestas4);
 //                echo $i;
-                ?>
+        ?>
 
 
             </table>
@@ -262,39 +261,39 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php foreach ($todos as $stats) { ?>
+        <?php foreach ($todos as $stats) { ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td>            
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['AVG(score)']; ?></td>
                     </tr>
 
-                <?php } ?>
+        <?php } ?>
 
 
             </table>
         </div>
-        
+
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['bar']});
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                ['Flashcard', 'Score Medio'],
+                    ['Flashcard', 'Score Medio'],
         <?php
         for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
             ?>
 
-                    ['<?php echo $todos[$x][0]; ?>',
+                        ['<?php echo $todos[$x][0]; ?>',
             <?php echo $todos[$x][2]; ?>
-                    ],
+                        ],
         <?php } ?>
                 ]);
-                
-                
-                
-               
+
+
+
+
                 var options = {
                     chart: {
                         title: 'Estadísticas',
@@ -314,8 +313,8 @@ if ($todos == null) {
 }
 ?>
 
-        <br>
-        <br>
+<br>
+<br>
 
 
 <?php

@@ -1,166 +1,72 @@
-<?php 
-
+<?php
 include_once 'plantillas/documento-declaracion.inc.php';
 include_once 'plantillas/navbar-inicio.inc.php';
 include_once 'app/Conexion.inc.php';
+include_once 'app/Redireccion.inc.php';
 include_once 'app/RepositorioFlashcard.inc.php';
+include_once 'app/RepositorioAsignaturas.inc.php';
+include_once 'app/RepositorioEstadisticas.inc.php';
+$mis_asignaturas = RepositorioAsignatura :: obtener_mis_asignaturas(Conexion :: obtener_conexion(), $_SESSION['id_usuario']);
+$temas = RepositorioEstadisticas:: obtener_temas(Conexion :: obtener_conexion());
+if($_POST){
+          Redireccion :: redirigir(RUTA_ESTADISTICAS_0. '?asignatura=' . $txtasignatura. '&id_tema=' . $txttema. '&stats=' . $txtstats);  
+}
+
 ?>
 
-<?php 
 
-		try {
-			
-$results = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(),1);
-   
-
-		} catch (Exception $e) {
-			$_SESSION['error'] = $e->getMessage();
-		} 
-	
+<?php
+if(isset($_GET['p'])){
+    switch($_GET['sel']){
+        case '1':
+            $ret=array('Final del Juego','Rayuela','El Señor de loas Anillos');
+            break;
+        case '2':
+            $ret=array('rock','new age');
+            break;
+        case '3':
+            $ret=array('español','php','javascript');
+            break;
+        default:
+            echo 'document.getElementById("pp").innerHTML="<select name=\"dos\" id=\"dos\"></select>";';
+            exit;
+    }
+$html='<select name=\"dos\" id=\"dos\">';
+foreach($ret as $v)
+    $html.='<option value=\"'.$v.'\">'.$v.'</option>';
+$html.='</select>';
+echo 'document.getElementById("pp").innerHTML="'.$html.'";';
+exit;
+}
 ?>
-<div class="content">
-     	<div class="container">
-			
-     		<div class="row">
-				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-					<h1 class="text-center text_underline"> Timer : <span id='timer'></span> </h1>
-	     			<form class="form-horizontal" role="form" id='quiz_form' method="post" action="quiz-result">
-						<?php
-						
-						$remainder = $results['remainder'];
-						$number_question =  $results['number_question'];
-						$rowcount =  $results['rowcount'];
-						$i = 0;
-						$j = 1; $k = 1;
-						?>
-						<?php foreach ($results['questions'] as $result) {
-							 if ( $i == 0) echo "<div class='cont' id='question_splitter_$j'>";?>
-							<div id='question<?php echo $k;?>' >
-							<p class='questions' id="qname<?php echo $j;?>"> <?php echo $k?>.<?php echo $result['question_name'];?></p>
-							<input type="radio" value="1" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer1'];?>
-							<br/>
-							<input type="radio" value="2" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer2'];?>
-							<br/>
-							
-							<?php if(isset( $result['answer3'] ) && !empty( $result['answer3'] )){ ?>
-							<input type="radio" value="3" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer3'];?>
-							<br/>
-							<?php } ?>
-							
-							<?php if(isset( $result['answer4'] ) && !empty( $result['answer4'] )){ ?>
-							<input type="radio" value="4" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer4'];?>
-							<br/>
-							<?php } ?>
-							
-							<?php if(isset( $result['answer5'] ) && !empty( $result['answer5'] )){ ?>
-							<input type="radio" value="5" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer5'];?>
-							<br/>
-							<?php } ?>
-							
-							<?php if(isset( $result['answer6'] ) && !empty( $result['answer6'] )){ ?>
-							<input type="radio" value="6" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/><?php echo $result['answer6'];?>
-							<br/>
-							<?php } ?>
-							
-							
-							<input type="radio" checked='checked' style='display:none' value="smart_quiz" id='radio1_<?php echo $result['id'];?>' name='<?php echo $result['id'];?>'/>                                                                      
-							<br/>
-							</div>
-							<?php
-								 $i++; 
-								 if ( ( $remainder < 1 ) || ( $i == $number_question && $remainder == 1 ) ) {
-								 	echo "<button id='".$j."' class='next btn btn-success' type='submit'>Finish</button>";
-								 	echo "</div>";
-								 }  elseif ( $rowcount > $number_question  ) {
-								 	if ( $j == 1 && $i == $number_question ) {
-										echo "<button id='".$j."' class='next btn btn-success' type='button'>Next</button>";
-										echo "</div>";
-										$i = 0;
-										$j++;           
-									} elseif ( $k == $rowcount ) { 
-										echo " <button id='".$j."' class='previous btn btn-success' type='button'>Previous</button>
-													<button id='".$j."' class='next btn btn-success' type='submit'>Finish</button>";
-										echo "</div>";
-										$i = 0;
-										$j++;
-									} elseif ( $j > 1 && $i == $number_question ) {
-										echo "<button id='".$j."' class='previous btn btn-success' type='button'>Previous</button>
-								                    <button id='".$j."' class='next btn btn-success' type='button' >Next</button>";
-										echo "</div>";
-										$i = 0;
-										$j++;
-									}
-									
-								 }
-								  $k++;
-						     } ?>	
-						</form>
-	     		</div>
-			</div>
-		</div>	
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>test</title>
 <script>
-		$('.cont').addClass('hide');
-		$('#question_splitter_1').removeClass('hide');
-		$(document).on('click','.next',function(){
-		    last=parseInt($(this).attr('id'));  console.log( last );   
-		    nex=last+1;
-		    $('#question_splitter_'+last).addClass('hide');
-		    
-		    $('#question_splitter_'+nex).removeClass('hide');
-		});
-		
-		$(document).on('click','.previous',function(){
-		    last=parseInt($(this).attr('id'));     
-		    pre=last-1;
-		    $('#question_splitter_'+last).addClass('hide');
-		    
-		    $('#question_splitter_'+pre).removeClass('hide');
-		});
-
-
-		
-        var c = 60;
-        var t;
-        timedCount();
-
-        function timedCount() {
-
-        	var hours = parseInt( c / 3600 ) % 24;
-        	var minutes = parseInt( c / 60 ) % 60;
-        	var seconds = c % 60;
-
-        	var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
-
-            
-        	$('#timer').html(result);
-            if(c == 0 ){
-            	setConfirmUnload(false);
-                $("#quiz_form").submit();
-            }
-            c = c - 1;
-            t = setTimeout(function(){ timedCount() }, 1000);
-        }
-	</script>
-
-
-<script type="text/javascript">
-
-    // Prevent accidental navigation away
-    setConfirmUnload(true);
-    function setConfirmUnload(on)
-    {
-        window.onbeforeunload = on ? unloadMessage : null;
-    }
-    function unloadMessage()
-    {
-        return 'Your Answered Questions are resetted zero, Please select stay on page to continue your Quiz';
-    }
-
-    $(document).on('click', 'button:submit',function(){
-    	setConfirmUnload(false);
-    });
-
- 
-
+function adjs(url){
+    oldsc=document.getElementById("old_sc");
+       if(oldsc)
+            document.getElementsByTagName('body')[0].removeChild(oldsc);
+    sc=document.createElement('script');
+    sc.id="old_sc";
+    sc.src=url+'&'+Math.random();
+    document.getElementsByTagName('body')[0].appendChild(sc);
+}
 </script>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+      <select name="uno" id="uno" onchange="adjs('?p&sel='+this.value)">
+      <option value="0">seleccionar</option>
+      <option value="1">libros</option>
+    <option value="2">música</option>
+    <option value="3">lenguaje</option>
+  </select>
+  <div id="pp"><select name="dos" id="dos">
+  </select></div>
+</form>
+</body>
+</html> 

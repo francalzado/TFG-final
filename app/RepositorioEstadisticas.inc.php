@@ -85,7 +85,7 @@ FROM
 WHERE u.id_usuario = usuarioflashcard.id_usuario 
 AND usuarioflashcard.id_fc IN ( SELECT id_fc FROM flashcard WHERE id_tema = :id_tema)
 GROUP BY id_fc,u.id_usuario
-ORDER BY id_fc";
+ORDER BY id_usuario,fecha ASC";
                 $id_temaTEMP = $id_tema;
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id_tema', $id_temaTEMP, PDO::PARAM_STR);
@@ -118,7 +118,6 @@ ORDER BY AVG(score) DESC";
         return $resultado;
     }
 
-    
     //Numero de veces que se ha contestado cada opcion en cada flashcard
     public static function obtener_numero_fc($conexion, $id_tema) {
         if (isset($conexion)) {
@@ -135,6 +134,20 @@ ORDER BY AVG(score) DESC";
         }
         return $resultado;
     }
-    
-    
+
+    public static function obtener_temas($conexion) {
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
+ORDER BY id_asignatura";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
 }
