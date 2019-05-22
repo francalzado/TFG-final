@@ -149,5 +149,26 @@ ORDER BY id_asignatura";
         }
         return $resultado;
     }
+    
+    
+        public static function obtener_temas_por_asignatura($conexion,$id_asignatura) {
+            if (isset($conexion)) {
+            
+            try {
+                $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
+                WHERE temas.id_asignatura = :id_asignatura
+                ORDER BY id_asignatura      
+                ";
+                $id_asignaturaTEMP = $id_asignatura;
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_asignatura', $id_asignaturaTEMP, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
 }

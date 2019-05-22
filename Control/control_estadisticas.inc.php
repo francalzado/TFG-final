@@ -19,7 +19,7 @@ $temas = RepositorioEstadisticas:: obtener_temas(Conexion :: obtener_conexion())
 
 Conexion :: cerrar_conexion();
 if($_POST){
-          Redireccion :: redirigir(RUTA_ESTADISTICAS_0. '?asignatura=' . $txtasignatura. '&id_tema=' . $txttema. '&stats=' . $txtstats);  
+          Redireccion :: redirigir(RUTA_ESTADISTICAS_0. '?asignatura=' . $txtasignatura. '&id_tema=' . $txttema. '&stats=' . $txtstats);
 }
 echo $txtasignatura;
 echo $txttema;
