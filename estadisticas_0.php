@@ -310,7 +310,7 @@ if ($todos == null) {
         <?php
     } else if ($_GET['stats'] == 5) {
         //Ultimos % acierto por alumno
-        echo $todos[1][4]
+        $cont_aux=0;
         ?>
 
 
@@ -330,7 +330,9 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php foreach ($todos as $stats) { ?>
+                <?php foreach ($todos as $stats) {
+                    $cont_aux++;
+                    ?>
                     <tr>
                         <td><?php echo $stats['id_usuario']; ?></td>            
                         <td><?php echo $stats['nombre']; ?></td>   
@@ -354,7 +356,7 @@ if ($todos == null) {
                 var data = google.visualization.arrayToDataTable([
                     ['Estudiante', 'Porcentaje de acierto'],
         <?php
-        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+        for ($x = 0; $x <= $cont_aux-1; $x++) {
             ?>
 
                         ['<?php echo $todos[$x][0]; ?>',

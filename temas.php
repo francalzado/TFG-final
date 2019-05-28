@@ -24,8 +24,7 @@ $accion_add_flashcard = (isset($_POST['add_flashcard'])) ? $_POST['add_flashcard
 $accion_recurso = (isset($_POST['accion_recursos'])) ? $_POST['accion_recursos'] : "";
 $accion_estadisticas = (isset($_POST['accion_estadisticas'])) ? $_POST['accion_estadisticas'] : "";
 $accion_tema = (isset($_POST['accion_tema'])) ? $_POST['accion_tema'] : "";
-$_SESSION['id_tema'] = $txtId_tema;
-
+$_SESSION['id_asignatura'] = (isset($_GET['id_asignatura'])) ? $_GET['id_asignatura'] : "";
 if ($accion_recurso) {
     try {
 //REDIRECCIONAMIENTO A LOS RECURSOS DE CADA TEMA

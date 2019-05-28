@@ -33,7 +33,7 @@ RepositorioEstadisticas::insertar_porcentaje(Conexion :: obtener_conexion());
             <?php } ?>
         </div> 
         <div class="card-footer">                   
-            <p><a href="<?php echo RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario']; ?>">Ir al menú principal</a></p>
+            <p><a href="<?php echo RUTA_TEMAS . '?id_asignatura=' . $_SESSION['id_asignatura']; ?>">Ir al menú principal</a></p>
 
         </div>
     </div>

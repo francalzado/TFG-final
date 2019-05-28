@@ -12,6 +12,7 @@ class ControlSesion {
         $_SESSION['rol'] = $rol;
         $_SESSION['contador'] = $contador;
         $_SESSION['id_tema']="";
+        $_SESSION['id_asignatura']="";
         $_SESSION['puntuacion']= 0;
         $_SESSION['score']= 0;
     }
