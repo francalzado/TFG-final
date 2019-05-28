@@ -135,12 +135,14 @@ ORDER BY AVG(score) DESC";
         return $resultado;
     }
 
-    public static function obtener_temas($conexion) {
+    //Numero de veces que se ha contestado cada opcion en cada flashcard
+    public static function obtener_numero_estudiantes($conexion, $id_tema) {
         if (isset($conexion)) {
             try {
-                $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
-ORDER BY id_asignatura";
+                $sql = " SELECT COUNT(id_usuario) AS contador FROM porcentajes WHERE id_tema = :id_tema";
+                $id_temaTEMP = $id_tema;
                 $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_tema', $id_temaTEMP, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetchAll();
             } catch (Exception $ex) {
@@ -149,26 +151,82 @@ ORDER BY id_asignatura";
         }
         return $resultado;
     }
-    
-    
-        public static function obtener_temas_por_asignatura($conexion,$id_asignatura) {
-            if (isset($conexion)) {
-            
+    //Ultimos resultados por estudiante y el porcentaje de aciertos
+    public static function obtener_estadisticas_porcentaje_aciertos($conexion, $id_tema) {
+        if (isset($conexion)) {
             try {
-                $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
+                $sql = "SELECT
+    u.id_usuario,u.nombre,u.apellidos,u.email, p.porcentaje, (fecha) AS fecha
+FROM 
+    porcentajes p, usuarios u
+WHERE u.id_usuario = p.id_usuario 
+AND p.id_tema = :id_tema
+GROUP BY u.id_usuario
+ORDER BY porcentaje DESC,fecha DESC";
+                $id_temaTEMP = $id_tema;
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_tema', $id_temaTEMP, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
+    public static function obtener_temas($conexion) {
+    if (isset($conexion)) {
+    try {
+    $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
+ORDER BY id_asignatura";
+    $sentencia = $conexion->prepare($sql);
+    $sentencia->execute();
+    $resultado = $sentencia->fetchAll();
+} catch (Exception $ex) {
+    print "ERROR" . $ex->getMessage();
+}
+}
+return $resultado;
+}
+
+public static function obtener_temas_por_asignatura($conexion, $id_asignatura) {
+if (isset($conexion)) {
+
+try {
+    $sql = "SELECT temas.id_asignatura,temas.id_tema,temas.titulo FROM temas
                 WHERE temas.id_asignatura = :id_asignatura
                 ORDER BY id_asignatura      
                 ";
-                $id_asignaturaTEMP = $id_asignatura;
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id_asignatura', $id_asignaturaTEMP, PDO::PARAM_STR);
-                $sentencia->execute();
-                $resultado = $sentencia->fetchAll();
-            } catch (Exception $ex) {
-                print "ERROR" . $ex->getMessage();
-            }
-        }
-        return $resultado;
-    }
+    $id_asignaturaTEMP = $id_asignatura;
+    $sentencia = $conexion->prepare($sql);
+    $sentencia->bindParam(':id_asignatura', $id_asignaturaTEMP, PDO::PARAM_STR);
+    $sentencia->execute();
+    $resultado = $sentencia->fetchAll();
+} catch (Exception $ex) {
+    print "ERROR" . $ex->getMessage();
+}
+}
+return $resultado;
+}
+
+public static function insertar_porcentaje($conexion) {
+if (isset($conexion)) {
+$insercion = false;
+try {
+    $sql = "INSERT INTO porcentajes(id_usuario,id_tema,porcentaje,fecha) VALUES(:id_usuario,:id_tema,:porcentaje,:fecha) ";
+    $fechatemp = date('Y-m-d H:i:s');
+    $sentencia = $conexion->prepare($sql);
+    $sentencia->bindParam(':id_usuario', $_SESSION['id_usuario']);
+    $sentencia->bindParam(':id_tema', $_SESSION['id_tema']);
+    $sentencia->bindParam(':porcentaje', $_GET['puntosFinales']);
+    $sentencia->bindParam(':fecha', $fechatemp);
+    $insercion = $sentencia->execute();
+} catch (PDOException $ex) {
+    print 'Error' . $ex->getMessage();
+}
+}
+return $insercion;
+}
 
 }

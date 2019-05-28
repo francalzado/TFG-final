@@ -3,6 +3,11 @@ include_once 'app/config.inc.php';
 include_once 'app/Conexion.inc.php';
 include_once 'plantillas/documento-declaracion.inc.php';
 include_once 'plantillas/navbar-inicio.inc.php';
+include_once 'app/RepositorioEstadisticas.inc.php';
+Conexion :: abrir_conexion();
+$conexion = Conexion :: obtener_conexion();
+RepositorioEstadisticas::insertar_porcentaje(Conexion :: obtener_conexion());
+
 ?>
 
 <div class="modal-dialog">

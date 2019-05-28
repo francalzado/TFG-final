@@ -41,11 +41,11 @@ echo $txtstats;
     </head>
     <body>
         <br>
-        <div class="col-md-6 mx-auto">
-            <div class="card mt-6 text-center">
-                <div class="card-header">
+        <div class="col-md-2 mx-auto">
+            <div class="card md-4 text-center">
+                <div class="text-center">
                     <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-                        <div class="col-md-4">
+                        <div class="container">
                             <select class="seleccion" name="cosa" onchange="cambia(this.value)">
                                 <option value="0">Seleccione
                                     <?php
@@ -57,26 +57,27 @@ echo $txtstats;
                                     ?>
                             </select>
                         </div>
-                        
-                        <div id="txtHint" class="col-md-4"><b>Person info will be listed here...</b></div>
-                        <div class="col-md-4">
+
+                        <div id="txtHint" class="container"></div>
+                        <div class="container">
                             <select class="seleccion" name="tipo">
                                 <option value="1">Todo
                                 <option value="2">Ultimos Resultados por alumno 
                                 <option value="3">Respuestas por Flashcards
                                 <option value="4">AVG de Score de Flashcards 
+                                <option value="5">Ultimos porcentajes de acierto por alumno
                             </select>
                         </div>
-                        <br>
-                        <br>
+
+                        <div style="padding-top: 10px">
                         <button type="submit" class="btn btn-light">Consultar </button>
+                        </div>
 
                     </form>
-                </div>                
             </div>                
         </div>     
 
-        
+
 
         <script type="text/javascript">
             function cambia(str) {

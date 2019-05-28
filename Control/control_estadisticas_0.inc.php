@@ -29,4 +29,8 @@ if ($_GET['stats'] == 4) { //AVG de Score
     $identificadores = RepositorioFlashcard :: obtener_todos(Conexion :: obtener_conexion(), $_GET['id_tema']);
     $contador = RepositorioEstadisticas :: obtener_numero_fc(Conexion :: obtener_conexion(), $_GET['id_tema']);
 }
+if ($_GET['stats'] == 5) { //Ultimos resultados %aciertos
+    $todos = RepositorioEstadisticas :: obtener_estadisticas_porcentaje_aciertos(Conexion :: obtener_conexion(), $_GET['id_tema']);
+    $contador = RepositorioEstadisticas :: obtener_numero_estudiantes(Conexion :: obtener_conexion(), $_GET['id_tema']);
+}
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 include_once 'app/config.inc.php';
 include_once 'app/ValidadorFlashCard.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';

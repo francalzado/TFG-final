@@ -17,8 +17,12 @@ include_once 'app/Redireccion.inc.php';
 
         <style>
 
-         
 
+            .container{
+                text-align:center;
+                    padding: 8px;
+            }
+            
             th, td {
                 text-align: left;
                 padding: 8px;
@@ -38,10 +42,10 @@ include_once 'app/Redireccion.inc.php';
 
             }
             .form label{
-		display: inline-block;
-		text-align: right;
-		float: left;
-	}
+                display: inline-block;
+                text-align: right;
+                float: left;
+            }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

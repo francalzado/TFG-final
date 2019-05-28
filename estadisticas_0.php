@@ -172,38 +172,38 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-        <?php
-        $i = -1;
-        $flashcard_actual = 0;
-        foreach ($todos as $stats) {
-            ?>
+                <?php
+                $i = -1;
+                $flashcard_actual = 0;
+                foreach ($todos as $stats) {
+                    ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td> 
-                    <?php
-                    if ($stats['id_fc'] != $flashcard_actual) {
-                        $i++;
-                        $flashcard_actual = $stats['id_fc'];
-                    }
-                    ?>
+                        <?php
+                        if ($stats['id_fc'] != $flashcard_actual) {
+                            $i++;
+                            $flashcard_actual = $stats['id_fc'];
+                        }
+                        ?>
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['respuesta']; ?></td>
                         <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
                         <td><?php echo $stats['TotalRespuestas'];
-            ?></td>
+                        ?></td>
                         <td><?php echo $stats['RespuestaCorrecta']; ?></td>
 
                     </tr>
 
-            <?php
-        }
-        //consigo los array de respuestas correctamente
+                    <?php
+                }
+                //consigo los array de respuestas correctamente
 //                print_r($respuestas0);
 //                print_r($respuestas1);
 //                print_r($respuestas2);
 //                print_r($respuestas3);
 //                print_r($respuestas4);
 //                echo $i;
-        ?>
+                ?>
 
 
             </table>
@@ -261,14 +261,14 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-        <?php foreach ($todos as $stats) { ?>
+                <?php foreach ($todos as $stats) { ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td>            
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['AVG(score)']; ?></td>
                     </tr>
 
-        <?php } ?>
+                <?php } ?>
 
 
             </table>
@@ -307,7 +307,76 @@ if ($todos == null) {
             }
         </script>
         <div class="col-md-11 mx-auto" id="columnchart_material" style="width: 1600px; height: 500px;"></div>
+        <?php
+    } else if ($_GET['stats'] == 5) {
+        //Ultimos % acierto por alumno
+        ?>
 
+
+        <div class="col-md-11 mx-auto">
+
+            <table id="tabla_stats"  class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th>Id Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Porcentaje</th>
+                        <th>Fecha</th>
+
+
+                    </tr>
+                </thead>
+
+                <?php foreach ($todos as $stats) { ?>
+                    <tr>
+                        <td><?php echo $stats['id_usuario']; ?></td>            
+                        <td><?php echo $stats['nombre']; ?></td>   
+                        <td><?php echo $stats['apellidos']; ?></td>
+                        <td><?php echo $stats['email']; ?></td>
+                        <td><?php echo $stats['porcentaje']; ?></td>
+                        <td><?php echo $stats['fecha']; ?></td>
+                    </tr>
+
+                <?php } ?>
+
+
+            </table>
+        </div>
+
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Estudiante', 'Porcentaje de acierto'],
+        <?php
+        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+            ?>
+
+                        ['<?php echo $todos[$x][0]; ?>',
+            <?php echo $todos[$x][4]; ?>
+                        ],
+        <?php } ?>
+                ]);
+
+
+
+
+                var options = {
+                    chart: {
+                        title: 'Estadísticas % acierto',
+                    }
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+        <div class="col-md-11 mx-auto" id="columnchart_material" style="width: 1600px; height: 500px;"></div>
         <?php
     }
 }

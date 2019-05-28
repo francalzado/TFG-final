@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         //Iniciar Sesion
         ControlSesion::iniciar_sesion($validador->obtener_usuario()->obtenerId(), $validador->obtener_usuario()->obtenerEmail(),$validador->obtener_usuario()->obtenerNombre(),$validador->obtener_usuario()->obtenerRol(),0);
         //Redirigir Usuario a su index
-        Redireccion::redirigir(RUTA_INDEX);
+        Redireccion::redirigir(RUTA_MIS_ASIGNATURAS . '?id_usuario=' . $_SESSION['id_usuario']);
     } else {
         ?>
         

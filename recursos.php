@@ -53,7 +53,6 @@ if (COUNT($recursos) === 0) {
     <?php
 } else {
     ?>
-    ?>
 
 
     <br>
