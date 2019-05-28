@@ -145,7 +145,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                     </thead>
                     <?php foreach ($todos as $flashcard) { ?>
                         <tr>           
-                            <td><?php echo $flashcard['pregunta']; ?></td>
+                            <td ><?php echo $flashcard['pregunta']; ?></td>
                             <td><?php echo $flashcard['r1']; ?></td>
                             <td><?php echo $flashcard['r2']; ?></td>
                             <td><?php echo $flashcard['r3']; ?></td>
@@ -213,7 +213,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                             <!-- Select Basic -->
                             <div class="form-group">
 
-                                <div class="col-md-10">
+                                <div class="col-md-12">
 
                                     <label class="col-md-12 control-label" for="textinput">Respuesta Correcta</label> 
                                     <select id="Valselector" name="txtVal" class="form-control"> 

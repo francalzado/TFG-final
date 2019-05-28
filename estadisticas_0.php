@@ -310,6 +310,7 @@ if ($todos == null) {
         <?php
     } else if ($_GET['stats'] == 5) {
         //Ultimos % acierto por alumno
+        echo $todos[1][4]
         ?>
 
 

@@ -47,7 +47,7 @@ echo $txtstats;
                     <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                         <div class="container">
                             <select class="seleccion" name="cosa" onchange="cambia(this.value)">
-                                <option value="0">Seleccione
+                                <option value="0">Seleccione asignatura
                                     <?php
                                     for ($i = 0; $i < (COUNT($mis_asignaturas)); $i++) {
                                         ?>

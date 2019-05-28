@@ -54,6 +54,26 @@ class RepositorioFlashcard {
         }
         return $resultado;
     }
+    
+        public static function obtener_todos_asignatura($conexion, $id_asignatura) {
+        $usuarios = array();
+
+        if (isset($conexion)) {
+
+            try {
+
+                $sql = "SELECT * FROM flashcard WHERE id_tema IN ( SELECT id_tema FROM temas WHERE id_asignatura = :id_asignatura)";
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_asignatura', $id_asignatura, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
 
     public static function estadisticas($conexion, $id_usuario, $id_tema) {
         $usuarios = array();

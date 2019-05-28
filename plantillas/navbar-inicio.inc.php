@@ -8,7 +8,7 @@ Conexion :: cerrar_conexion();
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!--PARTE DEL PRINCIPIO DE LA NAV BAR-->
-    <a class="navbar-brand" href="/TFG-final">AppLearn</a>
+    <a class="navbar-brand" href="">AppLearn</a>
     <?php
     if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '0')) {
         ?>
