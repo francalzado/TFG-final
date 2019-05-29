@@ -197,7 +197,7 @@ if ($accion) {
     ?>
     <form action="" method=" ">
         <input type="hidden" name="demo2" id="demo2" value="">
-        <button class="btn btn-light"  type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">Acceder</button>
+        <button class="btn btn-light"  type="submit" name="accion" value="Comprobar" style="float:right" onclick="Reloj();">Confirmar</button>
 
     </form>
     </div>
