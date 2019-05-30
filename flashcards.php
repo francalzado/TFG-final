@@ -66,8 +66,14 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             //SI NO BORRA ES PORQUE ES CLAVE PRINCIPAL EN ALGUN SITIO
             $usuario_borrado = false;
             try {
-                $sql = "DELETE from flashcard WHERE id_fc = :Id_fc";
+                $sql = "DELETE from usuarioflashcard WHERE id_fc = :Id_fc";
                 $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':Id_fc', $txtId_fc);
+                $usuario_borrado = $sentencia->execute();
+                
+                
+                $sql01 = "DELETE from flashcard WHERE id_fc = :Id_fc";
+                $sentencia = $conexion->prepare($sql01);
                 $sentencia->bindParam(':Id_fc', $txtId_fc);
                 $usuario_borrado = $sentencia->execute();
             } catch (PDOException $ex) {

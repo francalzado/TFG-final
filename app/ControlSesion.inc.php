@@ -25,6 +25,9 @@ class ControlSesion {
         if (isset($_SESSION['id_usuario'])) {
             unset($_SESSION['id_usuario']);
         }
+        if (isset($_SESSION['id_tema'])) {
+            unset($_SESSION['id_tema']);
+        }
         if (isset($_SESSION['email'])) {
             unset($_SESSION['email']);
         }

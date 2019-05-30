@@ -35,6 +35,7 @@ if ($accion_recurso) {
 } else if ($accion_flashcard) {
     try {
 //REDIRECCIONAMIENTO A LAS FLASHCARDS DE CADA TEMA
+        $_SESSION['id_tema']=$txtId_tema;
         Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $txtId_tema);
     } catch (PDOException $ex) {
         print 'Error' . $ex->getMessage();
@@ -104,7 +105,7 @@ if ($accion_recurso) {
                 <td>
                     <form action="" method="post">
                         <input type="hidden" name="txtId_tema" value="<?php echo $tema['id_tema']; ?>">
-                        <button class="btn btn-light"  type="submit" name="accion_flashcard" value="Acceder">Acceder</button>
+                        <button class="btn btn-light"  type="submit" name="accion_flashcard" value="Acceder">Realizar</button>
                     </form>
                 </td>
 

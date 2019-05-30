@@ -1,4 +1,5 @@
 <?php
+
 include_once 'app/Conexion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
 include_once 'app/Redireccion.inc.php';
@@ -54,9 +55,19 @@ switch ($accion1) {
         try {
             //DELETE MAS COMPLEJO YA QUE HAY QUE BORRAR TODO LO RELACIONADO CON EL ( ES FOREIGN KEY DE VARIAS COSAS) 
             //FUNCIONA SI SU ID NO ES CLAVE DE OTRAS TABLAS!!!!!
-            $sql = "DELETE from usuarios
+            $sql01 = "DELETE from usuarioflashcard WHERE id_usuario = :Id_usuario";
+            $sentencia = $conexion->prepare($sql01);
+            $sentencia->bindParam(':Id_usuario', $txtId_usuario);
+            $usuario_borrado = $sentencia->execute();
+
+            $sql02 = "DELETE from usuarioasignatura WHERE id_usuario = :Id_usuario";
+            $sentencia = $conexion->prepare($sql02);
+            $sentencia->bindParam(':Id_usuario', $txtId_usuario);
+            $usuario_borrado = $sentencia->execute();
+
+            $sql03 = "DELETE from usuarios
                 WHERE id_usuario = :Id_usuario";
-            $sentencia = $conexion->prepare($sql);
+            $sentencia = $conexion->prepare($sql03);
             $sentencia->bindParam(':Id_usuario', $txtId_usuario);
             $usuario_borrado = $sentencia->execute();
         } catch (PDOException $ex) {

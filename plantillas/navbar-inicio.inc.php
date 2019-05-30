@@ -8,15 +8,16 @@ Conexion :: cerrar_conexion();
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!--PARTE DEL PRINCIPIO DE LA NAV BAR-->
-    <a class="navbar-brand" href="">AppLearn</a>
     <?php
     if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '0')) {
         ?>
+        <a class="navbar-brand" href="">AppLearn</a>
 
 
         <?php
     } else if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() === '1')) {
         ?>
+        <a class="navbar-brand" href="">AppLearn</a>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
@@ -32,6 +33,7 @@ Conexion :: cerrar_conexion();
         <?php
     } else if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() === '2')) {
         ?>
+        <a class="navbar-brand" href="">AppLearn</a>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
@@ -47,6 +49,7 @@ Conexion :: cerrar_conexion();
     } else if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() === '3')) {
         ?>
 
+        <a class="navbar-brand" href="">AppLearn</a>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
@@ -73,12 +76,11 @@ Conexion :: cerrar_conexion();
         <?php
     } else if (!ControlSesion::sesion_iniciada()) {
         ?>
+        <a class="navbar-brand" href="<?php echo RUTA_INDEX ?>">AppLearn</a>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_INFORMACION ?>">Información</a>
-                <a class="nav-item nav-link" href="#">Otra Pestaña</a>
-
             </div>
         </div>      
 
