@@ -25,7 +25,7 @@ include_once './Control/control_nuevo_tema.inc.php';
 
                 <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" >
                     <div class="form-group">
-                        <input type="text" name="enlace" class="form-control" placeholder="Enlace" autofocus/>
+                        <input type="text" name="enlace" class="form-control" placeholder="Titulo del tema" autofocus/>
                         <input type="hidden" name="txtId_asignatura" value="<?php echo $id_asignatura; ?>">
 
                     </div>

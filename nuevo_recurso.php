@@ -23,7 +23,7 @@ include_once './Control/control_nuevo_recurso.inc.php';
             </div>
             <div class="card-body">
 
-                <form role="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" >
+                <form role="form" method="POST" >
                     <div class="form-group">
                         <input type="text" name="titulo" class="form-control" placeholder="Titulo" autofocus/>
                         <br>
@@ -36,6 +36,8 @@ include_once './Control/control_nuevo_recurso.inc.php';
                         </button>
                     </div>
                 </form>
+                <a href="<?php echo RUTA_RECURSOS. '?id_tema=' . $_GET['id_tema']; ?>">Ver recursos visuales</a>
+
             </div>
         </div>
     </div>
