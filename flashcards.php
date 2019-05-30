@@ -188,42 +188,31 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                     <div class="card-body">                    
 
                         <form action="" method="post">
-
                             <input type="hidden" name="txtId_fc" value="<?php echo $txtId_fc; ?>">
                             <input type="hidden" name="txtId_tema" value="<?php echo $txtId_tema; ?>">
-
                             <label class="col-md-4 control-label" for="textinput">Pregunta</label>  
-                            <input type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
-                            <br>
+                            <input class="form-control input-md" type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
                             <br>
                             <label class="col-md-4 control-label" for="textinput">R1</label>  
-                            <input type="text" name="txtR1"  value="<?php echo $txtR1; ?>" placeholder="R1" id="txtR1" require="">
-                            <br>
+                            <input class="form-control input-md" type="text" name="txtR1"  value="<?php echo $txtR1; ?>" placeholder="R1" id="txtR1" require="">
                             <br>
                             <label class="col-md-4 control-label" for="textinput">R2</label>  
-                            <input type="text" name="txtR2"  value="<?php echo $txtR2; ?>" placeholder="R2" id="txtR2" require="">
-                            <br>
+                            <input class="form-control input-md" type="text" name="txtR2"  value="<?php echo $txtR2; ?>" placeholder="R2" id="txtR2" require="">
                             <br>
                             <label class="col-md-4 control-label" for="textinput">R3</label>  
-                            <input type="text" name="txtR3"  value="<?php echo $txtR3; ?>" placeholder="R3" id="txtR3" require="">
-                            <br>
+                            <input class="form-control input-md" type="text" name="txtR3"  value="<?php echo $txtR3; ?>" placeholder="R3" id="txtR3" require="">
                             <br>
                             <label class="col-md-4 control-label" for="textinput">R4</label>  
-                            <input type="text" name="txtR4"  value="<?php echo $txtR4; ?>" placeholder="R4" id="txtR4" require="">
-                            <br>
+                            <input class="form-control input-md" type="text" name="txtR4"  value="<?php echo $txtR4; ?>" placeholder="R4" id="txtR4" require="">
                             <br>
                             <label class="col-md-4 control-label" for="textinput">Cuerpo</label>
                             <textarea class="form-control" id="txtCuerpo" name="txtCuerpo"><?php echo $txtCuerpo; ?></textarea>
                             <br>
-                            <br>
                             <!-- Select Basic -->
                             <div class="form-group">
-
                                 <div class="col-md-12">
-
                                     <label class="col-md-12 control-label" for="textinput">Respuesta Correcta</label> 
                                     <select id="Valselector" name="txtVal" class="form-control"> 
-
                                         <option value="1" <?php if ($txtVal == '1') {
                 ?>
                                                     selected="selected

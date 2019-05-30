@@ -164,7 +164,7 @@ Conexion :: cerrar_conexion();
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="registro.php">Registro</a>
+                <a class="nav-link" href="<?php echo RUTA_REGISTRO ?>">Registro</a>
             </li>        
 
             <?php
