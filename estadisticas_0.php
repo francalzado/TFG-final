@@ -27,6 +27,7 @@ if ($todos == null) {
         <input type="hidden" name="todos" value="<?php echo $todos; ?>" />
         <input type="hidden" name="stats" value="<?php echo $_GET['stats']; ?>" />
         <input type="hidden" name="id_tema" value="<?php echo $_GET['id_tema']; ?>" />
+        <input type="hidden" name="id_asignatura" value="<?php echo $_GET['id_asignatura']; ?>" />
 
     </form> 
     <?php
