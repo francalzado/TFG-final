@@ -47,7 +47,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
     </div>
     <div class="col-lg-4">
         <div class="col-md-9 mx-auto">
-            <div class="card mt-4 text-center">
+            <div class="card mt-5 text-center">
                 <div class="card-header">
                     <h1 class="h5">
                         <p>Datos del usuario </p>
@@ -56,11 +56,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
                 <div class="card-body">                    
 
                     <form action="" method="post">
-
-
                         <input type="hidden" name="txtId_usuario" value="<?php echo $txtId_usuario; ?>">
-                        <br>
-                        <br>
                         <input type="text" name="txtNombre" value="<?php echo $txtNombre; ?>" placeholder="Nombre" id="txtNombre" require="">
                         <br>
                         <br>

@@ -193,6 +193,9 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                             <label class="col-md-4 control-label" for="textinput">Pregunta</label>  
                             <input class="form-control input-md" type="text" name="txtPregunta"  value="<?php echo $txtPregunta; ?>" placeholder="Pregunta" id="txtPregunta" require="">
                             <br>
+                            <label class="col-md-4 control-label" for="textinput">Cuerpo</label>
+                            <textarea class="form-control" id="txtCuerpo" name="txtCuerpo"><?php echo $txtCuerpo; ?></textarea>
+                            <br>
                             <label class="col-md-4 control-label" for="textinput">R1</label>  
                             <input class="form-control input-md" type="text" name="txtR1"  value="<?php echo $txtR1; ?>" placeholder="R1" id="txtR1" require="">
                             <br>
@@ -205,9 +208,7 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
                             <label class="col-md-4 control-label" for="textinput">R4</label>  
                             <input class="form-control input-md" type="text" name="txtR4"  value="<?php echo $txtR4; ?>" placeholder="R4" id="txtR4" require="">
                             <br>
-                            <label class="col-md-4 control-label" for="textinput">Cuerpo</label>
-                            <textarea class="form-control" id="txtCuerpo" name="txtCuerpo"><?php echo $txtCuerpo; ?></textarea>
-                            <br>
+                            
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <div class="col-md-12">
