@@ -41,7 +41,7 @@ echo $txtstats;
     </head>
     <body>
         <br>
-        <div class="col-md-2 mx-auto">
+        <div class="col-md-3 mx-auto">
             <div class="card md-4 text-center">
                 <div class="text-center">
                     <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
