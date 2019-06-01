@@ -59,14 +59,14 @@ if (isset($_POST["export"]) && $_POST['stats'] == 4) {
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=data.csv');
     $output = fopen("php://output", "w");
-    fputcsv($output, array('nombre', 'apellidos', 'email', 'id_fc', 'pregunta', 'respuesta', 'score', 'fecha'), ';');
+    fputcsv($output, array('id_fc', 'pregunta', 'score medio'), ';');
     if ($_POST['id_tema'] == 0 || $_POST['id_tema'] == '-') {
         $todos = RepositorioEstadisticas :: obtener_estadisticas_avg_score_asignatura_DESC(Conexion :: obtener_conexion(), $_GET['asignatura']);
     } else {
         $todos = RepositorioEstadisticas :: obtener_estadisticas_avg_score_tema_DESC(Conexion :: obtener_conexion(), $_POST['id_tema']);
     }    //fputcsv($output, $row);
     foreach ($todos as $stats) {
-        fputcsv($output, array($stats['nombre'], $stats['apellidos'], $stats['email'], $stats['id_fc'], $stats['pregunta'], $stats['respuesta'], $stats['score'], $stats['fecha']), ';');
+        fputcsv($output, array($stats['id_fc'], $stats['pregunta'], $stats['AVG(score)']), ';');
     }
     fclose($output);
 }
@@ -75,14 +75,14 @@ if (isset($_POST["export"]) && $_POST['stats'] == 5) {
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=data.csv');
     $output = fopen("php://output", "w");
-    fputcsv($output, array('nombre', 'apellidos', 'email', 'id_fc', 'pregunta', 'respuesta', 'score', 'fecha'), ';');
+    fputcsv($output, array('id_usuario','nombre', 'apellidos', 'email', 'porcentaje', 'fecha'), ';');
     if ($_POST['id_tema'] == 0 || $_POST['id_tema'] == '-') {
         $todos = RepositorioEstadisticas :: obtener_estadisticas_porcentaje_aciertos_asignatura(Conexion :: obtener_conexion(), $_GET['asignatura']);
     } else {
         $todos = RepositorioEstadisticas :: obtener_estadisticas_porcentaje_aciertos(Conexion :: obtener_conexion(), $_POST['id_tema']);
     }    //fputcsv($output, $row);
     foreach ($todos as $stats) {
-        fputcsv($output, array($stats['nombre'], $stats['apellidos'], $stats['email'], $stats['id_fc'], $stats['pregunta'], $stats['respuesta'], $stats['score'], $stats['fecha']), ';');
+        fputcsv($output, array($stats['id_usuario'],$stats['nombre'], $stats['apellidos'], $stats['email'], $stats['porcentaje'],$stats['fecha']), ';');
     }
     fclose($output);
 }
