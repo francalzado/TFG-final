@@ -23,8 +23,6 @@ class ValidadorRegistro {
         $this->email = $email;
         $this->password = $password;
         $this->confirm_password = $confirm_password;
-
-
         $this->error_nombre = $this->validar_nombre($nombre);
         $this->error_email = $this->validar_email($email, $conexion);
         $this->error_password = $this->validar_password($password);

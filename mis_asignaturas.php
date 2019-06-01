@@ -1,4 +1,3 @@
-
 <?php
 include_once './Control/control_mis_asignaturas.inc.php';
 if (COUNT($mis_asignaturas) === 0) {
@@ -43,30 +42,20 @@ if (COUNT($mis_asignaturas) === 0) {
                         <form action="" method="post">
                             <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
                             <button class="btn btn-light"  type="submit" name="accion" value="Acceder">Acceder</button>
-
-
                         </form>
                     </td>
                     <td>
                         <form action="" method="post">
                             <input type="hidden" name="txtId_asignatura" value="<?php echo $asignatura['id_asignatura']; ?>">
                             <button class="btn btn-danger" type="submit" name="baja" value="Dar de baja">Dar de baja</button>
-
-
                         </form>
                     </td>
-
                 </tr>
-
-
-            <?php } ?>
-
-            <?php
+                <?php
+            }
         }
         if (ControlSesion::getRol() == '3') {
             ?>
-
-
             <tfoot>
                 <tr>
                     <th colspan="6">
@@ -76,9 +65,7 @@ if (COUNT($mis_asignaturas) === 0) {
                     </th>
                 </tr>
             </tfoot>
-
         </table>
-
     </div>
     <?php
     include_once 'plantillas/documento-cierre.inc.php';

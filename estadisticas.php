@@ -59,6 +59,7 @@ echo $txtstats;
                         </div>
 
                         <div id="txtHint" class="container"></div>
+                        
                         <div class="container">
                             <select class="seleccion" name="tipo">
                                 <option value="1">Todo
@@ -99,14 +100,6 @@ echo $txtstats;
                 });
                 return false;
             }
-            //Estas enviando a tu propia pagina
-            //ergo tu carga es el html de estadisticas
-
-
-            //  QUE TIENES QUE HACER?
-            // Enviar a carga_datos.php
-            // echo response
-            // estadisticas
         </script>
     </body>
 

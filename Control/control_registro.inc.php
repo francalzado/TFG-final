@@ -9,7 +9,8 @@ include_once 'app/Asignatura.inc.php';
 
 if (isset($_POST['enviar'])) {
     Conexion :: abrir_conexion();
-    $validador = new ValidadorRegistro($_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], Conexion:: obtener_conexion());
+    $validador = new ValidadorRegistro($_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['password'], $_POST['confirm_password'], 
+            Conexion:: obtener_conexion());
 
     if ($validador->registro_valido()) {
         $usuario = new Usuario('', $validador->obtener_nombre(), $validador->obtener_apellidos(), $validador->obtener_email(), $validador->obtener_password(), '');

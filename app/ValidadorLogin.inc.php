@@ -21,7 +21,6 @@ class ValidadorLogin {
             }
         }
     }
-
     private function variable_iniciada($variable) {
         if (isset($variable) && !empty($variable)) {
             return true;
@@ -29,7 +28,6 @@ class ValidadorLogin {
             return false;
         }
     }
-
     public function obtener_usuario() {
         return $this->usuario;
     }

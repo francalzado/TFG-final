@@ -15,10 +15,6 @@ $baja = (isset($_POST['baja'])) ? $_POST['baja'] : "";
 $accion_asignatura = (isset($_POST['accion_asignatura'])) ? $_POST['accion_asignatura'] : "";
 
 $total_usuarios = RepositorioUsuario :: obtener_numero_usuarios(Conexion::obtener_conexion());
-//ver por qué al pasar $txtId_usuario PETA 
-//MUESTRA LAS ASIGNATURAS DEL USUARIO CON ID DE LA SESION
-//$mis_asignaturas = RepositorioAsignatura :: obtener_mis_asignaturas(Conexion :: obtener_conexion(),$usuario->obtenerId());
-//MUESTRA LAS ASIGNATURAS DEL USUARIO CON ID 4
 $int = (int) $txtId_usuario;
 $mis_asignaturas = RepositorioAsignatura :: obtener_mis_asignaturas(Conexion :: obtener_conexion(), $id_usuario);
 $conexion = Conexion :: obtener_conexion();

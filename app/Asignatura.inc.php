@@ -30,3 +30,4 @@ class Asignatura {
         return $this->cuatrimestre;
     }
 }
+

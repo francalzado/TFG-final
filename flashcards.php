@@ -81,11 +81,9 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             }
             if ($usuario_borrado) {
                 Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
-                print 'Se ha borrado correctamente';
             }
             if (!$usuario_borrado)
                 Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
-            print 'No se ha borrado correctaente';
 
 
             break;
@@ -108,11 +106,9 @@ if (ControlSesion::sesion_iniciada() && ((ControlSesion::getRol() == '2') || (Co
             }
             if ($usuario_Add) {
                 Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
-                print 'Se ha añadido correctamente';
             }
             if (!$usuario_Add)
                 Redireccion :: redirigir(RUTA_FLASHCARDS . '?id_tema=' . $_GET['id_tema']);
-            print 'No se ha añadido correctaente';
 
 
             break;
