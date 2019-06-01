@@ -3,23 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/ValidadorRegistro.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/ValidadorLogin.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/informacion.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_registro.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/plantillas/navbar-inicio.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/Conexion.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/plantillas/documento-declaracion.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/Asignatura.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_mis_asignaturas.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/plantillas/documento-cierre.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/nuevo_recurso.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/java_a_php.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/mis_asignaturas.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/procesamientoajax.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/Redireccion.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/estadisticas.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/ControlSesion.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/consulta.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/config.inc.php</file>
             <file>file:/C:/xampp/htdocs/TFG-final/Control/control_asignaturas.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/Usuario.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/app/ValidadorFlashcard.inc.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_login.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_flashcards.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/flashcards.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_mis_asignaturas.inc.php</file>
         </group>
     </open-files>
 </project-private>

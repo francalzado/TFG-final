@@ -71,6 +71,9 @@ if ($todos == null) {
         <?php
     } else if ($_GET['stats'] == 2) {
         //Ultimos Resultados por Alumno
+        echo $contador[0][0];
+
+        $aux = 0;
         ?>
         <div class="col-md-11 mx-auto">
 
@@ -89,7 +92,9 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php foreach ($todos as $stats) { ?>
+                <?php foreach ($todos as $stats) {
+                    $aux++;
+                    ?>
                     <tr>
                         <td><?php echo $stats['id_usuario']; ?></td>            
                         <td><?php echo $stats['nombre']; ?></td>   
@@ -101,7 +106,12 @@ if ($todos == null) {
                         <td><?php echo $stats['fecha']; ?></td>
                     </tr>
 
-                <?php } ?>
+                <?php
+                }
+
+                $cont_aux = $aux / $contador[0][0];
+                echo $cont_aux;
+                ?>
 
 
             </table>
@@ -117,24 +127,23 @@ if ($todos == null) {
                 ['Estudiante',
         <?php for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) { ?> ' <?php
             echo $identificadores[$x][0];
-            ?>', <?php } ?> ],
+            ?>', <?php } ?> ],  //LA PRIMERA PARTE CARGA BIEN!
 
         <?php
-        for ($x = 0; $x <= (($contador[0][0]) - 1); $x++) {
+        $aa=0;
+        for ($x = 0; $x <$cont_aux ; $x++) {
             ?>
-                    ['<?php echo $todos[$x][0]; ?>',
-            <?php echo $todos[$x][6]; ?>,
-            <?php echo $todos[$x][6]; ?>,
-            <?php echo $todos[$x][6]; ?>,
-            <?php echo $todos[$x][6]; ?>,
+                    ['<?php echo $todos[$aa+1][3];?>'
+                        <?php for ($y = 0; $y < $contador[0][0]; $y++) {
+                            $aa= $y+($contador[0][0]*$x); ?>
+                        , <?php echo $todos[$aa][7];
+            } ?>
+
                     ],
         <?php } ?>
                 //['52', 6, 2, 0, 0, 9], //coger array [0] de cada $respuesta, FLASHCARD = $identificadores[$i][0]
                 ]);
-                ['2014', 10, 40, 20, 15],
-                ['2014', 10, 40, 20, 15],
-                ['2014', 10, 40, 20, 15],
-                ]);
+
 
                 var options = {
                     chart: {
@@ -188,9 +197,9 @@ if ($todos == null) {
                         ?>
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['respuesta']; ?></td>
-                        <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
+            <?php ${"respuestas" . $stats['respuesta']}[$i] = $stats['TotalRespuestas']; ?>
                         <td><?php echo $stats['TotalRespuestas'];
-                        ?></td>
+            ?></td>
                         <td><?php echo $stats['RespuestaCorrecta']; ?></td>
 
                     </tr>
@@ -262,14 +271,14 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php foreach ($todos as $stats) { ?>
+        <?php foreach ($todos as $stats) { ?>
                     <tr>
                         <td><?php echo $stats['id_fc']; ?></td>            
                         <td><?php echo $stats['pregunta']; ?></td>   
                         <td><?php echo $stats['AVG(score)']; ?></td>
                     </tr>
 
-                <?php } ?>
+        <?php } ?>
 
 
             </table>
@@ -311,7 +320,7 @@ if ($todos == null) {
         <?php
     } else if ($_GET['stats'] == 5) {
         //Ultimos % acierto por alumno
-        $cont_aux=0;
+        $cont_aux = 0;
         ?>
 
 
@@ -331,9 +340,10 @@ if ($todos == null) {
                     </tr>
                 </thead>
 
-                <?php foreach ($todos as $stats) {
-                    $cont_aux++;
-                    ?>
+        <?php
+        foreach ($todos as $stats) {
+            $cont_aux++;
+            ?>
                     <tr>
                         <td><?php echo $stats['id_usuario']; ?></td>            
                         <td><?php echo $stats['nombre']; ?></td>   
@@ -343,7 +353,7 @@ if ($todos == null) {
                         <td><?php echo $stats['fecha']; ?></td>
                     </tr>
 
-                <?php } ?>
+        <?php } ?>
 
 
             </table>
@@ -357,7 +367,7 @@ if ($todos == null) {
                 var data = google.visualization.arrayToDataTable([
                     ['Estudiante', 'Porcentaje de acierto'],
         <?php
-        for ($x = 0; $x <= $cont_aux-1; $x++) {
+        for ($x = 0; $x <= $cont_aux - 1; $x++) {
             ?>
 
                         ['<?php echo $todos[$x][0]; ?>',
