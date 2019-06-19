@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/TFG-final/export.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/estadisticas_0.php</file>
-            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_estadisticas_0.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/ValidadorRegistro.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/RepositorioRecurso.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/estadisticas.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/consulta.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/app/config.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_asignaturas.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/Control/control_flashcards.inc.php</file>
+            <file>file:/C:/xampp/htdocs/TFG-final/plantillas/documento-declaracion.inc.php</file>
         </group>
     </open-files>
 </project-private>

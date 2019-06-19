@@ -1,7 +1,6 @@
 <?php
 
 include_once 'Recurso.inc.php';
-include_once 'app/log.inc.php';
 class RepositorioRecurso {
 
     public static function insertar_recurso($conexion,$recurso) {
