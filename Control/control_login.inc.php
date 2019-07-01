@@ -21,8 +21,6 @@ if (isset($_POST['login'])) {
         ControlSesion::iniciar_sesion($validador->obtener_usuario()->obtenerId(), $validador->obtener_usuario()->obtenerEmail(), $validador->obtener_usuario()->obtenerNombre(), $validador->obtener_usuario()->obtenerRol(), 0);
         //Redirigir Usuario a su index
 
-
-
         if (ControlSesion::sesion_iniciada() && (ControlSesion::getRol() == '0')) {
 
             Redireccion::redirigir(RUTA_INDEX . '?id_usuario=' . $_SESSION['id_usuario']);

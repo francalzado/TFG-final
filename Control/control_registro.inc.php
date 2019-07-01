@@ -13,7 +13,8 @@ if (isset($_POST['enviar'])) {
             Conexion:: obtener_conexion());
 
     if ($validador->registro_valido()) {
-        $usuario = new Usuario('', $validador->obtener_nombre(), $validador->obtener_apellidos(), $validador->obtener_email(), $validador->obtener_password(), '');
+        $pass_cifrada = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $usuario = new Usuario('', $validador->obtener_nombre(), $validador->obtener_apellidos(), $validador->obtener_email(), $pass_cifrada, '');
         $usuario_insertado = RepositorioUsuario :: insertar_usuario(Conexion :: obtener_conexion(), $usuario);
         if ($usuario_insertado) {
             Redireccion :: redirigir(RUTA_REGISTRO_CORRECTO . '?nombre=' . $usuario->obtenerNombre());

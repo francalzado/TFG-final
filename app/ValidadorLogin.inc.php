@@ -15,8 +15,11 @@ class ValidadorLogin {
             $this->error = "Debes introducir email y contraseña";
         } else {
             $this->usuario = RepositorioUsuario::obtener_usuario_por_email($conexion, $email);
-
-            if (is_null($this->usuario) || ($this->usuario->obtenerPassword() !== $password)) {
+            
+            if (is_null($this->usuario)) {
+                $this->error = "Los datos son incorrectos";
+            }
+            if((password_verify($password, $this->usuario->obtenerPassword()))==false){
                 $this->error = "Los datos son incorrectos";
             }
         }
