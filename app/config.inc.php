@@ -15,6 +15,7 @@ define("RUTA_REGISTRO_CORRECTO", "/TFG-final/registro_correcto.php");
 define("RUTA_LOGIN", "/TFG-final/login.php");
 define("RUTA_LOGOUT", "/TFG-final/logout.php");
 define("RUTA_INFORMACION", "/TFG-final/informacion.php");
+define("RUTA_CONTACTO", "/TFG-final/contacto.php");
 define("RUTA_NUEVA_FLASHCARD", "/TFG-final/nueva_flashcard.php");
 define("RUTA_ASIGNATURAS", "/TFG-final/asignaturas.php");
 define("RUTA_ESTADISTICAS", "/TFG-final/estadisticas.php");

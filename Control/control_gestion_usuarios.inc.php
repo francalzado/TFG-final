@@ -19,7 +19,19 @@ $txtEmail = (isset($_POST['txtEmail'])) ? $_POST['txtEmail'] : "";
 $txtRol = (isset($_POST['txtRol'])) ? $_POST['txtRol'] : "";
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 $accion1 = (isset($_POST['accion1'])) ? $_POST['accion1'] : "";
-
+?>
+ <!-- Javascript function for deleting data -->
+<!--SCRIPT A MEDIAS, BORRA SI O SI-->
+ <script>
+ function deleteme(delid)
+ {
+ if(confirm("Do you want Delete!")){
+ window.location.href='delete.php?del_id=' +delid+'';
+ return true;
+ }
+ } 
+ </script>
+<?php
 switch ($accion1) {
     case "btnModificar":
         $usuario_modificado = false;

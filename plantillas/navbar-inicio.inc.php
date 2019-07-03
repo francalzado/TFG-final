@@ -81,6 +81,7 @@ Conexion :: cerrar_conexion();
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo RUTA_INFORMACION ?>">Información</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_CONTACTO ?>">Contacto</a>
             </div>
         </div>      
 

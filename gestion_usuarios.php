@@ -100,7 +100,7 @@ include_once './Control/control_gestion_usuarios.inc.php';
                         <br>
                         <br>
                         <button class="btn btn-warning" value="btnModificar" type="submit" name="accion1">Modificar</button>
-                        <button class="btn btn-danger" value="btnEliminar" type="submit" name="accion1">Eliminar</button>       
+                        <button class="btn btn-danger" value="btnEliminar" type="submit" onclick="deleteme(<?php echo $txtId_usuario ?>)" name="accion1">Eliminar</button>       
                     </form>
 
                 </div>
